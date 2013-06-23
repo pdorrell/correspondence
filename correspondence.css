@@ -22,3 +22,13 @@ body {
   border: 1pt solid red;
   background-color: #f0e0e0;
 }
+
+.operator span {
+  padding: 0.1em;
+  border: 1pt solid white;
+}
+
+.operator span:hover {
+  border: 1pt solid green;
+  background-color: #e0f0e0;
+}
