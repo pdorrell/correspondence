@@ -12,3 +12,13 @@ body {
   font: 2.5em normal Georgia;
   margin: 2em;
 }
+
+.number span {
+  padding: 0.1em;
+  border: 1pt solid white;
+}
+
+.number span:hover {
+  border: 1pt solid red;
+  background-color: #f0e0e0;
+}
