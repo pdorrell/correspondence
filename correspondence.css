@@ -1,0 +1,14 @@
+
+body {
+  margin: 2em;
+}
+
+.equation {
+  font: 4em bold Arial;
+  margin: 2em;
+}
+
+.word-equation {
+  font: 2.5em normal Georgia;
+  margin: 2em;
+}
