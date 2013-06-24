@@ -10,22 +10,22 @@ $(document).ready(function(){
   $("body").click(
     function(event) {
       if (this == event.target) { // click outside of any inner elements to clear any current highlight
-        clearCurrentHoveringElement();
+        clearCurrentSelectedElement();
       }
     });
 });
 
-var currentHoveringElement = null;
+var currentSelectedElement = null;
 
-function clearCurrentHoveringElement() {
-  if (currentHoveringElement != null) {
-    currentHoveringElement.find("span").removeClass("hover");
-    currentHoveringElement = null;
+function clearCurrentSelectedElement() {
+  if (currentSelectedElement != null) {
+    currentSelectedElement.find("span").removeClass("selected");
+    currentSelectedElement = null;
   }
 }  
 
 function setHovering(element) {
-  clearCurrentHoveringElement();
-  element.find("span").addClass("hover");
-  currentHoveringElement = element;
+  clearCurrentSelectedElement();
+  element.find("span").addClass("selected");
+  currentSelectedElement = element;
 }

@@ -22,7 +22,7 @@ body {
   border: 1pt solid white;
 }
 
-.number span.hover {
+.number span.selected {
   border: 1pt solid red;
   background-color: #f0e0e0;
 }
@@ -32,7 +32,7 @@ body {
   border: 1pt solid white;
 }
 
-.operator span.hover {
+.operator span.selected {
   border: 1pt solid green;
   background-color: #e0f0e0;
 }
