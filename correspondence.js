@@ -1,8 +1,9 @@
+var dataAttributeNameForItemId = "id";
 
 $(document).ready(function(){
-  initializeStructureGroups();
+  initializeStructureGroups(dataAttributeNameForItemId);
         
-  $("[data-id]").hover(
+  $("[data-" + dataAttributeNameForItemId + "]").hover(
     function() {
       setHovering($(this));
     }, 
@@ -17,8 +18,8 @@ $(document).ready(function(){
     });
 });
 
-function indexItemByItemId(itemsMap, item) {
-  var itemId = item.data("id");
+function indexItemByItemId(dataAttributeNameForItemId, itemsMap, item) {
+  var itemId = item.data(dataAttributeNameForItemId);
   var itemsForItemId = itemsMap[itemId];
   if (itemsForItemId === undefined) {
     itemsForItemId = [];
@@ -27,28 +28,30 @@ function indexItemByItemId(itemsMap, item) {
   itemsForItemId.push(item[0]);
 }
 
-function initializeStructureGroups() {
+function initializeStructureGroups(dataAttributeNameForItemId) {
   $(".structure-group").each(
     function(index, structureGroup) {
       var itemsByItemId = {};
-      initializeStructureData(structureGroup, itemsByItemId)
+      initializeStructureData(structureGroup, itemsByItemId, dataAttributeNameForItemId)
     });
 }
 
-function initializeStructureData(structureGroup, itemsMap) {
-  // set "structid" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
+function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForItemId) {
+  // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
   $(structureGroup).find(".structure").each(
     function(index, structure) {
       var structureId = index;
-      $(structure).find("[data-id]").each(
+      $(structure).find("[data-" + dataAttributeNameForItemId + "]").each(
         function(index, item) {
           $(item).data("structureId", structureId);
           $(item).data("siblings", []);
           $(item).data("cousins", []);
-          indexItemByItemId(itemsMap, $(item));
+          indexItemByItemId(dataAttributeNameForItemId, itemsMap, $(item));
         });
     });
-  $(structureGroup).find("[data-id]").each(
+  /* For each item in structure group, determine which other items are siblings (in the same structure) 
+     or cousins (in a different structure) with the same id */
+  $(structureGroup).find("[data-" + dataAttributeNameForItemId + "]").each(
     function(index, item) {
       var $item = $(item);
       var itemId = $item.data("id");
