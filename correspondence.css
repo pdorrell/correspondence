@@ -25,11 +25,11 @@ body {
 
 .number span.selected {
   border: 1pt solid red;
-  background-color: #f0e0e0;
+  background-color: #f0a0a0;
 }
 
 .number span.highlighted {
-  border: 1pt solid blue;
+  border: 1pt solid black;
   background-color: #f0e0e0;
 }
 
@@ -40,10 +40,10 @@ body {
 
 .operator span.selected {
   border: 1pt solid green;
-  background-color: #e0f0e0;
+  background-color: #a0f0a0;
 }
 
 .operator span.highlighted {
-  border: 1pt solid blue;
+  border: 1pt solid black;
   background-color: #e0f0e0;
 }
