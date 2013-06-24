@@ -113,3 +113,9 @@ span.highlighted, span.selected {
   background-color: #f0e0e0;
 }
 
+.annotation  {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+
