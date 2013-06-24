@@ -17,50 +17,50 @@ $(document).ready(function(){
     });
 });
 
-function indexItemByCorrId(itemsMap, item) {
-  var corrId = item.data("id");
-  var itemsForCorrId = itemsMap[corrId];
-  if (itemsForCorrId === undefined) {
-    itemsForCorrId = [];
-    itemsMap[corrId] = itemsForCorrId;
+function indexItemByItemId(itemsMap, item) {
+  var itemId = item.data("id");
+  var itemsForItemId = itemsMap[itemId];
+  if (itemsForItemId === undefined) {
+    itemsForItemId = [];
+    itemsMap[itemId] = itemsForItemId;
   }
-  itemsForCorrId.push(item[0]);
+  itemsForItemId.push(item[0]);
 }
 
 function initializeStructureGroups() {
   $(".structure-group").each(
     function(index, structureGroup) {
-      var itemsByCorrId = {};
-      initializeStructureData(structureGroup, itemsByCorrId)
+      var itemsByItemId = {};
+      initializeStructureData(structureGroup, itemsByItemId)
     });
 }
 
 function initializeStructureData(structureGroup, itemsMap) {
-  // set "structid" data value, and add each item to indexItemByCorrId, initialize "siblings" & "cousins" data values
+  // set "structid" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
   $(structureGroup).find(".structure").each(
     function(index, structure) {
       var structureId = index;
       $(structure).find("[data-id]").each(
         function(index, item) {
-          $(item).data("structId", structureId);
+          $(item).data("structureId", structureId);
           $(item).data("siblings", []);
           $(item).data("cousins", []);
-          indexItemByCorrId(itemsMap, $(item));
+          indexItemByItemId(itemsMap, $(item));
         });
     });
   $(structureGroup).find("[data-id]").each(
     function(index, item) {
       var $item = $(item);
-      var corrId = $item.data("id");
-      var structId = $item.data("structId");
-      var itemsForCorrId = itemsMap[corrId];
+      var itemId = $item.data("id");
+      var structureId = $item.data("structureId");
+      var itemsForItemId = itemsMap[itemId];
       var siblings = $item.data("siblings");
       var cousins = $item.data("cousins");
-      for (var i=0; i<itemsForCorrId.length; i++) {
-        var otherItem = itemsForCorrId[i];
-        var otherItemStructId = $(otherItem).data("structId");
+      for (var i=0; i<itemsForItemId.length; i++) {
+        var otherItem = itemsForItemId[i];
+        var otherItemStructureId = $(otherItem).data("structureId");
         if (item != otherItem) {
-          if (structId == otherItemStructId) {
+          if (structureId == otherItemStructureId) {
             siblings.push(otherItem);
           }
           else {
