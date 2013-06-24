@@ -1,6 +1,6 @@
 
 body {
-  margin: 2em;
+  margin: 0.4em 2em;
 }
 
 p, ul {
@@ -31,22 +31,22 @@ span, div {
 
 .structure-group {
   border: 2px solid #505050;
-  margin: 40pt 10pt;
+  margin: 30pt 10pt;
   background-color: #e0e0e0;
 }
 
 .structure-group:first-child {
-  margin-top: 0pt;
+  margin-top: 0;
 }
 
 .equation {
-  font: 2.5em bold Arial;
+  font: 2.2em bold Arial;
   padding: 0.5em;
 }
 
 .word-equation {
-  font: 1.5em normal Georgia;
-  padding: 0.6em;
+  font: 1.4em normal Georgia;
+  padding: 0.9em;
 }
 
 .number span {
