@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-  initializeStructureData(itemsByCorrId);
+  initializeStructureGroups();
         
   $("[data-corrid]").hover(
     function() {
@@ -17,8 +17,6 @@ $(document).ready(function(){
     });
 });
 
-var itemsByCorrId = {}
-
 function indexItemByCorrId(itemsMap, item) {
   var corrId = item.data("corrid");
   var itemsForCorrId = itemsMap[corrId];
@@ -29,9 +27,17 @@ function indexItemByCorrId(itemsMap, item) {
   itemsForCorrId.push(item[0]);
 }
 
-function initializeStructureData(itemsMap) {
+function initializeStructureGroups() {
+  $(".structure-group").each(
+    function(index, structureGroup) {
+      var itemsByCorrId = {};
+      initializeStructureData(structureGroup, itemsByCorrId)
+    });
+}
+
+function initializeStructureData(structureGroup, itemsMap) {
   // set "structid" data value, and add each item to indexItemByCorrId, initialize "siblings" & "cousins" data values
-  $(".structure").each(
+  $(structureGroup).find(".structure").each(
     function(index, structure) {
       var structureId = $(structure).data("id");
       $(structure).find("[data-corrid]").each(
@@ -42,7 +48,7 @@ function initializeStructureData(itemsMap) {
           indexItemByCorrId(itemsMap, $(item));
         });
     });
-  $("[data-corrid]").each(
+  $(structureGroup).find("[data-corrid]").each(
     function(index, item) {
       var $item = $(item);
       var corrId = $item.data("corrid");
