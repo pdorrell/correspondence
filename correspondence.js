@@ -5,6 +5,6 @@ $(document).ready(function(){
       $(this).find("span").addClass("hover");
     }, 
     function() {
-      // mouse out handler;
+      $(this).find("span").removeClass("hover");
     });
 });
