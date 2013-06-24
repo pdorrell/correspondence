@@ -23,19 +23,30 @@ span, div {
   color: #606060;
 }
 
+.structure {
+  border: 1px solid #a0a0a0;
+  margin: 18pt;
+  background-color: white;
+}
+
+.structure-group {
+  border: 2px solid #505050;
+  margin: 40pt 10pt;
+  background-color: #e0e0e0;
+}
+
+.structure-group:first-child {
+  margin-top: 0pt;
+}
+
 .equation {
-  font: 4em bold Arial;
+  font: 2.5em bold Arial;
   padding: 0.5em;
 }
 
 .word-equation {
-  font: 2.5em normal Georgia;
+  font: 1.5em normal Georgia;
   padding: 0.6em;
-}
-
-.structure {
-  border: 1px solid #a0a0a0;
-  margin: 40pt;
 }
 
 .number span {
