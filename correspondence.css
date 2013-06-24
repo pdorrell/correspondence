@@ -27,6 +27,11 @@ body {
   background-color: #f0e0e0;
 }
 
+.number span.highlighted {
+  border: 1pt solid black;
+  background-color: #f0e0e0;
+}
+
 .operator span {
   padding: 0.1em;
   border: 1pt solid white;
@@ -34,5 +39,10 @@ body {
 
 .operator span.selected {
   border: 1pt solid green;
+  background-color: #e0f0e0;
+}
+
+.operator span.hightlighted {
+  border: 1pt solid black;
   background-color: #e0f0e0;
 }
