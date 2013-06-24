@@ -1,6 +1,6 @@
 
 $(document).ready(function(){
-  initializeStructureData();
+  initializeStructureData(itemsByCorrId);
         
   $("[data-corrid]").hover(
     function() {
@@ -19,17 +19,17 @@ $(document).ready(function(){
 
 var itemsByCorrId = {}
 
-function indexItemByCorrId(item) {
+function indexItemByCorrId(itemsMap, item) {
   var corrId = item.data("corrid");
-  var itemsForCorrId = itemsByCorrId[corrId];
+  var itemsForCorrId = itemsMap[corrId];
   if (itemsForCorrId === undefined) {
     itemsForCorrId = [];
-    itemsByCorrId[corrId] = itemsForCorrId;
+    itemsMap[corrId] = itemsForCorrId;
   }
   itemsForCorrId.push(item[0]);
 }
 
-function initializeStructureData() {
+function initializeStructureData(itemsMap) {
   // set "structid" data value, and add each item to indexItemByCorrId, initialize "siblings" & "cousins" data values
   $(".structure").each(
     function(index, structure) {
@@ -39,7 +39,7 @@ function initializeStructureData() {
           $(item).data("structid", structureId);
           $(item).data("siblings", []);
           $(item).data("cousins", []);
-          indexItemByCorrId($(item));
+          indexItemByCorrId(itemsMap, $(item));
         });
     });
   $("[data-corrid]").each(
@@ -47,7 +47,7 @@ function initializeStructureData() {
       var $item = $(item);
       var corrId = $item.data("corrid");
       var structId = $item.data("structid");
-      var itemsForCorrId = itemsByCorrId[corrId];
+      var itemsForCorrId = itemsMap[corrId];
       var siblings = $item.data("siblings");
       var cousins = $item.data("cousins");
       for (var i=0; i<itemsForCorrId.length; i++) {
