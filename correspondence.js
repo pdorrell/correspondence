@@ -39,10 +39,10 @@ function initializeStructureData(structureGroup, itemsMap) {
   // set "structid" data value, and add each item to indexItemByCorrId, initialize "siblings" & "cousins" data values
   $(structureGroup).find(".structure").each(
     function(index, structure) {
-      var structureId = $(structure).data("id");
+      var structureId = index;
       $(structure).find("[data-corrid]").each(
         function(index, item) {
-          $(item).data("structid", structureId);
+          $(item).data("structId", structureId);
           $(item).data("siblings", []);
           $(item).data("cousins", []);
           indexItemByCorrId(itemsMap, $(item));
@@ -52,13 +52,13 @@ function initializeStructureData(structureGroup, itemsMap) {
     function(index, item) {
       var $item = $(item);
       var corrId = $item.data("corrid");
-      var structId = $item.data("structid");
+      var structId = $item.data("structId");
       var itemsForCorrId = itemsMap[corrId];
       var siblings = $item.data("siblings");
       var cousins = $item.data("cousins");
       for (var i=0; i<itemsForCorrId.length; i++) {
         var otherItem = itemsForCorrId[i];
-        var otherItemStructId = $(otherItem).data("structid");
+        var otherItemStructId = $(otherItem).data("structId");
         if (item != otherItem) {
           if (structId == otherItemStructId) {
             siblings.push(otherItem);
