@@ -48,17 +48,17 @@ function initializeStructureData() {
       var corrId = $item.data("corrid");
       var structId = $item.data("structid");
       var itemsForCorrId = itemsByCorrId[corrId];
-      var siblings = $item.data("siblings", []);
-      var cousins = $item.data("cousins", []);
+      var siblings = $item.data("siblings");
+      var cousins = $item.data("cousins");
       for (var i=0; i<itemsForCorrId.length; i++) {
-        var otherItem = $(itemsForCorrId[i]);
-        var otherItemStructId = otherItem.data("structid");
+        var otherItem = itemsForCorrId[i];
+        var otherItemStructId = $(otherItem).data("structid");
         if (item != otherItem) {
           if (structId == otherItemStructId) {
-            siblings.push(otherItem[0]);
+            siblings.push(otherItem);
           }
           else {
-            cousins.push(otherItem[0]);
+            cousins.push(otherItem);
           }
         }
       }
@@ -67,9 +67,25 @@ function initializeStructureData() {
 
 var currentSelectedElement = null;
 
+function unhighlightItems(items) {
+  for (var i=0; i<items.length; i++) {
+    $(items[i]).find("span").removeClass("highlighted");
+  }
+}
+
+function highlightItems(items) {
+  for (var i=0; i<items.length; i++) {
+    $(items[i]).find("span").addClass("highlighted");
+  }
+}
+
 function clearCurrentSelectedElement() {
   if (currentSelectedElement != null) {
     currentSelectedElement.find("span").removeClass("selected");
+    var siblings = currentSelectedElement.data("siblings");
+    var cousins = currentSelectedElement.data("cousins");
+    unhighlightItems(siblings);
+    unhighlightItems(cousins);
     currentSelectedElement = null;
   }
 }  
@@ -77,5 +93,9 @@ function clearCurrentSelectedElement() {
 function setHovering(element) {
   clearCurrentSelectedElement();
   element.find("span").addClass("selected");
+  var siblings = element.data("siblings");
+  var cousins = element.data("cousins");
+  highlightItems(siblings);
+  highlightItems(cousins);
   currentSelectedElement = element;
 }

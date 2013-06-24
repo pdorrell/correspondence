@@ -29,7 +29,7 @@ body {
 }
 
 .number span.highlighted {
-  border: 1pt solid black;
+  border: 1pt solid blue;
   background-color: #f0e0e0;
 }
 
@@ -43,7 +43,7 @@ body {
   background-color: #e0f0e0;
 }
 
-.operator span.hightlighted {
-  border: 1pt solid black;
+.operator span.highlighted {
+  border: 1pt solid blue;
   background-color: #e0f0e0;
 }
