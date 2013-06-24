@@ -3,6 +3,17 @@ body {
   margin: 2em;
 }
 
+h1 {
+  font: 3em bold Arial,Helvetica;
+  color: #000030;
+  margin: 0;
+  padding: 0;
+}
+
+span, div {
+  color: #606060;
+}
+
 .equation {
   font: 4em bold Arial;
   padding: 0.5em;
@@ -28,8 +39,12 @@ body {
   background-color: #f0a0a0;
 }
 
+span.highlighted, span.selected {
+  color: black;
+}
+
 .number span.highlighted {
-  border: 1pt solid black;
+  border: 1pt solid red;
   background-color: #f0e0e0;
 }
 
@@ -44,6 +59,6 @@ body {
 }
 
 .operator span.highlighted {
-  border: 1pt solid black;
+  border: 1pt solid green;
   background-color: #e0f0e0;
 }
