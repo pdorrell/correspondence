@@ -44,7 +44,7 @@ span, div {
   padding: 0.5em;
 }
 
-.word-equation {
+.word-equation, .sentence {
   font: 1.4em normal Georgia;
   padding: 0.9em;
 }
@@ -82,3 +82,34 @@ span.highlighted, span.selected {
   border: 1pt solid green;
   background-color: #e0f0e0;
 }
+
+.word span {
+  padding: 0.1em;
+  border: 1pt solid white;
+}
+
+.word span.selected {
+  border: 1pt solid green;
+  background-color: #a0f0a0;
+}
+
+.word span.highlighted {
+  border: 1pt solid green;
+  background-color: #e0f0e0;
+}
+
+.punctuation span {
+  padding: 0.1em;
+  border: 1pt solid white;
+}
+
+.punctuation span.selected {
+  border: 1pt solid red;
+  background-color: #f0a0a0;
+}
+
+.punctuation span.highlighted {
+  border: 1pt solid red;
+  background-color: #f0e0e0;
+}
+
