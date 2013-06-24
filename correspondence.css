@@ -3,12 +3,21 @@ body {
   margin: 2em;
 }
 
+p, ul {
+  font: 1.2em normal Georgia;
+}
+
 h1 {
   font: 3em bold Arial,Helvetica;
   color: #000030;
   margin: 0;
   padding: 0;
 }
+
+h2 {
+  font: 2em bold Arial,Helvetica;
+}
+
 
 span, div {
   color: #606060;
