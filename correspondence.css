@@ -5,16 +5,17 @@ body {
 
 .equation {
   font: 4em bold Arial;
-  margin: 40pt;
-  border: 1px solid #a0a0a0;
   padding: 0.5em;
 }
 
 .word-equation {
   font: 2.5em normal Georgia;
-  margin: 40pt;
-  border: 1px solid #a0a0a0;
   padding: 0.6em;
+}
+
+.structure {
+  border: 1px solid #a0a0a0;
+  margin: 40pt;
 }
 
 .number span {
