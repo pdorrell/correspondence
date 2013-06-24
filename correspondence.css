@@ -49,38 +49,8 @@ span, div {
   padding: 0.9em;
 }
 
-.number span {
-  padding: 0.1em;
-  border: 1pt solid white;
-}
-
-.number span.selected {
-  border: 1pt solid red;
-  background-color: #f0a0a0;
-}
-
 span.highlighted, span.selected {
   color: black;
-}
-
-.number span.highlighted {
-  border: 1pt solid red;
-  background-color: #f0e0e0;
-}
-
-.operator span {
-  padding: 0.1em;
-  border: 1pt solid white;
-}
-
-.operator span.selected {
-  border: 1pt solid green;
-  background-color: #a0f0a0;
-}
-
-.operator span.highlighted {
-  border: 1pt solid green;
-  background-color: #e0f0e0;
 }
 
 .word span {
@@ -104,13 +74,43 @@ span.highlighted, span.selected {
 }
 
 .punctuation span.selected {
-  border: 1pt solid red;
-  background-color: #f0a0a0;
+  border: 1pt solid blue;
+  background-color: #b0b0f0;
 }
 
 .punctuation span.highlighted {
-  border: 1pt solid red;
-  background-color: #f0e0e0;
+  border: 1pt solid blue;
+  background-color: #e0e0f0;
+}
+
+.number span {
+  padding: 0.1em;
+  border: 1pt solid white;
+}
+
+.number span.selected {
+  border: 1pt solid green;
+  background-color: #a0f0a0;
+}
+
+.number span.highlighted {
+  border: 1pt solid green;
+  background-color: #e0f0e0;
+}
+
+.operator span {
+  padding: 0.1em;
+  border: 1pt solid white;
+}
+
+.operator span.selected {
+  border: 1pt solid blue;
+  background-color: #b0b0f0;
+}
+
+.operator span.highlighted {
+  border: 1pt solid blue;
+  background-color: #e0e0f0;
 }
 
 .annotation  {
