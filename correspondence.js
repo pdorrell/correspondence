@@ -84,6 +84,12 @@ var CORRESPONDENCE = {};
       function(event) {
         $($this).trigger("mouseEnterItem", [event.target]);
       });
+    $("body").click(
+      function(event) {
+        if ($(event.target).attr("data-id") == null) {
+          $($this).trigger("clickOutsideItems");
+        }
+      });
   }
 
   Initializer.prototype = {
@@ -96,24 +102,8 @@ var CORRESPONDENCE = {};
         });
     }, 
     
-    onClickOutsideItem: function(selector, action) {
-      selector.click(
-        function(event) {
-          if ($(event.target).attr("data-id") == null) {
-            action();
-          }
-        });
-    },
-    
-    deselectOnClick: function(selector) {
-      // Clear any currently selected item when clicking outside of items.
-      $this = this;
-      this.onClickOutsideItem(selector, 
-                              function() { $this.clearCurrentSelectedElement(); });
-    }, 
-    
     // Clear the currently selected item (and un-highlight any associated siblings and cousins)
-    clearCurrentSelectedElement: function() {
+    clearCurrentSelection: function() {
       if (this.currentSelectedElement != null) {
         this.currentSelectedElement.data("selectedStyleTarget").removeStyle();
         this.removeStyles(this.currentSelectedElement.data("siblings"));
@@ -124,7 +114,7 @@ var CORRESPONDENCE = {};
 
     // Set a given item as the currently selected item (highlight any associated siblings and cousins)
     setSelected: function(element) {
-      this.clearCurrentSelectedElement();
+      this.clearCurrentSelection();
       $element = $(element);
       $element.data("selectedStyleTarget").addStyle();
       this.addStyles($element.data("siblings"));
