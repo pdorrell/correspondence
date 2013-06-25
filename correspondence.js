@@ -36,6 +36,10 @@ function initializeStructureGroups(dataAttributeNameForItemId) {
     });
 }
 
+function createStyleTarget(element, styleClass) {
+  return new StyleTarget($(element).find("span"), styleClass);
+}
+
 function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForItemId) {
   // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
   $(structureGroup).find(".structure").each(
@@ -45,10 +49,9 @@ function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForI
         function(index, item) {
           var $item = $(item);
           $item.data("structureId", structureId);
-          $item.data("selectedStyleTarget", new StyleTarget($item.find("span"), "selected"));
+          $item.data("selectedStyleTarget", createStyleTarget(item, "selected"));
           $item.data("siblings", []);
           $item.data("cousins", []);
-          $item.data("associated", []);
           indexItemByItemId(dataAttributeNameForItemId, itemsMap, $item);
         });
     });
@@ -62,18 +65,15 @@ function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForI
       var itemsForItemId = itemsMap[itemId];
       var siblings = $item.data("siblings");
       var cousins = $item.data("cousins");
-      var associated = $item.data("associated");
       for (var i=0; i<itemsForItemId.length; i++) {
         var otherItem = itemsForItemId[i];
         var otherItemStructureId = $(otherItem).data("structureId");
         if (item != otherItem) {
           if (structureId == otherItemStructureId) {
-            siblings.push(otherItem);
-            associated.push(new StyleTarget($(otherItem).find("span"), "highlighted"));
+            siblings.push(createStyleTarget(otherItem, "highlighted"));
           }
           else {
-            cousins.push(otherItem);
-            associated.push(new StyleTarget($(otherItem).find("span"), "highlighted"));
+            cousins.push(createStyleTarget(otherItem, "highlighted"));
           }
         }
       }
@@ -82,15 +82,15 @@ function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForI
 
 var currentSelectedElement = null;
 
-function unhighlightItems(items) {
+function addStyles(items) {
   for (var i=0; i<items.length; i++) {
-    $(items[i]).find("span").removeClass("highlighted");
+    items[i].addStyle();
   }
 }
 
-function highlightItems(items) {
+function removeStyles(items) {
   for (var i=0; i<items.length; i++) {
-    $(items[i]).find("span").addClass("highlighted");
+    items[i].removeStyle();
   }
 }
 
@@ -111,10 +111,8 @@ StyleTarget.prototype = {
 function clearCurrentSelectedElement() {
   if (currentSelectedElement != null) {
     currentSelectedElement.data("selectedStyleTarget").removeStyle();
-    var associated = currentSelectedElement.data("associated");
-    for (var i=0; i<associated.length; i++) {
-      associated[i].removeStyle();
-    }
+    removeStyles(currentSelectedElement.data("siblings"));
+    removeStyles(currentSelectedElement.data("cousins"));
     currentSelectedElement = null;
   }
 }  
@@ -122,9 +120,7 @@ function clearCurrentSelectedElement() {
 function setSelected(element) {
   clearCurrentSelectedElement();
   element.data("selectedStyleTarget").addStyle();
-  var associated = element.data("associated");
-  for (var i=0; i<associated.length; i++) {
-    associated[i].addStyle();
-  }
+  addStyles(element.data("siblings"));
+  addStyles(element.data("cousins"));
   currentSelectedElement = element;
 }
