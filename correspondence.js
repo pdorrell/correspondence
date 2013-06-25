@@ -48,6 +48,7 @@ function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForI
           $item.data("selectedStyleTarget", new StyleTarget($item.find("span"), "selected"));
           $item.data("siblings", []);
           $item.data("cousins", []);
+          $item.data("associated", []);
           indexItemByItemId(dataAttributeNameForItemId, itemsMap, $item);
         });
     });
@@ -61,15 +62,18 @@ function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForI
       var itemsForItemId = itemsMap[itemId];
       var siblings = $item.data("siblings");
       var cousins = $item.data("cousins");
+      var associated = $item.data("associated");
       for (var i=0; i<itemsForItemId.length; i++) {
         var otherItem = itemsForItemId[i];
         var otherItemStructureId = $(otherItem).data("structureId");
         if (item != otherItem) {
           if (structureId == otherItemStructureId) {
             siblings.push(otherItem);
+            associated.push(new StyleTarget($(otherItem).find("span"), "highlighted"));
           }
           else {
             cousins.push(otherItem);
+            associated.push(new StyleTarget($(otherItem).find("span"), "highlighted"));
           }
         }
       }
@@ -107,10 +111,10 @@ StyleTarget.prototype = {
 function clearCurrentSelectedElement() {
   if (currentSelectedElement != null) {
     currentSelectedElement.data("selectedStyleTarget").removeStyle();
-    var siblings = currentSelectedElement.data("siblings");
-    var cousins = currentSelectedElement.data("cousins");
-    unhighlightItems(siblings);
-    unhighlightItems(cousins);
+    var associated = currentSelectedElement.data("associated");
+    for (var i=0; i<associated.length; i++) {
+      associated[i].removeStyle();
+    }
     currentSelectedElement = null;
   }
 }  
@@ -118,10 +122,9 @@ function clearCurrentSelectedElement() {
 function setSelected(element) {
   clearCurrentSelectedElement();
   element.data("selectedStyleTarget").addStyle();
-  element.find("span").addClass("selected");
-  var siblings = element.data("siblings");
-  var cousins = element.data("cousins");
-  highlightItems(siblings);
-  highlightItems(cousins);
+  var associated = element.data("associated");
+  for (var i=0; i<associated.length; i++) {
+    associated[i].addStyle();
+  }
   currentSelectedElement = element;
 }
