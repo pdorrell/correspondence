@@ -70,14 +70,20 @@
  
  */
 
-var dataAttributeNameForItemId = "id"; // unique IDs for items will be specified by "data-id" attribute
+function Initializer() {
+  this.itemIdDataAttribute = "id";
+  this.structureElementSelector = ".structure";
+  this.currentSelectedElement = null;
+}
+
+var initializer = new Initializer();
 
 $(document).ready(function(){
   // Initialize data attributes of structure groups, structures & items
-  initializeStructureGroups(dataAttributeNameForItemId);
+  initializeStructureGroups(initializer.itemIdDataAttribute);
         
   // Define mouse-over interaction to select item moused over.
-  $("[data-" + dataAttributeNameForItemId + "]").hover(
+  $("[data-" + initializer.itemIdDataAttribute + "]").hover(
     function() {
       setSelected($(this));
     }, 
@@ -97,8 +103,8 @@ $(document).ready(function(){
     Associated items in a structure group have the same ID, so each item is held in an array of items
     with the same ID.
     */
-function indexItemByItemId(dataAttributeNameForItemId, itemsMap, item) {
-  var itemId = item.data(dataAttributeNameForItemId);
+function indexItemByItemId(itemsMap, item) {
+  var itemId = item.data(initializer.itemIdDataAttribute);
   var itemsForItemId = itemsMap[itemId];
   if (itemsForItemId === undefined) {
     itemsForItemId = [];
@@ -108,10 +114,10 @@ function indexItemByItemId(dataAttributeNameForItemId, itemsMap, item) {
 }
 
 /** Initialise all the structure groups, using the specified data-* attribute for ID. */
-function initializeStructureGroups(dataAttributeNameForItemId) {
+function initializeStructureGroups() {
   $(".structure-group").each(
     function(index, structureGroup) {
-      initializeStructureData(structureGroup, dataAttributeNameForItemId)
+      initializeStructureData(structureGroup)
     });
 }
 
@@ -159,13 +165,13 @@ function removeStyles(items) {
 }
 
 /** Initialise the structures and items in a given structure group. */
-function initializeStructureData(structureGroup, dataAttributeNameForItemId) {
+function initializeStructureData(structureGroup) {
   // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
   var itemsByItemId = {}; // the items map for all items in this structure group
-  $(structureGroup).find(".structure").each( // for each structure in this structure group
+  $(structureGroup).find(initializer.structureElementSelector).each( // for each structure in this structure group
     function(index, structure) {
       var structureId = index;
-      $(structure).find("[data-" + dataAttributeNameForItemId + "]").each( // for each item in the structure
+      $(structure).find("[data-" + initializer.itemIdDataAttribute + "]").each( // for each item in the structure
         function(index, item) {
           var $item = $(item);
           $item.data("structureId", structureId); // pointer to parent structure
@@ -174,13 +180,12 @@ function initializeStructureData(structureGroup, dataAttributeNameForItemId) {
                      createStyleTarget(item, "selected")); // style target for this item to become selected
           $item.data("siblings", []); // list of sibling style targets (yet to be populated)
           $item.data("cousins", []); // list of cousin style targets (yet to be populated)
-          indexItemByItemId(dataAttributeNameForItemId, 
-                            itemsByItemId, $item); // index this item within it's structure group
+          indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
         });
     });
   /* For each item in structure group, determine which other items are siblings (in the same structure) 
      or cousins (in a different structure) with the same id, and create the relevant style targets. */
-  $(structureGroup).find("[data-" + dataAttributeNameForItemId + "]").each( // for each item in the structure group
+  $(structureGroup).find("[data-" + initializer.itemIdDataAttribute + "]").each( // for each item in the structure group
     function(index, item) {
       var $item = $(item);
       var itemId = $item.data("id");
@@ -203,16 +208,13 @@ function initializeStructureData(structureGroup, dataAttributeNameForItemId) {
     });
 }
 
-// The currently selected item, if any.
-var currentSelectedElement = null;
-
 // Clear the currently selected item (and un-highlight any associated siblings and cousins)
 function clearCurrentSelectedElement() {
-  if (currentSelectedElement != null) {
-    currentSelectedElement.data("selectedStyleTarget").removeStyle();
-    removeStyles(currentSelectedElement.data("siblings"));
-    removeStyles(currentSelectedElement.data("cousins"));
-    currentSelectedElement = null;
+  if (initializer.currentSelectedElement != null) {
+    initializer.currentSelectedElement.data("selectedStyleTarget").removeStyle();
+    removeStyles(initializer.currentSelectedElement.data("siblings"));
+    removeStyles(initializer.currentSelectedElement.data("cousins"));
+    initializer.currentSelectedElement = null;
   }
 }  
 
@@ -222,5 +224,5 @@ function setSelected(element) {
   element.data("selectedStyleTarget").addStyle();
   addStyles(element.data("siblings"));
   addStyles(element.data("cousins"));
-  currentSelectedElement = element;
+  initializer.currentSelectedElement = element;
 }
