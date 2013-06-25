@@ -76,20 +76,27 @@ function Initializer() {
   this.currentSelectedElement = null;
 }
 
+Initializer.prototype = {
+  selectOnHover: function() {
+    // Define mouse-over interaction to select item moused over.
+    $("[data-" + this.itemIdDataAttribute + "]").hover(
+      function() {
+        setSelected($(this));
+      }, 
+      function() {
+        // nothing to unhover
+      });
+  }
+};
+
 var initializer = new Initializer();
 
 $(document).ready(function(){
   // Initialize data attributes of structure groups, structures & items
-  initializeStructureGroups(initializer.itemIdDataAttribute);
+  initializeStructureGroups();
         
-  // Define mouse-over interaction to select item moused over.
-  $("[data-" + initializer.itemIdDataAttribute + "]").hover(
-    function() {
-      setSelected($(this));
-    }, 
-    function() {
-      // nothing to unhover
-    });
+  initializer.selectOnHover();
+
   // Clear any currently selected item when clicking outside of items.
   $("body").click(
     function(event) {
