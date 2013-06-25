@@ -102,15 +102,20 @@ var CORRESPONDENCE = {};
         });
     }, 
     
-    deselectOnClick: function(selector) {
-      // Clear any currently selected item when clicking outside of items.
-      var $this = this;
+    onClickOutsideItem: function(selector, action) {
       selector.click(
         function(event) {
           if ($(event.target).attr("data-id") == null) {
-            $this.clearCurrentSelectedElement();
+            action();
           }
         });
+    },
+    
+    deselectOnClick: function(selector) {
+      // Clear any currently selected item when clicking outside of items.
+      $this = this;
+      this.onClickOutsideItem(selector, 
+                              function() { $this.clearCurrentSelectedElement(); });
     }, 
     
     // Clear the currently selected item (and un-highlight any associated siblings and cousins)
@@ -237,6 +242,7 @@ var CORRESPONDENCE = {};
     }
   }
 
+  // export public classes
   lib.Initializer = Initializer;
   
 })(CORRESPONDENCE);
