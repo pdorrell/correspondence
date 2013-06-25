@@ -119,8 +119,9 @@ h2 {
 
 .date {
   font-style: italic;
-  font-size: 0.8em;
+  font-size: 1em;
   text-align: right;
+  margin: 1em;
 }
 
 .author {
