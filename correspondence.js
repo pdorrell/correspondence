@@ -86,15 +86,21 @@ Initializer.prototype = {
       function() {
         // nothing to unhover
       });
+  }, 
+  /** Initialise all the structure groups, using the specified data-* attribute for ID. */
+  initializeStructureGroups: function(selector) {
+    selector.each(
+      function(index, structureGroup) {
+        initializeStructureData(structureGroup)
+      });
   }
+
 };
 
 var initializer = new Initializer();
 
 $(document).ready(function(){
-  // Initialize data attributes of structure groups, structures & items
-  initializeStructureGroups();
-        
+  initializer.initializeStructureGroups($(".structure-group"));
   initializer.selectOnHover();
 
   // Clear any currently selected item when clicking outside of items.
@@ -118,14 +124,6 @@ function indexItemByItemId(itemsMap, item) {
     itemsMap[itemId] = itemsForItemId;
   }
   itemsForItemId.push(item[0]);
-}
-
-/** Initialise all the structure groups, using the specified data-* attribute for ID. */
-function initializeStructureGroups() {
-  $(".structure-group").each(
-    function(index, structureGroup) {
-      initializeStructureData(structureGroup)
-    });
 }
 
 /** A "style target" is an intention to add or remove a class or classes to a DOM element
