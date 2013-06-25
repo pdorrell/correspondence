@@ -125,6 +125,20 @@ Initializer.prototype = {
     addStyles(element.data("siblings"));
     addStyles(element.data("cousins"));
     this.currentSelectedElement = element;
+  }, 
+  
+  /** From the specified data attribute, insert item into a map of items, indexed by the item's ID.
+      Associated items in a structure group have the same ID, so each item is held in an array of items
+      with the same ID.
+  */
+  indexItemByItemId: function(itemsMap, item) {
+    var itemId = item.data(this.itemIdDataAttribute);
+    var itemsForItemId = itemsMap[itemId];
+    if (itemsForItemId === undefined) {
+      itemsForItemId = [];
+      itemsMap[itemId] = itemsForItemId;
+    }
+    itemsForItemId.push(item[0]);
   }
 
 };
@@ -136,20 +150,6 @@ $(document).ready(function(){
   initializer.selectOnHover();
   initializer.deselectOnClick($("body"));
 });
-
-/** From the specified data attribute, insert item into a map of items, indexed by the item's ID.
-    Associated items in a structure group have the same ID, so each item is held in an array of items
-    with the same ID.
-    */
-function indexItemByItemId(itemsMap, item) {
-  var itemId = item.data(initializer.itemIdDataAttribute);
-  var itemsForItemId = itemsMap[itemId];
-  if (itemsForItemId === undefined) {
-    itemsForItemId = [];
-    itemsMap[itemId] = itemsForItemId;
-  }
-  itemsForItemId.push(item[0]);
-}
 
 /** A "style target" is an intention to add or remove a class or classes to a DOM element
     (as specified by a JQuery selector) */
@@ -210,7 +210,7 @@ function initializeStructureData(structureGroup) {
                      createStyleTarget(item, "selected")); // style target for this item to become selected
           $item.data("siblings", []); // list of sibling style targets (yet to be populated)
           $item.data("cousins", []); // list of cousin style targets (yet to be populated)
-          indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
+          initializer.indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
         });
     });
   /* For each item in structure group, determine which other items are siblings (in the same structure) 
