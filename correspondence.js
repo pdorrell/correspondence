@@ -217,13 +217,6 @@ Initializer.prototype = {
   
 };
 
-$(document).ready(function(){
-  var initializer = new Initializer();
-  initializer.initializeStructureGroups($(".structure-group"));
-  initializer.selectOnHover();
-  initializer.deselectOnClick($("body"));
-});
-
 /** A "style target" is an intention to add or remove a class or classes to a DOM element
     (as specified by a JQuery selector) */
 function StyleTarget($element, styleClass) {
