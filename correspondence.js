@@ -74,11 +74,17 @@ var CORRESPONDENCE = {};
 
 (function(lib) {
 
-  function StructureGroups() {
+  function StructureGroups(selector) {
     this.itemIdDataAttribute = "id";
     this.structureElementSelector = ".structure";
     this.currentSelectedElement = null;
     $this = this;
+
+    selector.each(
+      function(index, structureGroup) {
+        $this.initializeStructureData(structureGroup)
+      });
+    
     // Define mouse-over interaction to select item moused over.
     $("[data-" + this.itemIdDataAttribute + "]").mouseenter(
       function(event) {
@@ -93,14 +99,6 @@ var CORRESPONDENCE = {};
   }
 
   StructureGroups.prototype = {
-    /** Initialise all the structure groups, using the specified data-* attribute for ID. */
-    initializeStructureGroups: function(selector) {
-      $this = this;
-      selector.each(
-        function(index, structureGroup) {
-          $this.initializeStructureData(structureGroup)
-        });
-    }, 
     
     // Clear the currently selected item (and un-highlight any associated siblings and cousins)
     clearCurrentSelection: function() {
