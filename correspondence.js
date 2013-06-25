@@ -91,9 +91,10 @@ Initializer.prototype = {
   
   /** Initialise all the structure groups, using the specified data-* attribute for ID. */
   initializeStructureGroups: function(selector) {
+    $this = this;
     selector.each(
       function(index, structureGroup) {
-        initializeStructureData(structureGroup)
+        $this.initializeStructureData(structureGroup)
       });
   }, 
   
@@ -166,7 +167,54 @@ Initializer.prototype = {
     for (var i=0; i<items.length; i++) {
       items[i].removeStyle();
     }
+  }, 
+  
+  /** Initialise the structures and items in a given structure group. */
+  initializeStructureData: function(structureGroup) {
+    // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
+    var itemsByItemId = {}; // the items map for all items in this structure group
+    var itemSelector = "[data-" + this.itemIdDataAttribute + "]";
+    $this = this;
+    $(structureGroup).find(this.structureElementSelector).each( // for each structure in this structure group
+      function(index, structure) {
+        var structureId = index;
+        $(structure).find(itemSelector).each( // for each item in the structure
+          function(index, item) {
+            var $item = $(item);
+            $item.data("structureId", structureId); // pointer to parent structure
+            
+            $item.data("selectedStyleTarget", 
+                       $this.createStyleTarget(item, "selected")); // style target for this item to become selected
+            $item.data("siblings", []); // list of sibling style targets (yet to be populated)
+            $item.data("cousins", []); // list of cousin style targets (yet to be populated)
+            $this.indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
+          });
+      });
+    /* For each item in structure group, determine which other items are siblings (in the same structure) 
+       or cousins (in a different structure) with the same id, and create the relevant style targets. */
+    $(structureGroup).find(itemSelector).each( // for each item in the structure group
+      function(index, item) {
+        var $item = $(item);
+        var itemId = $item.data("id");
+        var structureId = $item.data("structureId"); // structure ID of this item
+        var itemsForItemId = itemsByItemId[itemId];
+        var siblings = $item.data("siblings");
+        var cousins = $item.data("cousins");
+        for (var i=0; i<itemsForItemId.length; i++) { // for all items with the same ID
+          var otherItem = itemsForItemId[i];
+          if (item != otherItem) {
+            var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
+            if (structureId == otherItemStructureId) {
+              siblings.push($this.createStyleTarget(otherItem, "highlighted"));
+            }
+            else {
+              cousins.push($this.createStyleTarget(otherItem, "highlighted"));
+            }
+          }
+        }
+      });
   }
+  
 };
 
 var initializer = new Initializer();
@@ -193,46 +241,3 @@ StyleTarget.prototype = {
   }
 }
 
-/** Initialise the structures and items in a given structure group. */
-function initializeStructureData(structureGroup) {
-  // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
-  var itemsByItemId = {}; // the items map for all items in this structure group
-  $(structureGroup).find(initializer.structureElementSelector).each( // for each structure in this structure group
-    function(index, structure) {
-      var structureId = index;
-      $(structure).find("[data-" + initializer.itemIdDataAttribute + "]").each( // for each item in the structure
-        function(index, item) {
-          var $item = $(item);
-          $item.data("structureId", structureId); // pointer to parent structure
-           
-          $item.data("selectedStyleTarget", 
-                     initializer.createStyleTarget(item, "selected")); // style target for this item to become selected
-          $item.data("siblings", []); // list of sibling style targets (yet to be populated)
-          $item.data("cousins", []); // list of cousin style targets (yet to be populated)
-          initializer.indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
-        });
-    });
-  /* For each item in structure group, determine which other items are siblings (in the same structure) 
-     or cousins (in a different structure) with the same id, and create the relevant style targets. */
-  $(structureGroup).find("[data-" + initializer.itemIdDataAttribute + "]").each( // for each item in the structure group
-    function(index, item) {
-      var $item = $(item);
-      var itemId = $item.data("id");
-      var structureId = $item.data("structureId"); // structure ID of this item
-      var itemsForItemId = itemsByItemId[itemId];
-      var siblings = $item.data("siblings");
-      var cousins = $item.data("cousins");
-      for (var i=0; i<itemsForItemId.length; i++) { // for all items with the same ID
-        var otherItem = itemsForItemId[i];
-        if (item != otherItem) {
-          var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
-          if (structureId == otherItemStructureId) {
-            siblings.push(initializer.createStyleTarget(otherItem, "highlighted"));
-          }
-          else {
-            cousins.push(initializer.createStyleTarget(otherItem, "highlighted"));
-          }
-        }
-      }
-    });
-}
