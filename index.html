@@ -3,13 +3,59 @@
 <head><meta charset="utf-8">
 <title>Correspondence</title>
 <link rel="stylesheet" type="text/css" href="correspondence.css" />
+  <script language="javascript" type="text/javascript" src="lib/jquery-1.10.1.js"></script>
+  <script language="javascript" type="text/javascript" src="correspondence.js"></script>
 </head>
 
 <body>
 <h1>Correspondence</h1>
 
+<div class="author">Philip Dorrell</div>
+
 <p><b>Correspondence</b> is a project to interactively visualise <i>correspondences</i> between
 items in related structures.</p>
+
+<p>Move your mouse over the structures below, and see what happens.</p>
+
+<div>
+
+<div class="structure-group">
+  <div class="structure sentence">
+    <span class="punctuation" data-id="1">¿</span>
+    <span class="word" data-id="2">Cuál</span>
+    <span class="word" data-id="3">prefieres</span>
+    <span class="punctuation" data-id="1">?</span>
+    <span class="word" data-id="4">Me</span>
+    <span class="word" data-id="5">gusta</span>
+    <span class="word" data-id="6">el</span>
+    <span class="word" data-id="7">verde</span>
+    <span class="punctuation" data-id="8">.</span>
+  </div>
+  <div class="structure sentence">
+    <span class="word" data-id="2">Which one</span>
+    <span class="word" data-id="3">do you prefer</span>
+    <span class="punctuation" data-id="1">?</span>
+    <span class="word" data-id="4">I</span>
+    <span class="word" data-id="5">like</span>
+    <span class="word" data-id="6">the</span>
+    <span class="word" data-id="7">green one</span>
+    <span class="punctuation" data-id="8">.</span>
+  </div>
+  <div class="structure sentence">
+    <div class="annotation">(More literally ...)</div>
+    <span class="word" data-id="2">Which</span>
+    <span class="word" data-id="3">you prefer</span>
+    <span class="punctuation" data-id="1">?</span>
+    <span class="word" data-id="6">The</span>
+    <span class="word" data-id="7">green (one)</span>
+    <span class="word" data-id="5">pleases</span>
+    <span class="word" data-id="4">me</span>
+    <span class="punctuation" data-id="8">.</span>
+    
+  </div>
+</div>
+
+<h2>Explanation</h2>
 
 <p>Typically two structures might be related by <i>translation</i>. For example,</p>
 
@@ -23,7 +69,51 @@ items in related structures.</p>
 <p>(If you speak some language other than English, substitute your preferred language
 in the examples above.)</p>
 
-<h2><a href="examples.html">Examples</a></h2>
+<p>To see how the examples are coded, choose <b>View Source</b> in your web browser.</p>
+
+<h2>More Examples</h2>
+
+<div class="structure-group">
+  <div class="structure equation">
+    <span class="number" data-id="3">3</span>
+    <span class="operator" data-id="+">+</span>
+    <span class="number" data-id="4">4</span>
+    <span class="operator" data-id="=">=</span>
+    <span class="number" data-id="7">7</span>
+  </div>
+  <div class="structure word-equation">
+    <span class="number" data-id="3">Three</span>
+    <span class="operator" data-id="+">plus</span>
+    <span class="number" data-id="4">four</span>
+    <span class="operator" data-id="=">equals</span>
+    <span class="number" data-id="7">seven</span>.
+  </div>
+  <div class="structure word-equation">
+    <span class="number" data-id="3">Three</span>
+    <span class="operator" data-id="+">and</span>
+    <span class="number" data-id="4">four</span>
+    <span class="operator" data-id="=">makes</span>
+    <span class="number" data-id="7">seven</span>.
+  </div>
+</div>
+
+<div class="structure-group">
+  <div class="structure equation">
+    <span class="number" data-id="3">3</span>
+    <span class="operator" data-id="*">&times;</span>
+    <span class="number" data-id="5">5</span>
+    <span class="operator" data-id="=">=</span>
+    <span class="number" data-id="15">15</span>
+  </div>
+  <div class="structure word-equation">
+    <span class="number" data-id="3">Three</span>
+    <span class="operator" data-id="*">times</span>
+    <span class="number" data-id="5">five</span>
+    <span class="operator" data-id="=">equals</span>
+    <span class="number" data-id="15">fifteen</span>.
+  </div>
+  </div>
+</div>
 
 <h2><a href="https://github.com/pdorrell/correspondence">Github Repository</a></h2>
 
@@ -31,6 +121,8 @@ in the examples above.)</p>
 
 <p><b>Correspondence</b> is licensed under the <a href="LICENSE.txt">GNU Lesser General Public License version 3</a>.
 </p>
+
+<div class="date">Last updated: 25 June 2013</div>
 
 </body>
 </html>
