@@ -96,6 +96,12 @@ var CORRESPONDENCE = {};
         $($this).trigger("mouseEnterItem", [event.target]);
       });
     
+    // Event triggered when mouse leaves an item
+    selector.find("[data-" + this.itemIdDataAttribute + "]").mouseleave(
+      function(event) {
+        $($this).trigger("mouseLeaveItem", [event.target]);
+      });
+    
     // Event triggered when clicking anywhere that is not inside an item
     $("body").click(
       function(event) {
@@ -110,21 +116,32 @@ var CORRESPONDENCE = {};
     // Clear the currently selected item (and un-highlight any associated siblings and cousins)
     clearCurrentSelection: function() {
       if (this.currentSelectedElement != null) {
-        this.currentSelectedElement.data("selectedStyleTarget").removeStyle();
-        this.removeStyles(this.currentSelectedElement.data("siblings"));
-        this.removeStyles(this.currentSelectedElement.data("cousins"));
+        $currentSelectedElement = $(this.currentSelectedElement);
+        $currentSelectedElement.data("selectedStyleTarget").removeStyle();
+        this.removeStyles($currentSelectedElement.data("siblings"));
+        this.removeStyles($currentSelectedElement.data("cousins"));
         this.currentSelectedElement = null;
       }
     }, 
 
     // Set a given item as the currently selected item (highlight any associated siblings and cousins)
-    setSelected: function(element) {
+    setSelected: function(element, showSiblings, showCousins) {
       this.clearCurrentSelection();
       $element = $(element);
       $element.data("selectedStyleTarget").addStyle();
-      this.addStyles($element.data("siblings"));
-      this.addStyles($element.data("cousins"));
-      this.currentSelectedElement = $element;
+      if (showSiblings) {
+        this.addStyles($element.data("siblings"));
+      }
+      if (showCousins) {
+        this.addStyles($element.data("cousins"));
+      }
+      this.currentSelectedElement = element;
+    }, 
+    
+    showCousins: function() {
+      if (this.currentSelectedElement != null) {
+        this.addStyles($(this.currentSelectedElement).data("cousins"));
+      }
     }, 
     
     /** From the specified data attribute, insert item into a map of items, indexed by the item's ID.

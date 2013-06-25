@@ -127,3 +127,12 @@ h2 {
   font-style: italic;
   text-align: right;
 }
+
+.control {
+  padding: 0.15em 0.35em;
+  margin: 0 0 0 5em;
+  font: 0.9em Arial,Helvetica;
+  color: #606060;
+  background-color: #f0f0f0;
+  border: solid 1px #d0d0d0;
+}
