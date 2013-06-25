@@ -5,7 +5,7 @@ $(document).ready(function(){
         
   $("[data-" + dataAttributeNameForItemId + "]").hover(
     function() {
-      setHovering($(this));
+      setSelected($(this));
     }, 
     function() {
       // nothing to unhover
@@ -115,7 +115,7 @@ function clearCurrentSelectedElement() {
   }
 }  
 
-function setHovering(element) {
+function setSelected(element) {
   clearCurrentSelectedElement();
   element.data("selectedStyleTarget").addStyle();
   element.find("span").addClass("selected");
