@@ -36,8 +36,12 @@ function initializeStructureGroups(dataAttributeNameForItemId) {
     });
 }
 
-function createStyleTarget(element, styleClass) {
-  return new StyleTarget($(element).find("span"), styleClass);
+function createStyleTarget(element, classSuffix) {
+  var classNames = $(element).attr("class").split(" ");
+  var targetStyleClass = classNames.length > 0 
+    ? classSuffix + " " + classNames[0] + "-" + classSuffix 
+    : classSuffix;
+  return new StyleTarget($(element).find("span"), targetStyleClass);
 }
 
 function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForItemId) {
