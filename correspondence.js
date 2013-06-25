@@ -21,9 +21,55 @@
     
     Copyright (2013) Philip Dorrell (thinkinghard.com)
     
-**/
 
-var dataAttributeNameForItemId = "id";
+    Correspondence defines related items in different related structures that relate to each other.
+ 
+    Basic concepts
+    --------------
+    
+    Structure Group. A group of related structures, defined by a DOM element (e.g. <div>) with CSS class "structure-group".
+    
+    Structure. Defined by a DOM element (e.g. <div>) inside a structure group with CSS class "structure"
+    
+    Item. Defined by a DOM element inside a structure with an ID attribute "data-id".
+    
+    Within a structure, items with the same ID are considered "siblings".
+    
+    Within a structure group, items with the same ID but not in the same structure are considered "cousins".
+    
+    There is no relationship between items in different structure groups - i.e. any structure group should be regarded
+    as independent of any other structure group.
+    
+    The default user interaction is as follows:
+    
+    * At any one time, there is at most one "selected" item.
+    * When the user mouses over an item, that item becomes "selected", and any current selected item gets de-selected.
+    * When an item is selected, the state of it's siblings and cousins changes:
+    * Siblings enter a "highlighted" state.
+    * Cousins enter a "highlighted" state. (The default interaction does not treat siblings different from cousins, 
+                                            but alternative interactions could treat them differently.)
+    * In the default interaction, an item remains selected until another item is selected (i.e. it is not deselected when 
+      the user mouses out of the item).
+    * Associated siblings and cousins are un-highlighted when the selected item becomes de-selected.
+                                           
+    The "highlighted" and "selected" states are managed by changing an item's CSS classes. This happens as follows:
+    * An item has a "primary" CSS class, which is the first CSS class in it's "class" attribute (if any).
+    * In a given state, a CSS class for the state is added, and, if there is a primary CSS class, a CSS class is 
+      added consisting of the primary class joined to the state class by a hyphen.
+    * When exiting a state, the added CSS classes are removed.
+ 
+    For example, an item with no primary CSS class entering the "selected" state would have the 
+    CSS class "selected" added.
+
+    And an item with primary CSS class "word" entereing the "highlighted" state would add 
+    two CSS classes: "highlighted" and "word-highlighted". (Note that dues to CSS application 
+    rules, any properties in "word-highlighted" will over-ride any identical properties in "highlighted", 
+    and both those classes will override any properties in the primary class, or
+    in any other CSS classes that the item has in its initial state.)
+ 
+ */
+
+var dataAttributeNameForItemId = "id"; // unique IDs for items will be specified by "data-id" attribute
 
 $(document).ready(function(){
   initializeStructureGroups(dataAttributeNameForItemId);
