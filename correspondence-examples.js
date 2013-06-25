@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var initializer = new Initializer();
+  var initializer = new CORRESPONDENCE.Initializer();
   initializer.initializeStructureGroups($(".structure-group"));
   initializer.selectOnHover();
   initializer.deselectOnClick($("body"));
