@@ -1,3 +1,28 @@
+/** 
+    This file is part of Correspondence.
+
+    Correspondence is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    Correspondence is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with Correspondence.  If not, see <http://www.gnu.org/licenses/>.
+
+    Correspondence
+    ============== 
+    
+    Interactive visualisation of correspondences between different translations of the same content.
+    
+    Copyright (2013) Philip Dorrell (thinkinghard.com)
+    
+**/
+
 var dataAttributeNameForItemId = "id";
 
 $(document).ready(function(){
