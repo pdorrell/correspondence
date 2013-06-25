@@ -78,15 +78,17 @@ function Initializer() {
 
 Initializer.prototype = {
   selectOnHover: function() {
+    $this = this;
     // Define mouse-over interaction to select item moused over.
     $("[data-" + this.itemIdDataAttribute + "]").hover(
       function() {
-        setSelected($(this));
+        $this.setSelected($(this));
       }, 
       function() {
         // nothing to unhover
       });
-  }, 
+  },
+  
   /** Initialise all the structure groups, using the specified data-* attribute for ID. */
   initializeStructureGroups: function(selector) {
     selector.each(
@@ -94,14 +96,35 @@ Initializer.prototype = {
         initializeStructureData(structureGroup)
       });
   }, 
+  
   deselectOnClick: function(selector) {
     // Clear any currently selected item when clicking outside of items.
+    var $this = this;
     selector.click(
       function(event) {
         if ($(event.target).attr("data-id") == null) {
-          clearCurrentSelectedElement();
+          $this.clearCurrentSelectedElement();
         }
       });
+  }, 
+  
+  // Clear the currently selected item (and un-highlight any associated siblings and cousins)
+  clearCurrentSelectedElement: function() {
+    if (this.currentSelectedElement != null) {
+      this.currentSelectedElement.data("selectedStyleTarget").removeStyle();
+      removeStyles(this.currentSelectedElement.data("siblings"));
+      removeStyles(this.currentSelectedElement.data("cousins"));
+      this.currentSelectedElement = null;
+    }
+  }, 
+
+  // Set a given item as the currently selected item (highlight any associated siblings and cousins)
+  setSelected: function(element) {
+    this.clearCurrentSelectedElement();
+    element.data("selectedStyleTarget").addStyle();
+    addStyles(element.data("siblings"));
+    addStyles(element.data("cousins"));
+    this.currentSelectedElement = element;
   }
 
 };
@@ -213,23 +236,4 @@ function initializeStructureData(structureGroup) {
         }
       }
     });
-}
-
-// Clear the currently selected item (and un-highlight any associated siblings and cousins)
-function clearCurrentSelectedElement() {
-  if (initializer.currentSelectedElement != null) {
-    initializer.currentSelectedElement.data("selectedStyleTarget").removeStyle();
-    removeStyles(initializer.currentSelectedElement.data("siblings"));
-    removeStyles(initializer.currentSelectedElement.data("cousins"));
-    initializer.currentSelectedElement = null;
-  }
-}  
-
-// Set a given item as the currently selected item (highlight any associated siblings and cousins)
-function setSelected(element) {
-  clearCurrentSelectedElement();
-  element.data("selectedStyleTarget").addStyle();
-  addStyles(element.data("siblings"));
-  addStyles(element.data("cousins"));
-  initializer.currentSelectedElement = element;
 }
