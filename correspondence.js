@@ -74,7 +74,7 @@ var CORRESPONDENCE = {};
 
 (function(lib) {
 
-  function Initializer() {
+  function StructureGroups() {
     this.itemIdDataAttribute = "id";
     this.structureElementSelector = ".structure";
     this.currentSelectedElement = null;
@@ -92,7 +92,7 @@ var CORRESPONDENCE = {};
       });
   }
 
-  Initializer.prototype = {
+  StructureGroups.prototype = {
     /** Initialise all the structure groups, using the specified data-* attribute for ID. */
     initializeStructureGroups: function(selector) {
       $this = this;
@@ -228,6 +228,6 @@ var CORRESPONDENCE = {};
   }
 
   // export public classes
-  lib.Initializer = Initializer;
+  lib.StructureGroups = StructureGroups;
   
 })(CORRESPONDENCE);
