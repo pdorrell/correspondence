@@ -74,22 +74,29 @@ var CORRESPONDENCE = {};
 
 (function(lib) {
 
+  /* Object representing all Structure Groups on a web page.
+     Structure Groups are mostly independent of each other, except
+     there is only one currently selected item in any structure group.
+   */
   function StructureGroups(selector) {
     this.itemIdDataAttribute = "id";
     this.structureElementSelector = ".structure";
     this.currentSelectedElement = null;
     $this = this;
 
+    // For each structure group DOM element, initialize the corresponding structure group
     selector.each(
       function(index, structureGroup) {
-        $this.initializeStructureData(structureGroup)
+        $this.initializeStructures(structureGroup)
       });
     
-    // Define mouse-over interaction to select item moused over.
-    $("[data-" + this.itemIdDataAttribute + "]").mouseenter(
+    // Event triggered when mouse enters an item
+    selector.find("[data-" + this.itemIdDataAttribute + "]").mouseenter(
       function(event) {
         $($this).trigger("mouseEnterItem", [event.target]);
       });
+    
+    // Event triggered when clicking anywhere that is not inside an item
     $("body").click(
       function(event) {
         if ($(event.target).attr("data-id") == null) {
@@ -162,7 +169,7 @@ var CORRESPONDENCE = {};
     }, 
     
     /** Initialise the structures and items in a given structure group. */
-    initializeStructureData: function(structureGroup) {
+    initializeStructures: function(structureGroup) {
       // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
       var itemsByItemId = {}; // the items map for all items in this structure group
       var itemSelector = "[data-" + this.itemIdDataAttribute + "]";
