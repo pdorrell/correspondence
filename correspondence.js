@@ -43,10 +43,12 @@ function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForI
       var structureId = index;
       $(structure).find("[data-" + dataAttributeNameForItemId + "]").each(
         function(index, item) {
-          $(item).data("structureId", structureId);
-          $(item).data("siblings", []);
-          $(item).data("cousins", []);
-          indexItemByItemId(dataAttributeNameForItemId, itemsMap, $(item));
+          var $item = $(item);
+          $item.data("structureId", structureId);
+          $item.data("selectedStyleTarget", new StyleTarget($item.find("span"), "selected"));
+          $item.data("siblings", []);
+          $item.data("cousins", []);
+          indexItemByItemId(dataAttributeNameForItemId, itemsMap, $item);
         });
     });
   /* For each item in structure group, determine which other items are siblings (in the same structure) 
@@ -88,9 +90,23 @@ function highlightItems(items) {
   }
 }
 
+function StyleTarget($element, styleClass) {
+  this.$element = $element;
+  this.styleClass = styleClass;
+}
+
+StyleTarget.prototype = {
+  addStyle: function() {
+    this.$element.addClass(this.styleClass);
+  }, 
+  removeStyle: function() {
+    this.$element.removeClass(this.styleClass);
+  }
+}
+
 function clearCurrentSelectedElement() {
   if (currentSelectedElement != null) {
-    currentSelectedElement.find("span").removeClass("selected");
+    currentSelectedElement.data("selectedStyleTarget").removeStyle();
     var siblings = currentSelectedElement.data("siblings");
     var cousins = currentSelectedElement.data("cousins");
     unhighlightItems(siblings);
@@ -101,6 +117,7 @@ function clearCurrentSelectedElement() {
 
 function setHovering(element) {
   clearCurrentSelectedElement();
+  element.data("selectedStyleTarget").addStyle();
   element.find("span").addClass("selected");
   var siblings = element.data("siblings");
   var cousins = element.data("cousins");
