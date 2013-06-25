@@ -87,14 +87,6 @@ var CORRESPONDENCE = {};
   }
 
   Initializer.prototype = {
-    selectOnHover: function() {
-      $this = this;
-      $(this).on("mouseEnterItem", 
-              function (event, item) {
-                $this.setSelected($(item));
-              });
-    },
-    
     /** Initialise all the structure groups, using the specified data-* attribute for ID. */
     initializeStructureGroups: function(selector) {
       $this = this;
@@ -133,10 +125,11 @@ var CORRESPONDENCE = {};
     // Set a given item as the currently selected item (highlight any associated siblings and cousins)
     setSelected: function(element) {
       this.clearCurrentSelectedElement();
-      element.data("selectedStyleTarget").addStyle();
-      this.addStyles(element.data("siblings"));
-      this.addStyles(element.data("cousins"));
-      this.currentSelectedElement = element;
+      $element = $(element);
+      $element.data("selectedStyleTarget").addStyle();
+      this.addStyles($element.data("siblings"));
+      this.addStyles($element.data("cousins"));
+      this.currentSelectedElement = $element;
     }, 
     
     /** From the specified data attribute, insert item into a map of items, indexed by the item's ID.
