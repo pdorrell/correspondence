@@ -28,6 +28,7 @@ h2 {
 }
 
 .structure-group {
+  width: 40em;
   border: 2px solid #505050;
   margin: 30pt 10pt;
   background-color: #e0e0e0;
