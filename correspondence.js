@@ -112,8 +112,8 @@ Initializer.prototype = {
   clearCurrentSelectedElement: function() {
     if (this.currentSelectedElement != null) {
       this.currentSelectedElement.data("selectedStyleTarget").removeStyle();
-      removeStyles(this.currentSelectedElement.data("siblings"));
-      removeStyles(this.currentSelectedElement.data("cousins"));
+      this.removeStyles(this.currentSelectedElement.data("siblings"));
+      this.removeStyles(this.currentSelectedElement.data("cousins"));
       this.currentSelectedElement = null;
     }
   }, 
@@ -122,8 +122,8 @@ Initializer.prototype = {
   setSelected: function(element) {
     this.clearCurrentSelectedElement();
     element.data("selectedStyleTarget").addStyle();
-    addStyles(element.data("siblings"));
-    addStyles(element.data("cousins"));
+    this.addStyles(element.data("siblings"));
+    this.addStyles(element.data("cousins"));
     this.currentSelectedElement = element;
   }, 
   
@@ -139,8 +139,34 @@ Initializer.prototype = {
       itemsMap[itemId] = itemsForItemId;
     }
     itemsForItemId.push(item[0]);
-  }
+  }, 
+  
+  /** Create a style target on a DOM element for a given class suffix (representing a state description) 
+      For example, if the first CSS class is "word", and the intended state is "selected", 
+      the style target will have classes "selected" and "word-selected" (in that order).
+      If there is no existing CSS class, then the classes to add would just be the one class "selected".
+  */
+  createStyleTarget: function(element, classSuffix) {
+    var classNames = $(element).attr("class").split(" ");
+    var targetStyleClass = classNames.length > 0 
+      ? classSuffix + " " + classNames[0] + "-" + classSuffix 
+      : classSuffix;
+    return new StyleTarget($(element), targetStyleClass);
+  }, 
 
+  /** Add the styles for an array of style targets. */
+  addStyles: function(items) {
+    for (var i=0; i<items.length; i++) {
+      items[i].addStyle();
+    }
+  }, 
+
+  /** Remove the styles for an array of style targets. */
+  removeStyles: function(items) {
+    for (var i=0; i<items.length; i++) {
+      items[i].removeStyle();
+    }
+  }
 };
 
 var initializer = new Initializer();
@@ -167,33 +193,6 @@ StyleTarget.prototype = {
   }
 }
 
-/** Create a style target on a DOM element for a given class suffix (representing a state description) 
-    For example, if the first CSS class is "word", and the intended state is "selected", 
-    the style target will have classes "selected" and "word-selected" (in that order).
-    If there is no existing CSS class, then the classes to add would just be the one class "selected".
- */
-function createStyleTarget(element, classSuffix) {
-  var classNames = $(element).attr("class").split(" ");
-  var targetStyleClass = classNames.length > 0 
-    ? classSuffix + " " + classNames[0] + "-" + classSuffix 
-    : classSuffix;
-  return new StyleTarget($(element), targetStyleClass);
-}
-
-/** Add the styles for an array of style targets. */
-function addStyles(items) {
-  for (var i=0; i<items.length; i++) {
-    items[i].addStyle();
-  }
-}
-
-/** Remove the styles for an array of style targets. */
-function removeStyles(items) {
-  for (var i=0; i<items.length; i++) {
-    items[i].removeStyle();
-  }
-}
-
 /** Initialise the structures and items in a given structure group. */
 function initializeStructureData(structureGroup) {
   // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
@@ -207,7 +206,7 @@ function initializeStructureData(structureGroup) {
           $item.data("structureId", structureId); // pointer to parent structure
            
           $item.data("selectedStyleTarget", 
-                     createStyleTarget(item, "selected")); // style target for this item to become selected
+                     initializer.createStyleTarget(item, "selected")); // style target for this item to become selected
           $item.data("siblings", []); // list of sibling style targets (yet to be populated)
           $item.data("cousins", []); // list of cousin style targets (yet to be populated)
           initializer.indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
@@ -228,10 +227,10 @@ function initializeStructureData(structureGroup) {
         if (item != otherItem) {
           var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
           if (structureId == otherItemStructureId) {
-            siblings.push(createStyleTarget(otherItem, "highlighted"));
+            siblings.push(initializer.createStyleTarget(otherItem, "highlighted"));
           }
           else {
-            cousins.push(createStyleTarget(otherItem, "highlighted"));
+            cousins.push(initializer.createStyleTarget(otherItem, "highlighted"));
           }
         }
       }
