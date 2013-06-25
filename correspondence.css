@@ -1,9 +1,11 @@
 
 body {
+  color: #404040;
   margin: 0.4em 2em;
 }
 
 p, ul {
+  color: black;
   font: 1.2em normal Georgia;
 }
 
@@ -15,12 +17,8 @@ h1 {
 }
 
 h2 {
+  color: #000030;
   font: 2em bold Arial,Helvetica;
-}
-
-
-span, div {
-  color: #606060;
 }
 
 .structure {
@@ -49,66 +47,67 @@ span, div {
   padding: 0.9em;
 }
 
-span.highlighted, span.selected {
+.highlighted, .selected {
   color: black;
 }
 
-.word span {
+.word {
+  border: 1pt solid red;
   padding: 0.1em;
   border: 1pt solid white;
 }
 
-.word span.selected {
+.word-selected {
   border: 1pt solid green;
   background-color: #a0f0a0;
 }
 
-.word span.highlighted {
+.word-highlighted {
   border: 1pt solid green;
   background-color: #e0f0e0;
 }
 
-.punctuation span {
+.punctuation {
   padding: 0.1em;
   border: 1pt solid white;
 }
 
-.punctuation span.selected {
+.punctuation-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0;
 }
 
-.punctuation span.highlighted {
+.punctuation-highlighted {
   border: 1pt solid blue;
   background-color: #e0e0f0;
 }
 
-.number span {
+.number {
   padding: 0.1em;
   border: 1pt solid white;
 }
 
-.number span.selected {
+.number-selected {
   border: 1pt solid green;
   background-color: #a0f0a0;
 }
 
-.number span.highlighted {
+.number-highlighted {
   border: 1pt solid green;
   background-color: #e0f0e0;
 }
 
-.operator span {
+.operator {
   padding: 0.1em;
   border: 1pt solid white;
 }
 
-.operator span.selected {
+.operator-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0;
 }
 
-.operator span.highlighted {
+.operator-highlighted {
   border: 1pt solid blue;
   background-color: #e0e0f0;
 }

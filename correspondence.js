@@ -41,7 +41,7 @@ function createStyleTarget(element, classSuffix) {
   var targetStyleClass = classNames.length > 0 
     ? classSuffix + " " + classNames[0] + "-" + classSuffix 
     : classSuffix;
-  return new StyleTarget($(element).find("span"), targetStyleClass);
+  return new StyleTarget($(element), targetStyleClass);
 }
 
 function initializeStructureData(structureGroup, itemsMap, dataAttributeNameForItemId) {
