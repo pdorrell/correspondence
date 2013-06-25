@@ -78,19 +78,21 @@ var CORRESPONDENCE = {};
     this.itemIdDataAttribute = "id";
     this.structureElementSelector = ".structure";
     this.currentSelectedElement = null;
+    $this = this;
+    // Define mouse-over interaction to select item moused over.
+    $("[data-" + this.itemIdDataAttribute + "]").mouseenter(
+      function(event) {
+        $($this).trigger("mouseEnterItem", [event.target]);
+      });
   }
 
   Initializer.prototype = {
     selectOnHover: function() {
       $this = this;
-      // Define mouse-over interaction to select item moused over.
-      $("[data-" + this.itemIdDataAttribute + "]").hover(
-        function() {
-          $this.setSelected($(this));
-        }, 
-        function() {
-          // nothing to unhover
-        });
+      $(this).on("mouseEnterItem", 
+              function (event, item) {
+                $this.setSelected($(item));
+              });
     },
     
     /** Initialise all the structure groups, using the specified data-* attribute for ID. */
