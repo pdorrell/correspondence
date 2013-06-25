@@ -93,6 +93,15 @@ Initializer.prototype = {
       function(index, structureGroup) {
         initializeStructureData(structureGroup)
       });
+  }, 
+  deselectOnClick: function(selector) {
+    // Clear any currently selected item when clicking outside of items.
+    selector.click(
+      function(event) {
+        if ($(event.target).attr("data-id") == null) {
+          clearCurrentSelectedElement();
+        }
+      });
   }
 
 };
@@ -102,14 +111,7 @@ var initializer = new Initializer();
 $(document).ready(function(){
   initializer.initializeStructureGroups($(".structure-group"));
   initializer.selectOnHover();
-
-  // Clear any currently selected item when clicking outside of items.
-  $("body").click(
-    function(event) {
-      if ($(event.target).attr("data-id") == null) {
-        clearCurrentSelectedElement();
-      }
-    });
+  initializer.deselectOnClick($("body"));
 });
 
 /** From the specified data attribute, insert item into a map of items, indexed by the item's ID.
