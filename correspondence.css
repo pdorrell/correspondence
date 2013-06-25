@@ -46,6 +46,18 @@ h2 {
   font-size: 2em;
 }
 
+.blockOfDots {
+  border: 1pt solid #c0c0c0;
+}
+
+td.blockOfDots {
+  font-size: 2em;
+}
+
+table.blockEquation {
+  border-spacing: 0.8em;
+}
+
 .word-equation, .sentence {
   font: 1.4em normal Georgia;
   padding: 0.9em;
@@ -91,12 +103,12 @@ h2 {
   border: 1pt solid white;
 }
 
-.number-selected {
+.number-selected, .blockOfDots-selected {
   border: 1pt solid green;
   background-color: #a0f0a0;
 }
 
-.number-highlighted {
+.number-highlighted, .blockOfDots-highlighted {
   border: 1pt solid green;
   background-color: #e0f0e0;
 }
