@@ -42,6 +42,10 @@ h2 {
   padding: 0.5em;
 }
 
+.equation td.number {
+  font-size: 2em;
+}
+
 .word-equation, .sentence {
   font: 1.4em normal Georgia;
   padding: 0.9em;
