@@ -63,12 +63,21 @@ table.blockEquation {
   padding: 0.9em;
 }
 
+.paragraph {
+  font: 1.4em normal Georgia;
+  padding: 1.4em;
+  line-height: 1.3em;
+}
+
+.paragraph .word {
+  padding: 0 0.1em;
+}
+
 .highlighted, .selected {
   color: black;
 }
 
 .word {
-  border: 1pt solid red;
   padding: 0.1em;
   border: 1pt solid white;
 }
