@@ -77,62 +77,62 @@ table.blockEquation {
   color: black;
 }
 
-.word {
+.structure span, .word {
   padding: 0.1em;
   border: 1pt solid white;
 }
 
-.word-selected {
+.structure span.selected, .word-selected {
   border: 1pt solid green;
   background-color: #a0f0a0;
 }
 
-.word-highlighted {
+.structure span.highlighted, .word-highlighted {
   border: 1pt solid green;
   background-color: #e0f0e0;
 }
 
-.punctuation {
+.structure span.punctuation {
   padding: 0.1em;
   border: 1pt solid white;
 }
 
-.punctuation-selected {
+.structure span.punctuation-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0;
 }
 
-.punctuation-highlighted {
+.structure span.punctuation-highlighted {
   border: 1pt solid blue;
   background-color: #e0e0f0;
 }
 
-.number {
+.structure span.number {
   padding: 0.1em;
   border: 1pt solid white;
 }
 
-.number-selected, .blockOfDots-selected {
+.structure span.number-selected, .blockOfDots-selected {
   border: 1pt solid green;
   background-color: #a0f0a0;
 }
 
-.number-highlighted, .blockOfDots-highlighted {
+.structure span.number-highlighted, .blockOfDots-highlighted {
   border: 1pt solid green;
   background-color: #e0f0e0;
 }
 
-.operator {
+.structure span.operator {
   padding: 0.1em;
   border: 1pt solid white;
 }
 
-.operator-selected {
+.structure span.operator-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0;
 }
 
-.operator-highlighted {
+.structure span.operator-highlighted {
   border: 1pt solid blue;
   background-color: #e0e0f0;
 }
