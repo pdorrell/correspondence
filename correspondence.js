@@ -164,7 +164,8 @@ var CORRESPONDENCE = {};
         If there is no existing CSS class, then the classes to add would just be the one class "selected".
     */
     createStyleTarget: function(element, classSuffix) {
-      var classNames = $(element).attr("class").split(" ");
+      var classNameString = $(element).attr("class");
+      var classNames = classNameString == undefined ? [] : classNameString.split(" ");
       var targetStyleClass = classNames.length > 0 
         ? classSuffix + " " + classNames[0] + "-" + classSuffix 
         : classSuffix;
