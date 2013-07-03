@@ -93,13 +93,15 @@ var CORRESPONDENCE = {};
     // Event triggered when mouse enters an item
     selector.find("[data-" + this.itemIdDataAttribute + "]").mouseenter(
       function(event) {
-        $($this).trigger("mouseEnterItem", [event.target]);
+        var eventThis = this;
+        $($this).trigger("mouseEnterItem", [eventThis]);
       });
     
     // Event triggered when mouse leaves an item
     selector.find("[data-" + this.itemIdDataAttribute + "]").mouseleave(
       function(event) {
-        $($this).trigger("mouseLeaveItem", [event.target]);
+        var eventThis = this;
+        $($this).trigger("mouseLeaveItem", [eventThis]);
       });
     
     // Event triggered when clicking anywhere that is not inside an item
