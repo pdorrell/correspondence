@@ -17,17 +17,24 @@ h2 {
   font: 2em bold Arial,Helvetica; }
 
 .structure {
-  border: 1px solid #a0a0a0;
-  margin: 18pt;
-  background-color: white; }
+  border: 3px solid #a0a0a0;
+  margin: 25pt;
+  background-color: white;
+  padding: 0.7em;
+  line-height: 1.5em; }
 
 .structure-group {
   width: 40em;
+  font: 1.2em normal Georgia;
   border: 2px solid #505050;
-  margin: 30pt 10pt;
-  background-color: #e0e0e0; }
+  margin: 4em 0.5em;
+  background-color: #e0e0e0;
+  padding: 0em; }
   .structure-group:first-child {
     margin-top: 0; }
+
+.item-groups-example .structure-group {
+  width: 30em; }
 
 .equation {
   font: 2.2em bold Arial;
@@ -94,6 +101,32 @@ table.blockEquation {
 .structure span.operator-highlighted {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
+
+.ruby-structure {
+  border: 3px solid #405090;
+  background-color: #fbfbff; }
+  .ruby-structure span {
+    border: 1pt solid #fbfbff; }
+
+.spanish-structure {
+  border: 3px solid #4090f0;
+  background-color: #fbfcff; }
+  .spanish-structure span {
+    border: 1pt solid #fbfcff; }
+
+.structure span.output span {
+  border: 1pt solid #ffe9e9;
+  font-family: Courier New;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #a00000;
+  background-color: #ffe9e9; }
+  .structure span.output span.selected {
+    border: 1pt solid red;
+    background-color: #ffd0d0; }
+  .structure span.output span.highlighted {
+    border: 1pt solid red;
+    background-color: #ffa0a0; }
 
 .annotation {
   font-style: italic;

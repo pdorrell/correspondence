@@ -20,20 +20,33 @@ h2 {
   font: 2em bold Arial,Helvetica;
 }
 
+$default_structure_border: #a0a0a0;
+$default_structure_background: white;
+
 .structure {
-  border: 1px solid #a0a0a0;
-  margin: 18pt;
+  border: 3px solid $default_structure_border;
+  margin: 25pt;
   background-color: white;
+  padding: 0.7em;
+  line-height: 1.5em;
 }
 
 .structure-group {
   width: 40em;
+  font: 1.2em normal Georgia;
   border: 2px solid #505050;
-  margin: 30pt 10pt;
+  margin: 4em 0.5em;
   background-color: #e0e0e0;
+  padding: 0em;
   &:first-child {
       margin-top: 0;
   }
+}
+
+.item-groups-example {
+    .structure-group {
+	width: 30em;
+    }
 }
 
 .equation {
@@ -130,6 +143,51 @@ table.blockEquation {
     span.operator-highlighted {
 	border: 1pt solid blue;
 	background-color: #e0e0f0;
+    }
+}
+
+$ruby_border: #405090;
+$ruby_background: #fbfbff;
+
+.ruby-structure {
+  border: 3px solid $ruby_border;
+  background-color: $ruby_background;
+  span {
+      border: 1pt solid $ruby_background;
+  }
+}
+
+$spanish_border: #4090f0;
+$spanish_background: #fbfcff;
+
+.spanish-structure {
+  border: 3px solid $spanish_border;
+  background-color: $spanish_background;
+  span {
+      border: 1pt solid $spanish_background;
+  }
+}
+
+$output_background: #ffe9e9;
+
+.structure {
+    span.output {
+	span {
+	    border: 1pt solid $output_background;
+	    font-family: Courier New;
+	    font-weight: bold;
+	    font-size: 0.9em;
+	    color: #a00000;
+	    background-color: $output_background;
+	    &.selected {
+		border: 1pt solid red;
+		background-color: #ffd0d0;
+	    }
+	    &.highlighted {
+		border: 1pt solid red;
+		background-color: #ffa0a0;
+	    }
+	}
     }
 }
 
