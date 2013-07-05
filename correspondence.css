@@ -16,6 +16,10 @@ h2 {
   color: #000030;
   font: 2em bold Arial,Helvetica; }
 
+span.output-marker {
+  padding: 0 1em;
+  color: #f03030; }
+
 .structure {
   border: 3px solid #a0a0a0;
   margin: 25pt;
