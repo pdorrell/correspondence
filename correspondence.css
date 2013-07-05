@@ -1,158 +1,113 @@
 body {
   color: #404040;
-  margin: 0.4em 2em;
-}
+  margin: 0.4em 2em; }
 
 p, ul {
   color: black;
-  font: 1.2em normal Georgia;
-}
+  font: 1.2em normal Georgia; }
 
 h1 {
   font: 3em bold Arial,Helvetica;
   color: #000030;
   margin: 0;
-  padding: 0;
-}
+  padding: 0; }
 
 h2 {
   color: #000030;
-  font: 2em bold Arial,Helvetica;
-}
+  font: 2em bold Arial,Helvetica; }
 
 .structure {
   border: 1px solid #a0a0a0;
   margin: 18pt;
-  background-color: white;
-}
+  background-color: white; }
 
 .structure-group {
   width: 40em;
   border: 2px solid #505050;
   margin: 30pt 10pt;
-  background-color: #e0e0e0;
-}
-
-.structure-group:first-child {
-  margin-top: 0;
-}
+  background-color: #e0e0e0; }
+  .structure-group:first-child {
+    margin-top: 0; }
 
 .equation {
   font: 2.2em bold Arial;
-  padding: 0.5em;
-}
-
-.equation td.number {
-  font-size: 2em;
-}
+  padding: 0.5em; }
+  .equation td.number {
+    font-size: 2em; }
 
 .blockOfDots {
-  border: 1pt solid #c0c0c0;
-}
+  border: 1pt solid #c0c0c0; }
 
 td.blockOfDots {
-  font-size: 2em;
-}
+  font-size: 2em; }
 
 table.blockEquation {
-  border-spacing: 0.8em;
-}
+  border-spacing: 0.8em; }
 
 .word-equation, .sentence {
   font: 1.4em normal Georgia;
-  padding: 0.9em;
-}
+  padding: 0.9em; }
 
 .paragraph {
   font: 1.4em normal Georgia;
   padding: 1.4em;
-  line-height: 1.3em;
-}
-
-.paragraph .word {
-  padding: 0 0.1em;
-}
+  line-height: 1.3em; }
+  .paragraph .word {
+    padding: 0 0.1em; }
 
 .highlighted, .selected {
-  color: black;
-}
+  color: black; }
 
-.structure span, .word {
+.structure span, .structure .word {
   padding: 0.1em;
-  border: 1pt solid white;
-}
-
-.structure span.selected, .word-selected {
+  border: 1pt solid white; }
+.structure span.selected, .structure .word-selected {
   border: 1pt solid green;
-  background-color: #a0f0a0;
-}
-
-.structure span.highlighted, .word-highlighted {
+  background-color: #a0f0a0; }
+.structure span.highlighted, .structure .word-highlighted {
   border: 1pt solid green;
-  background-color: #e0f0e0;
-}
-
+  background-color: #e0f0e0; }
 .structure span.punctuation {
   padding: 0.1em;
-  border: 1pt solid white;
-}
-
+  border: 1pt solid white; }
 .structure span.punctuation-selected {
   border: 1pt solid blue;
-  background-color: #b0b0f0;
-}
-
+  background-color: #b0b0f0; }
 .structure span.punctuation-highlighted {
   border: 1pt solid blue;
-  background-color: #e0e0f0;
-}
-
+  background-color: #e0e0f0; }
 .structure span.number {
   padding: 0.1em;
-  border: 1pt solid white;
-}
-
-.structure span.number-selected, .blockOfDots-selected {
+  border: 1pt solid white; }
+.structure span.number-selected, .structure .blockOfDots-selected {
   border: 1pt solid green;
-  background-color: #a0f0a0;
-}
-
-.structure span.number-highlighted, .blockOfDots-highlighted {
+  background-color: #a0f0a0; }
+.structure span.number-highlighted, .structure .blockOfDots-highlighted {
   border: 1pt solid green;
-  background-color: #e0f0e0;
-}
-
+  background-color: #e0f0e0; }
 .structure span.operator {
   padding: 0.1em;
-  border: 1pt solid white;
-}
-
+  border: 1pt solid white; }
 .structure span.operator-selected {
   border: 1pt solid blue;
-  background-color: #b0b0f0;
-}
-
+  background-color: #b0b0f0; }
 .structure span.operator-highlighted {
   border: 1pt solid blue;
-  background-color: #e0e0f0;
-}
+  background-color: #e0e0f0; }
 
-.annotation  {
+.annotation {
   font-style: italic;
-  font-size: 0.8em;
-}
+  font-size: 0.8em; }
 
 .date {
   font-style: italic;
   font-size: 1em;
   text-align: right;
-  margin: 1em;
-}
+  margin: 1em; }
 
 .author {
   font-style: italic;
-  text-align: right;
-}
+  text-align: right; }
 
 .control {
   padding: 0.15em 0.35em;
@@ -160,5 +115,4 @@ table.blockEquation {
   font: 0.9em Arial,Helvetica;
   color: #606060;
   background-color: #f0f0f0;
-  border: solid 1px #d0d0d0;
-}
+  border: solid 1px #d0d0d0; }

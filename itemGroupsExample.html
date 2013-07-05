@@ -1,0 +1,57 @@
+<!DOCTYPE html">
+<html lang="en" >
+<head><meta charset="utf-8">
+<title>Correspondence</title>
+<link rel="stylesheet" type="text/css" href="correspondence.css" />
+  <script language="javascript" type="text/javascript" src="lib/jquery-1.10.1.js"></script>
+  <script language="javascript" type="text/javascript" src="correspondence.js"></script>
+  <script language="javascript" type="text/javascript" src="correspondence-examples.js"></script>
+</head>
+
+<body>
+<h1>Correspondence: Item Groups Example</h1>
+
+<div class="author">Author: <a href="http://thinkinghard.com">Philip Dorrell</a></div>
+
+<p><a href="index.html">Correspondence</a> is a project to interactively visualize <i>correspondences</i> between
+items in related structures.</p>
+
+<p>This page contains an example structure with multiple item groups.</p>
+
+<div class="structure-group">
+  <div class="structure ruby-structure">
+    <div class="item-group" data-group-id="A">
+      <span data-id="A1">x</span>&nbsp;<span data-id="A2">=</span>&nbsp;<span data-id="A3">3</span>
+    </div>
+    <div class="item-group" data-group-id="B">
+      <span data-id="B1">x</span>&nbsp;<span data-id="B2">=</span>&nbsp;<span data-id="B3">4</span>
+    </div>
+    <div class="item-group" data-group-id="C">
+      <span data-id="C1">x</span>&nbsp;<span data-id="C2">=</span>&nbsp;<span data-id="C3">x</span>&nbsp;<span data-id="C4">+</span>&nbsp;<span data-id="C5">1</span>
+    </div>
+    <div class="item-group" data-group-id="D">
+      <span data-id="D1">puts</span>&nbsp;<span data-id="D2">x</span><br/><span class="output-marker">=></span>&nbsp;<span class="output"><span data-id="D3">5</span></span>
+    </div>
+  </div>
+  <div class="structure english-structure">
+    <div class="item-group" data-group-id="A">
+      <span data-id="A2">Set the value of</span> <span data-id="A1">the variable <b>x</b></span> <span data-id="A2">to be</span> <span data-id="A3"><b>3</b></span>.
+    </div>
+    <div class="item-group" data-group-id="B">
+      <span data-id="B2">Set the value of</span> <span data-id="B1">the variable <b>x</b></span> <span data-id="B2">to be</span> <span data-id="B3"><b>4</b></span> (over-writing the previous value of <b>3</b>)
+    </div>
+    <div class="item-group" data-group-id="C">
+      <span data-id="C2">Set the new value of</span> <span data-id="C1">the variable <b>x</b></span> <span data-id="C2">to be</span> <span data-id="C3">the current value of <b>x</b></span> <span data-id="C4">plus</span> <span data-id="C5"><b>1</b></span>
+       (so the new value of  <b>x</b> will be <b>4 + 1 = 5</b>)
+    </div>
+    <div class="item-group" data-group-id="D">
+      <span data-id="D1">Print out</span> <span data-id="D2">the value of the variable <b>x</b></span> (prints out <span class="output"><span data-id="D3">5</span></span>)
+    </div>
+  </div>
+</div>
+
+
+<div class="date">Last updated: 5 July 2013</div>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+body {
+  color: #404040;
+  margin: 0.4em 2em;
+}
+
+p, ul {
+  color: black;
+  font: 1.2em normal Georgia;
+}
+
+h1 {
+  font: 3em bold Arial,Helvetica;
+  color: #000030;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  color: #000030;
+  font: 2em bold Arial,Helvetica;
+}
+
+.structure {
+  border: 1px solid #a0a0a0;
+  margin: 18pt;
+  background-color: white;
+}
+
+.structure-group {
+  width: 40em;
+  border: 2px solid #505050;
+  margin: 30pt 10pt;
+  background-color: #e0e0e0;
+  &:first-child {
+      margin-top: 0;
+  }
+}
+
+.equation {
+  font: 2.2em bold Arial;
+  padding: 0.5em;
+  td.number {
+      font-size: 2em;
+  }
+}
+
+.blockOfDots {
+  border: 1pt solid #c0c0c0;
+}
+
+td.blockOfDots {
+  font-size: 2em;
+}
+
+table.blockEquation {
+  border-spacing: 0.8em;
+}
+
+.word-equation, .sentence {
+  font: 1.4em normal Georgia;
+  padding: 0.9em;
+}
+
+.paragraph {
+  font: 1.4em normal Georgia;
+  padding: 1.4em;
+  line-height: 1.3em;
+  .word {
+      padding: 0 0.1em;
+  }
+}
+
+.highlighted, .selected {
+  color: black;
+}
+
+.structure {
+    span, .word {
+	padding: 0.1em;
+	border: 1pt solid white;
+    }
+    span.selected, .word-selected {
+	border: 1pt solid green;
+	background-color: #a0f0a0;
+    }
+    span.highlighted, .word-highlighted {
+	border: 1pt solid green;
+	background-color: #e0f0e0;
+    }
+    span.punctuation {
+	padding: 0.1em;
+	border: 1pt solid white;
+    }
+
+    span.punctuation-selected {
+	border: 1pt solid blue;
+	background-color: #b0b0f0;
+    }
+
+    span.punctuation-highlighted {
+	border: 1pt solid blue;
+	background-color: #e0e0f0;
+    }
+
+    span.number {
+	padding: 0.1em;
+	border: 1pt solid white;
+    }
+
+    span.number-selected, .blockOfDots-selected {
+	border: 1pt solid green;
+	background-color: #a0f0a0;
+    }
+
+    span.number-highlighted, .blockOfDots-highlighted {
+	border: 1pt solid green;
+	background-color: #e0f0e0;
+    }
+
+    span.operator {
+	padding: 0.1em;
+	border: 1pt solid white;
+    }
+
+    span.operator-selected {
+	border: 1pt solid blue;
+	background-color: #b0b0f0;
+    }
+
+    span.operator-highlighted {
+	border: 1pt solid blue;
+	background-color: #e0e0f0;
+    }
+}
+
+.annotation  {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+.date {
+  font-style: italic;
+  font-size: 1em;
+  text-align: right;
+  margin: 1em;
+}
+
+.author {
+  font-style: italic;
+  text-align: right;
+}
+
+.control {
+  padding: 0.15em 0.35em;
+  margin: 0 0 0 5em;
+  font: 0.9em Arial,Helvetica;
+  color: #606060;
+  background-color: #f0f0f0;
+  border: solid 1px #d0d0d0;
+}
