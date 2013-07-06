@@ -82,6 +82,7 @@ var CORRESPONDENCE = {};
     this.itemIdDataAttribute = "id";
     this.structureElementSelector = ".structure";
     this.currentSelectedElement = null;
+    this.selector = selector;
     $this = this;
 
     // For each structure group DOM element, initialize the corresponding structure group
@@ -114,6 +115,13 @@ var CORRESPONDENCE = {};
   }
 
   StructureGroups.prototype = {
+    
+    setupInterleaving: function() {
+      this.selector.each(
+        function(index, structureGroup) {
+          // todo
+        });
+    }, 
     
     // Clear the currently selected item (and un-highlight any associated siblings and cousins)
     clearCurrentSelection: function() {

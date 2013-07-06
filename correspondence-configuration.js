@@ -1,5 +1,7 @@
 $(document).ready(function(){
   var structureGroups = new CORRESPONDENCE.StructureGroups($(".structure-group"));
+  
+  structureGroups.setupInterleaving();
 
   var showSiblings = true;
   var alwaysShowCousins = true;
