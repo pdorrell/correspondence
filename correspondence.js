@@ -144,6 +144,8 @@ var CORRESPONDENCE = {};
     this.initializeStructures(this.structureGroup);
   }
   
+  var interleaveCheckboxId = 0;
+  
   StructureGroup.prototype = {
     
     setupInterleavingIfRelevant: function() {
@@ -158,8 +160,10 @@ var CORRESPONDENCE = {};
     }, 
     
     setupInterleaving: function(structuresSelector, firstStructureItemGroupsSelector) {
-      var checkbox = $('<input type="checkbox"/>');
-      var label = $('<div class="interleaved"><label>Interleaved</label></div>');
+      interleaveCheckboxId++;
+      var checkboxId = "interleave_" + interleaveCheckboxId;
+      var checkbox = $('<input type="checkbox" id="' + checkboxId + '"/>');
+      var label = $('<div class="interleaved"><label for="' + checkboxId + '">Interleaved</label></div>');
       var labelDiv = $('<div class="interleaved"></div>');
       labelDiv.append(label);
       label.prepend(checkbox);
