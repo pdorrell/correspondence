@@ -168,6 +168,52 @@ var CORRESPONDENCE = {};
       labelDiv.append(label);
       label.prepend(checkbox);
       $(this.structureGroup).prepend(labelDiv);
+      var $this = this;
+      checkbox.on("change", function(event) {
+        if(this.checked) {
+          $this.interleave();
+        }
+        else {
+          $this.uninterleave();
+        }
+      });
+      this.setupInterleavingData(structuresSelector, firstStructureItemGroupsSelector);
+    }, 
+    
+    error: function(message) {
+      alert("ERROR: " + message);
+    }, 
+    
+    setupInterleavingData: function(structuresSelector, firstStructureItemGroupsSelector) {
+      this.numStructures = structuresSelector.length;
+      var itemGroupMaps = new Array(this.numStructures);
+      this.itemGroupMaps = itemGroupMaps;
+      var $this = this;
+      for (var i=0; i<this.numStructures; i++) {
+        var structure = structuresSelector[i];
+        itemGroupMaps[i] = {};
+        $(structure).find(".item-group").each(function(index, itemGroup) {
+          var groupId = $(itemGroup).data("group-id");
+          if(groupId == undefined) {
+            console.log("itemGroup = " + itemGroup.outerHTML);
+            $this.error((index+1) + "th item group in " + (i+1) + "th structure has no group ID");
+          }
+          if (itemGroupMaps[i][groupId]) {
+            $this.error((index+1) + "th item group in " + (i+1) + 
+                        "th structure has two item groups with group ID " + groupId);
+          }
+          console.log("map " + i + "/" + groupId + " to " + itemGroup.outerHTML);
+          itemGroupMaps[i][groupId] = itemGroup;
+        });
+      }
+    }, 
+    
+    interleave: function() {
+      console.log("interleave ...");
+    }, 
+    
+    uninterleave: function() {
+      console.log("uninterleave ...");
     }, 
     
     /** Initialise the structures and items in a given structure group. */
@@ -231,7 +277,7 @@ var CORRESPONDENCE = {};
   function StructureGroups(selector) {
     this.elementSelection = new ElementSelection();
     this.selector = selector;
-    $this = this;
+    var $this = this;
     
     this.structureGroups = []
     var $structureGroups = this.structureGroups;
