@@ -149,6 +149,12 @@ var CORRESPONDENCE = {};
     initializeStructures: function() {
       // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
       var itemsByItemId = {}; // the items map for all items in this structure group
+      
+      this.indexItemsByTheirId(itemsByItemId);
+      this.linkSiblingsAndCousins(itemsByItemId);
+    }, 
+      
+    indexItemsByTheirId: function (itemsByItemId) {
       $(this.structureGroup).find(".structure").each( // for each structure in this structure group
         function(index, structure) {
           var structureId = index;
@@ -164,6 +170,9 @@ var CORRESPONDENCE = {};
               indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
             });
         });
+    }, 
+    
+    linkSiblingsAndCousins: function (itemsByItemId) {
       /* For each item in structure group, determine which other items are siblings (in the same structure) 
          or cousins (in a different structure) with the same id, and create the relevant style targets. */
       $(this.structureGroup).find("[data-id]").each( // for each item in the structure group
