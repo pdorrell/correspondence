@@ -160,6 +160,7 @@ var CORRESPONDENCE = {};
     }, 
     
     setupInterleaving: function(structuresSelector, firstStructureItemGroupsSelector) {
+      this.interleavingSetupErrors = [];
       interleaveCheckboxId++;
       var checkboxId = "interleave_" + interleaveCheckboxId;
       var checkbox = $('<input type="checkbox" id="' + checkboxId + '"/>');
@@ -169,22 +170,45 @@ var CORRESPONDENCE = {};
       label.prepend(checkbox);
       $(this.structureGroup).prepend(labelDiv);
       var $this = this;
-      checkbox.on("change", function(event) {
-        if(this.checked) {
-          $this.interleave();
-        }
-        else {
-          $this.uninterleave();
-        }
-      });
       this.setupInterleavingData(structuresSelector, firstStructureItemGroupsSelector);
+      if (this.interleavingSetupErrors.length == 0) {
+        checkbox.on("change", function(event) {
+          if(this.checked) {
+            $this.interleave();
+          }
+          else {
+            $this.uninterleave();
+          }
+        });
+      }
     }, 
     
     error: function(message) {
+      this.interleavingSetupErrors.push(message);
       alert("ERROR: " + message);
     }, 
     
     setupInterleavingData: function(structuresSelector, firstStructureItemGroupsSelector) {
+      this.setupInterleavingGroupIds(firstStructureItemGroupsSelector);
+      this.setupInterleavingGroupIdMaps(structuresSelector);
+    }, 
+    
+    setupInterleavingGroupIds: function(firstStructureItemGroupsSelector) {
+      this.numItemGroupsInFirstStructure = firstStructureItemGroupsSelector.length;
+      this.numItemGroupsInFirstStructure = firstStructureItemGroupsSelector.length;
+      this.groupIds = new Array(this.numItemGroupsInFirstStructure);
+      for (var i=0; i<this.numItemGroupsInFirstStructure; i++) {
+        var groupId = $(firstStructureItemGroupsSelector[i]).data("group-id");
+        if(groupId == undefined) {
+            $this.error((index+1) + "th item group in 1st structure has no group ID");
+        }
+        this.groupIds[i] = groupId;
+      }
+      console.log("First structure group IDS = [" + this.groupIds.join(", ") + "]");
+    }, 
+      
+    
+    setupInterleavingGroupIdMaps: function(structuresSelector) {
       this.numStructures = structuresSelector.length;
       var itemGroupMaps = new Array(this.numStructures);
       this.itemGroupMaps = itemGroupMaps;
@@ -195,8 +219,11 @@ var CORRESPONDENCE = {};
         $(structure).find(".item-group").each(function(index, itemGroup) {
           var groupId = $(itemGroup).data("group-id");
           if(groupId == undefined) {
-            console.log("itemGroup = " + itemGroup.outerHTML);
             $this.error((index+1) + "th item group in " + (i+1) + "th structure has no group ID");
+          }
+          if (!$.inArray(groupId, this.groupIds)) {
+            $this.error((index+1) + "th item group in " + (i+1) + "th structure has group ID " + groupId + 
+                        " which does not exist in first structure");
           }
           if (itemGroupMaps[i][groupId]) {
             $this.error((index+1) + "th item group in " + (i+1) + 
