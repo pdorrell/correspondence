@@ -138,6 +138,58 @@ var CORRESPONDENCE = {};
     }
     
   };
+  
+  function StructureGroup(structureGroup) {
+    this.structureGroup = structureGroup;
+    this.initializeStructures(this.structureGroup);
+  }
+  
+  StructureGroup.prototype = {
+    /** Initialise the structures and items in a given structure group. */
+    initializeStructures: function() {
+      // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
+      var itemsByItemId = {}; // the items map for all items in this structure group
+      var itemSelector = "[data-id]";
+      $(this.structureGroup).find(".structure").each( // for each structure in this structure group
+        function(index, structure) {
+          var structureId = index;
+          $(structure).find(itemSelector).each( // for each item in the structure
+            function(index, item) {
+              var $item = $(item);
+              $item.data("structureId", structureId); // pointer to parent structure
+              
+              $item.data("selectedStyleTarget", 
+                         createStyleTarget(item, "selected")); // style target for this item to become selected
+              $item.data("siblings", []); // list of sibling style targets (yet to be populated)
+              $item.data("cousins", []); // list of cousin style targets (yet to be populated)
+              indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
+            });
+        });
+      /* For each item in structure group, determine which other items are siblings (in the same structure) 
+         or cousins (in a different structure) with the same id, and create the relevant style targets. */
+      $(this.structureGroup).find(itemSelector).each( // for each item in the structure group
+        function(index, item) {
+          var $item = $(item);
+          var itemId = $item.data("id");
+          var structureId = $item.data("structureId"); // structure ID of this item
+          var itemsForItemId = itemsByItemId[itemId];
+          var siblings = $item.data("siblings");
+          var cousins = $item.data("cousins");
+          for (var i=0; i<itemsForItemId.length; i++) { // for all items with the same ID
+            var otherItem = itemsForItemId[i];
+            if (item != otherItem) {
+              var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
+              if (structureId == otherItemStructureId) {
+                siblings.push(createStyleTarget(otherItem, "highlighted"));
+              }
+              else {
+                cousins.push(createStyleTarget(otherItem, "highlighted"));
+              }
+            }
+          }
+        });
+    }
+  }
 
   /* Object representing all Structure Groups on a web page.
      Structure Groups are mostly independent of each other, except
@@ -147,11 +199,14 @@ var CORRESPONDENCE = {};
     this.elementSelection = new ElementSelection();
     this.selector = selector;
     $this = this;
+    
+    this.structureGroups = []
+    var $structureGroups = this.structureGroups;
 
     // For each structure group DOM element, initialize the corresponding structure group
     selector.each(
       function(index, structureGroup) {
-        $this.initializeStructures(structureGroup)
+        $structureGroups.push(new StructureGroup(structureGroup));
       });
     
     // Event triggered when mouse enters an item
@@ -198,53 +253,8 @@ var CORRESPONDENCE = {};
     
     showCousinsOfSelectedItem: function() {
       this.elementSelection.showCousins();
-    }, 
-    
-    /** Initialise the structures and items in a given structure group. */
-    initializeStructures: function(structureGroup) {
-      // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
-      var itemsByItemId = {}; // the items map for all items in this structure group
-      var itemSelector = "[data-id]";
-      $this = this;
-      $(structureGroup).find(".structure").each( // for each structure in this structure group
-        function(index, structure) {
-          var structureId = index;
-          $(structure).find(itemSelector).each( // for each item in the structure
-            function(index, item) {
-              var $item = $(item);
-              $item.data("structureId", structureId); // pointer to parent structure
-              
-              $item.data("selectedStyleTarget", 
-                         createStyleTarget(item, "selected")); // style target for this item to become selected
-              $item.data("siblings", []); // list of sibling style targets (yet to be populated)
-              $item.data("cousins", []); // list of cousin style targets (yet to be populated)
-              indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
-            });
-        });
-      /* For each item in structure group, determine which other items are siblings (in the same structure) 
-         or cousins (in a different structure) with the same id, and create the relevant style targets. */
-      $(structureGroup).find(itemSelector).each( // for each item in the structure group
-        function(index, item) {
-          var $item = $(item);
-          var itemId = $item.data("id");
-          var structureId = $item.data("structureId"); // structure ID of this item
-          var itemsForItemId = itemsByItemId[itemId];
-          var siblings = $item.data("siblings");
-          var cousins = $item.data("cousins");
-          for (var i=0; i<itemsForItemId.length; i++) { // for all items with the same ID
-            var otherItem = itemsForItemId[i];
-            if (item != otherItem) {
-              var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
-              if (structureId == otherItemStructureId) {
-                siblings.push(createStyleTarget(otherItem, "highlighted"));
-              }
-              else {
-                cousins.push(createStyleTarget(otherItem, "highlighted"));
-              }
-            }
-          }
-        });
     }
+    
     
   };
 
