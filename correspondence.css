@@ -166,5 +166,14 @@ table.blockEquation {
   right: 0.4em;
   white-space: nowrap; }
 
-.interleaved-group {
-  border: 1pt solid red; }
+.interleaved-groups {
+  margin: 2em 0 1em 0; }
+  .interleaved-groups .interleaved-group {
+    margin: 2.5em 0.5em; }
+    .interleaved-groups .interleaved-group:first-child {
+      margin-top: 0; }
+    .interleaved-groups .interleaved-group:last-child {
+      margin-bottom: 0; }
+    .interleaved-groups .interleaved-group .structure {
+      padding: 0.3em;
+      margin: 0.6em 0.9em; }

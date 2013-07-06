@@ -235,6 +235,20 @@ $output_background: #ffe9e9;
   white-space: nowrap;
 }
 
-.interleaved-group {
-  border: 1pt solid red;
+.interleaved-groups {
+  margin: 2em 0 1em 0;
+  .interleaved-group {
+      margin: 2.5em 0.5em;
+      &:first-child {
+	  margin-top: 0;
+      }
+      &:last-child {
+	  margin-bottom: 0;
+      }
+      .structure {
+	  padding: 0.3em;
+	  margin: 0.6em 0.9em;
+      }
+  }
 }
+

@@ -168,7 +168,7 @@ var CORRESPONDENCE = {};
       var labelDiv = $('<div class="interleaved"></div>');
       labelDiv.append(label);
       label.prepend(checkbox);
-      $(this.structureGroup).prepend(labelDiv);
+      $(this.structureGroup).append(labelDiv);
       var $this = this;
       this.setupInterleavingData(structuresSelector, firstStructureItemGroupsSelector);
       if (this.interleavingSetupErrors.length == 0) {
@@ -203,7 +203,6 @@ var CORRESPONDENCE = {};
         }
         this.groupIds[i] = groupId;
       }
-      console.log("First structure group IDS = [" + this.groupIds.join(", ") + "]");
     }, 
       
     
@@ -217,7 +216,6 @@ var CORRESPONDENCE = {};
       for (var i=0; i<this.numStructures; i++) {
         var structure = structuresSelector[i];
         this.structureClassAttributes[i] = $(structure).attr("class");
-        console.log(" structureClassAttribute = " + this.structureClassAttributes[i]);
         itemGroupMaps[i] = {};
         for (var j=0; j<this.numGroupIds; j++) {
           itemGroupMaps[i][this.groupIds[j]] = null;
@@ -235,16 +233,14 @@ var CORRESPONDENCE = {};
             $this.error((index+1) + "th item group in " + (i+1) + 
                         "th structure has two item groups with group ID " + groupId);
           }
-          console.log("map " + i + "/" + groupId + " to " + itemGroup.outerHTML);
           itemGroupMaps[i][groupId] = itemGroup;
         });
       }
-      console.log("Structure class attributes = [" + this.structureClassAttributes.join(", ") + "]");
     }, 
     
     interleave: function() {
-      console.log("interleave ...");
       $(this.structureGroup).find(".structure").detach();
+      var interleavedGroupsDiv = $('<div class="interleaved-groups"></div>');
       for (var i=0; i<this.numGroupIds; i++) {
         var groupId = this.groupIds[i];
         var interleavedGroupDiv = $('<div class="interleaved-group"></div>');
@@ -256,13 +252,13 @@ var CORRESPONDENCE = {};
             $(interleavedGroupDiv).append(structureDiv);
           }
         }
-        $(this.structureGroup).append(interleavedGroupDiv);
+        $(interleavedGroupsDiv).append(interleavedGroupDiv);
       }
+      $(this.structureGroup).append(interleavedGroupsDiv);
     }, 
     
     uninterleave: function() {
-      console.log("uninterleave ...");
-      $(this.structureGroup).find(".interleaved-group").detach();
+      $(this.structureGroup).find(".interleaved-groups").detach();
       for (var i=0; i<this.numStructures; i++) {
         var structureDiv = $('<div></div>');
         $(structureDiv).attr("class", this.structureClassAttributes[i]);
