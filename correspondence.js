@@ -73,6 +73,57 @@
 var CORRESPONDENCE = {};
 
 (function(lib) {
+  
+  /** Add the styles for an array of style targets. */
+  function addStyles(items) {
+    for (var i=0; i<items.length; i++) {
+      items[i].addStyle();
+    }
+  }
+
+  /** Remove the styles for an array of style targets. */
+  function removeStyles(items) {
+    for (var i=0; i<items.length; i++) {
+      items[i].removeStyle();
+    }
+  }
+    
+  function ElementSelection() {
+    this.currentSelectedElement = null;
+  }
+  
+  ElementSelection.prototype = {
+    clear: function() {
+      if (this.currentSelectedElement != null) {
+        $currentSelectedElement = $(this.currentSelectedElement);
+        $currentSelectedElement.data("selectedStyleTarget").removeStyle();
+        removeStyles($currentSelectedElement.data("siblings"));
+        removeStyles($currentSelectedElement.data("cousins"));
+        this.currentSelectedElement = null;
+      }
+    }, 
+
+    // Set a given item as the currently selected item (highlight any associated siblings and cousins)
+    setSelected: function(element, showSiblings, showCousins) {
+      this.clear();
+      $element = $(element);
+      $element.data("selectedStyleTarget").addStyle();
+      if (showSiblings) {
+        addStyles($element.data("siblings"));
+      }
+      if (showCousins) {
+        addStyles($element.data("cousins"));
+      }
+      this.currentSelectedElement = element;
+    }, 
+    
+    showCousins: function() {
+      if (this.currentSelectedElement != null) {
+        addStyles($(this.currentSelectedElement).data("cousins"));
+      }
+    }
+    
+  };
 
   /* Object representing all Structure Groups on a web page.
      Structure Groups are mostly independent of each other, except
@@ -81,7 +132,7 @@ var CORRESPONDENCE = {};
   function StructureGroups(selector) {
     this.itemIdDataAttribute = "id";
     this.structureElementSelector = ".structure";
-    this.currentSelectedElement = null;
+    this.elementSelection = new ElementSelection();
     this.selector = selector;
     $this = this;
 
@@ -125,33 +176,16 @@ var CORRESPONDENCE = {};
     
     // Clear the currently selected item (and un-highlight any associated siblings and cousins)
     clearCurrentSelection: function() {
-      if (this.currentSelectedElement != null) {
-        $currentSelectedElement = $(this.currentSelectedElement);
-        $currentSelectedElement.data("selectedStyleTarget").removeStyle();
-        this.removeStyles($currentSelectedElement.data("siblings"));
-        this.removeStyles($currentSelectedElement.data("cousins"));
-        this.currentSelectedElement = null;
-      }
+      this.elementSelection.clear();
     }, 
 
     // Set a given item as the currently selected item (highlight any associated siblings and cousins)
     setSelected: function(element, showSiblings, showCousins) {
-      this.clearCurrentSelection();
-      $element = $(element);
-      $element.data("selectedStyleTarget").addStyle();
-      if (showSiblings) {
-        this.addStyles($element.data("siblings"));
-      }
-      if (showCousins) {
-        this.addStyles($element.data("cousins"));
-      }
-      this.currentSelectedElement = element;
+      this.elementSelection.setSelected(element, showSiblings, showCousins);
     }, 
     
-    showCousins: function() {
-      if (this.currentSelectedElement != null) {
-        this.addStyles($(this.currentSelectedElement).data("cousins"));
-      }
+    showCousinsOfSelectedItem: function() {
+      this.elementSelection.showCousins();
     }, 
     
     /** From the specified data attribute, insert item into a map of items, indexed by the item's ID.
@@ -182,20 +216,6 @@ var CORRESPONDENCE = {};
       return new StyleTarget($(element), targetStyleClass);
     }, 
 
-    /** Add the styles for an array of style targets. */
-    addStyles: function(items) {
-      for (var i=0; i<items.length; i++) {
-        items[i].addStyle();
-      }
-    }, 
-
-    /** Remove the styles for an array of style targets. */
-    removeStyles: function(items) {
-      for (var i=0; i<items.length; i++) {
-        items[i].removeStyle();
-      }
-    }, 
-    
     /** Initialise the structures and items in a given structure group. */
     initializeStructures: function(structureGroup) {
       // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values

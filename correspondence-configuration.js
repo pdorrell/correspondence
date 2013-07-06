@@ -15,7 +15,7 @@ $(document).ready(function(){
   $(document).keydown(function(event) {
     if (event.which == 17) { // ctrl
       if (!alwaysShowCousins) {
-        structureGroups.showCousins();
+        structureGroups.showCousinsOfSelectedItem();
       }
       ctrlKeyIsDown = true;
     }
