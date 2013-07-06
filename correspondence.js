@@ -262,6 +262,19 @@ var CORRESPONDENCE = {};
     
     uninterleave: function() {
       console.log("uninterleave ...");
+      $(this.structureGroup).find(".interleaved-group").detach();
+      for (var i=0; i<this.numStructures; i++) {
+        var structureDiv = $('<div></div>');
+        $(structureDiv).attr("class", this.structureClassAttributes[i]);
+        $(this.structureGroup).append(structureDiv);
+        for (var j=0; j<this.numGroupIds; j++) {
+          var groupId = this.groupIds[j];
+          var itemGroup = this.itemGroupMaps[i][groupId];
+          if (itemGroup != null) {
+            $(structureDiv).append(itemGroup);
+          }
+        }
+      }
     }, 
     
     /** Initialise the structures and items in a given structure group. */
