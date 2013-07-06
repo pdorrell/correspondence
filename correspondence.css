@@ -28,6 +28,7 @@ span.output-marker {
   line-height: 1.5em; }
 
 .structure-group {
+  position: relative;
   width: 40em;
   font: 1.2em normal Georgia;
   border: 2px solid #505050;
@@ -153,3 +154,14 @@ table.blockEquation {
   color: #606060;
   background-color: #f0f0f0;
   border: solid 1px #d0d0d0; }
+
+.interleaved {
+  position: absolute;
+  background-color: #f0f0f0;
+  padding: 0 0.5em 0 0;
+  font-size: 0.8em;
+  margin: 0;
+  display: inline-block;
+  top: 0.3em;
+  right: 0.4em;
+  white-space: nowrap; }

@@ -145,6 +145,27 @@ var CORRESPONDENCE = {};
   }
   
   StructureGroup.prototype = {
+    
+    setupInterleavingIfRelevant: function() {
+      var structuresSelector = $(this.structureGroup).find(".structure");
+      if(structuresSelector.length >= 1) {
+        var firstStructure = structuresSelector[0];
+        var firstStructureItemGroupsSelector = $(firstStructure).find(".item-group");
+        if (firstStructureItemGroupsSelector.length > 1) {
+          this.setupInterleaving(structuresSelector, firstStructureItemGroupsSelector)
+        }
+      }
+    }, 
+    
+    setupInterleaving: function(structuresSelector, firstStructureItemGroupsSelector) {
+      var checkbox = $('<input type="checkbox"/>');
+      var label = $('<div class="interleaved"><label>Interleaved</label></div>');
+      var labelDiv = $('<div class="interleaved"></div>');
+      labelDiv.append(label);
+      label.prepend(checkbox);
+      $(this.structureGroup).prepend(labelDiv);
+    }, 
+    
     /** Initialise the structures and items in a given structure group. */
     initializeStructures: function() {
       // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
@@ -243,10 +264,9 @@ var CORRESPONDENCE = {};
   StructureGroups.prototype = {
     
     setupInterleaving: function() {
-      this.selector.each(
-        function(index, structureGroup) {
-          // todo
-        });
+      for (var i=0; i<this.structureGroups.length; i++) {
+        this.structureGroups[i].setupInterleavingIfRelevant();
+      }
     }, 
     
     // Clear the currently selected item (and un-highlight any associated siblings and cousins)
