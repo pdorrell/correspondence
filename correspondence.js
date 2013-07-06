@@ -88,6 +88,20 @@ var CORRESPONDENCE = {};
     }
   }
     
+  /** From the specified data attribute, insert item into a map of items, indexed by the item's ID.
+      Associated items in a structure group have the same ID, so each item is held in an array of items
+      with the same ID.
+  */
+  function indexItemByItemId(itemsMap, item) {
+    var itemId = item.data("id");
+    var itemsForItemId = itemsMap[itemId];
+    if (itemsForItemId === undefined) {
+      itemsForItemId = [];
+      itemsMap[itemId] = itemsForItemId;
+    }
+    itemsForItemId.push(item[0]);
+  }
+    
   function ElementSelection() {
     this.currentSelectedElement = null;
   }
@@ -186,34 +200,6 @@ var CORRESPONDENCE = {};
       this.elementSelection.showCousins();
     }, 
     
-    /** From the specified data attribute, insert item into a map of items, indexed by the item's ID.
-        Associated items in a structure group have the same ID, so each item is held in an array of items
-        with the same ID.
-    */
-    indexItemByItemId: function(itemsMap, item) {
-      var itemId = item.data("id");
-      var itemsForItemId = itemsMap[itemId];
-      if (itemsForItemId === undefined) {
-        itemsForItemId = [];
-        itemsMap[itemId] = itemsForItemId;
-      }
-      itemsForItemId.push(item[0]);
-    }, 
-    
-    /** Create a style target on a DOM element for a given class suffix (representing a state description) 
-        For example, if the first CSS class is "word", and the intended state is "selected", 
-        the style target will have classes "selected" and "word-selected" (in that order).
-        If there is no existing CSS class, then the classes to add would just be the one class "selected".
-    */
-    createStyleTarget: function(element, classSuffix) {
-      var classNameString = $(element).attr("class");
-      var classNames = classNameString == undefined ? [] : classNameString.split(" ");
-      var targetStyleClass = classNames.length > 0 
-        ? classSuffix + " " + classNames[0] + "-" + classSuffix 
-        : classSuffix;
-      return new StyleTarget($(element), targetStyleClass);
-    }, 
-
     /** Initialise the structures and items in a given structure group. */
     initializeStructures: function(structureGroup) {
       // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
@@ -229,10 +215,10 @@ var CORRESPONDENCE = {};
               $item.data("structureId", structureId); // pointer to parent structure
               
               $item.data("selectedStyleTarget", 
-                         $this.createStyleTarget(item, "selected")); // style target for this item to become selected
+                         createStyleTarget(item, "selected")); // style target for this item to become selected
               $item.data("siblings", []); // list of sibling style targets (yet to be populated)
               $item.data("cousins", []); // list of cousin style targets (yet to be populated)
-              $this.indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
+              indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
             });
         });
       /* For each item in structure group, determine which other items are siblings (in the same structure) 
@@ -250,10 +236,10 @@ var CORRESPONDENCE = {};
             if (item != otherItem) {
               var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
               if (structureId == otherItemStructureId) {
-                siblings.push($this.createStyleTarget(otherItem, "highlighted"));
+                siblings.push(createStyleTarget(otherItem, "highlighted"));
               }
               else {
-                cousins.push($this.createStyleTarget(otherItem, "highlighted"));
+                cousins.push(createStyleTarget(otherItem, "highlighted"));
               }
             }
           }
@@ -276,6 +262,20 @@ var CORRESPONDENCE = {};
     removeStyle: function() {
       this.$element.removeClass(this.styleClass);
     }
+  }
+
+  /** Create a style target on a DOM element for a given class suffix (representing a state description) 
+      For example, if the first CSS class is "word", and the intended state is "selected", 
+      the style target will have classes "selected" and "word-selected" (in that order).
+      If there is no existing CSS class, then the classes to add would just be the one class "selected".
+  */
+  function createStyleTarget(element, classSuffix) {
+    var classNameString = $(element).attr("class");
+    var classNames = classNameString == undefined ? [] : classNameString.split(" ");
+    var targetStyleClass = classNames.length > 0 
+      ? classSuffix + " " + classNames[0] + "-" + classSuffix 
+      : classSuffix;
+    return new StyleTarget($(element), targetStyleClass);
   }
 
   // export public classes
