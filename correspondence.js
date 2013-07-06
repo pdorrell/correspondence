@@ -149,11 +149,10 @@ var CORRESPONDENCE = {};
     initializeStructures: function() {
       // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
       var itemsByItemId = {}; // the items map for all items in this structure group
-      var itemSelector = "[data-id]";
       $(this.structureGroup).find(".structure").each( // for each structure in this structure group
         function(index, structure) {
           var structureId = index;
-          $(structure).find(itemSelector).each( // for each item in the structure
+          $(structure).find("[data-id]").each( // for each item in the structure
             function(index, item) {
               var $item = $(item);
               $item.data("structureId", structureId); // pointer to parent structure
@@ -167,7 +166,7 @@ var CORRESPONDENCE = {};
         });
       /* For each item in structure group, determine which other items are siblings (in the same structure) 
          or cousins (in a different structure) with the same id, and create the relevant style targets. */
-      $(this.structureGroup).find(itemSelector).each( // for each item in the structure group
+      $(this.structureGroup).find("[data-id]").each( // for each item in the structure group
         function(index, item) {
           var $item = $(item);
           var itemId = $item.data("id");
