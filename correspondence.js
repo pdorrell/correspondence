@@ -130,8 +130,6 @@ var CORRESPONDENCE = {};
      there is only one currently selected item in any structure group.
    */
   function StructureGroups(selector) {
-    this.itemIdDataAttribute = "id";
-    this.structureElementSelector = ".structure";
     this.elementSelection = new ElementSelection();
     this.selector = selector;
     $this = this;
@@ -143,14 +141,14 @@ var CORRESPONDENCE = {};
       });
     
     // Event triggered when mouse enters an item
-    selector.find("[data-" + this.itemIdDataAttribute + "]").mouseenter(
+    selector.find("[data-id]").mouseenter(
       function(event) {
         var eventThis = this;
         $($this).trigger("mouseEnterItem", [eventThis]);
       });
     
     // Event triggered when mouse leaves an item
-    selector.find("[data-" + this.itemIdDataAttribute + "]").mouseleave(
+    selector.find("[data-id]").mouseleave(
       function(event) {
         var eventThis = this;
         $($this).trigger("mouseLeaveItem", [eventThis]);
@@ -193,7 +191,7 @@ var CORRESPONDENCE = {};
         with the same ID.
     */
     indexItemByItemId: function(itemsMap, item) {
-      var itemId = item.data(this.itemIdDataAttribute);
+      var itemId = item.data("id");
       var itemsForItemId = itemsMap[itemId];
       if (itemsForItemId === undefined) {
         itemsForItemId = [];
@@ -220,9 +218,9 @@ var CORRESPONDENCE = {};
     initializeStructures: function(structureGroup) {
       // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
       var itemsByItemId = {}; // the items map for all items in this structure group
-      var itemSelector = "[data-" + this.itemIdDataAttribute + "]";
+      var itemSelector = "[data-id]";
       $this = this;
-      $(structureGroup).find(this.structureElementSelector).each( // for each structure in this structure group
+      $(structureGroup).find(".structure").each( // for each structure in this structure group
         function(index, structure) {
           var structureId = index;
           $(structure).find(itemSelector).each( // for each item in the structure
