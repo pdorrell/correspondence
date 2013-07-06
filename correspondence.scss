@@ -223,7 +223,7 @@ $output_background: #ffe9e9;
   border: solid 1px #d0d0d0;
 }
 
-.interleaved {
+.interleaving-control {
   position: absolute;
   background-color: #f0f0f0;
   padding: 0.1em 0.3em 0 0;
@@ -233,4 +233,8 @@ $output_background: #ffe9e9;
   top: 0.3em;
   right: 0.4em;
   white-space: nowrap;
+}
+
+.interleaved-group {
+  border: 1pt solid red;
 }

@@ -164,7 +164,7 @@ var CORRESPONDENCE = {};
       interleaveCheckboxId++;
       var checkboxId = "interleave_" + interleaveCheckboxId;
       var checkbox = $('<input type="checkbox" id="' + checkboxId + '"/>');
-      var label = $('<div class="interleaved"><label for="' + checkboxId + '">Interleaved</label></div>');
+      var label = $('<div class="interleaving-control"><label for="' + checkboxId + '">Interleaved</label></div>');
       var labelDiv = $('<div class="interleaved"></div>');
       labelDiv.append(label);
       label.prepend(checkbox);
@@ -194,10 +194,9 @@ var CORRESPONDENCE = {};
     }, 
     
     setupInterleavingGroupIds: function(firstStructureItemGroupsSelector) {
-      this.numItemGroupsInFirstStructure = firstStructureItemGroupsSelector.length;
-      this.numItemGroupsInFirstStructure = firstStructureItemGroupsSelector.length;
-      this.groupIds = new Array(this.numItemGroupsInFirstStructure);
-      for (var i=0; i<this.numItemGroupsInFirstStructure; i++) {
+      this.numGroupIds = firstStructureItemGroupsSelector.length;
+      this.groupIds = new Array(this.numGroupIds);
+      for (var i=0; i<this.numGroupIds; i++) {
         var groupId = $(firstStructureItemGroupsSelector[i]).data("group-id");
         if(groupId == undefined) {
             $this.error((index+1) + "th item group in 1st structure has no group ID");
@@ -220,6 +219,9 @@ var CORRESPONDENCE = {};
         this.structureClassAttributes[i] = $(structure).attr("class");
         console.log(" structureClassAttribute = " + this.structureClassAttributes[i]);
         itemGroupMaps[i] = {};
+        for (var j=0; j<this.numGroupIds; j++) {
+          itemGroupMaps[i][this.groupIds[j]] = null;
+        }
         $(structure).find(".item-group").each(function(index, itemGroup) {
           var groupId = $(itemGroup).data("group-id");
           if(groupId == undefined) {
@@ -242,6 +244,20 @@ var CORRESPONDENCE = {};
     
     interleave: function() {
       console.log("interleave ...");
+      $(this.structureGroup).find(".structure").detach();
+      for (var i=0; i<this.numGroupIds; i++) {
+        var groupId = this.groupIds[i];
+        var interleavedGroupDiv = $('<div class="interleaved-group"></div>');
+        for (var j=0; j<this.numStructures; j++) {
+          var itemGroup = this.itemGroupMaps[j][groupId];
+          if (itemGroup != null) {
+            var structureDiv = $('<div></div>');
+            $(structureDiv).attr("class", this.structureClassAttributes[j]).append(itemGroup);
+            $(interleavedGroupDiv).append(structureDiv);
+          }
+        }
+        $(this.structureGroup).append(interleavedGroupDiv);
+      }
     }, 
     
     uninterleave: function() {
