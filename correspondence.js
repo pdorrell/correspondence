@@ -212,9 +212,13 @@ var CORRESPONDENCE = {};
       this.numStructures = structuresSelector.length;
       var itemGroupMaps = new Array(this.numStructures);
       this.itemGroupMaps = itemGroupMaps;
+      var structureClassAttributes = new Array(this.numStructures);
+      this.structureClassAttributes = structureClassAttributes;
       var $this = this;
       for (var i=0; i<this.numStructures; i++) {
         var structure = structuresSelector[i];
+        this.structureClassAttributes[i] = $(structure).attr("class");
+        console.log(" structureClassAttribute = " + this.structureClassAttributes[i]);
         itemGroupMaps[i] = {};
         $(structure).find(".item-group").each(function(index, itemGroup) {
           var groupId = $(itemGroup).data("group-id");
@@ -233,6 +237,7 @@ var CORRESPONDENCE = {};
           itemGroupMaps[i][groupId] = itemGroup;
         });
       }
+      console.log("Structure class attributes = [" + this.structureClassAttributes.join(", ") + "]");
     }, 
     
     interleave: function() {
