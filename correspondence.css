@@ -26,6 +26,10 @@ span.output-marker {
   background-color: white;
   padding: 0.7em;
   line-height: 1.5em; }
+  .structure:first-child {
+    margin-top: 1.2em; }
+  .structure:last-child {
+    margin-bottom: 1.2em; }
 
 .structure-group {
   position: relative;
@@ -155,25 +159,33 @@ table.blockEquation {
   background-color: #f0f0f0;
   border: solid 1px #d0d0d0; }
 
-.interleaving-control {
-  position: absolute;
-  background-color: #f0f0f0;
-  padding: 0.1em 0.3em 0 0;
-  font-size: 0.9em;
-  margin: 0;
-  display: inline-block;
-  top: 0.3em;
-  right: 0.4em;
-  white-space: nowrap; }
+.interleaving-control-wrapper {
+  text-align: right;
+  margin: 0.2em; }
+  .interleaving-control-wrapper .interleaving-control {
+    background-color: #f0f0f0;
+    padding: 0.1em 0.3em 0 0;
+    font-size: 0.8em;
+    margin: 0;
+    white-space: nowrap; }
 
-.interleaved-groups {
-  margin: 2em 0 1em 0; }
-  .interleaved-groups .interleaved-group {
-    margin: 2.5em 0.5em; }
-    .interleaved-groups .interleaved-group:first-child {
+.structures-wrapper {
+  margin: 0;
+  padding: 0; }
+  .structures-wrapper .structure:first-child {
+    margin-top: 0; }
+  .structures-wrapper .interleaved-group {
+    margin: 2.5em 0; }
+    .structures-wrapper .interleaved-group:first-child {
       margin-top: 0; }
-    .interleaved-groups .interleaved-group:last-child {
+    .structures-wrapper .interleaved-group:last-child {
       margin-bottom: 0; }
-    .interleaved-groups .interleaved-group .structure {
-      padding: 0.3em;
-      margin: 0.6em 0.9em; }
+    .structures-wrapper .interleaved-group .structure {
+      padding-top: 0.3em;
+      padding-bottom: 0.3em;
+      margin-top: 0.6em;
+      margin-bottom: 0.6em; }
+      .structures-wrapper .interleaved-group .structure:first-child {
+        margin-top: 0; }
+      .structures-wrapper .interleaved-group .structure:last-child {
+        margin-bottom: 1.2em; }

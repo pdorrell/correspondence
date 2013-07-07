@@ -160,16 +160,23 @@ var CORRESPONDENCE = {};
     }, 
     
     setupInterleaving: function(structuresSelector, firstStructureItemGroupsSelector) {
+      structuresSelector.detach();
       this.interleavingSetupErrors = [];
       interleaveCheckboxId++;
       var checkboxId = "interleave_" + interleaveCheckboxId;
       var checkbox = $('<input type="checkbox" id="' + checkboxId + '"/>');
-      var label = $('<div class="interleaving-control"><label for="' + checkboxId + '">Interleaved</label></div>');
-      var labelDiv = $('<div class="interleaved"></div>');
+      var label = $('<span class="interleaving-control"><label for="' + checkboxId + '">Interleaved</label></span>');
+      var labelDiv = $('<div class="interleaving-control-wrapper"></div>');
       labelDiv.append(label);
       label.prepend(checkbox);
       $(this.structureGroup).append(labelDiv);
       var $this = this;
+      var structuresWrapperDiv = $('<div class="structures-wrapper"></div>');
+      structuresSelector.each(function(index, structureElement) {
+        $(structuresWrapperDiv).append(structureElement);
+      });
+      this.structuresWrapperDiv = structuresWrapperDiv;
+      $(this.structureGroup).append(structuresWrapperDiv);
       this.setupInterleavingData(structuresSelector, firstStructureItemGroupsSelector);
       if (this.interleavingSetupErrors.length == 0) {
         checkbox.on("change", function(event) {
@@ -239,8 +246,8 @@ var CORRESPONDENCE = {};
     }, 
     
     interleave: function() {
-      $(this.structureGroup).find(".structure").detach();
-      var interleavedGroupsDiv = $('<div class="interleaved-groups"></div>');
+      $(this.structuresWrapperDiv).find(".structure").detach();
+      var structuresWrapperDiv = this.structuresWrapperDiv;
       for (var i=0; i<this.numGroupIds; i++) {
         var groupId = this.groupIds[i];
         var interleavedGroupDiv = $('<div class="interleaved-group"></div>');
@@ -252,17 +259,16 @@ var CORRESPONDENCE = {};
             $(interleavedGroupDiv).append(structureDiv);
           }
         }
-        $(interleavedGroupsDiv).append(interleavedGroupDiv);
+        $(structuresWrapperDiv).append(interleavedGroupDiv);
       }
-      $(this.structureGroup).append(interleavedGroupsDiv);
     }, 
     
     uninterleave: function() {
-      $(this.structureGroup).find(".interleaved-groups").detach();
+      $(this.structuresWrapperDiv).find(".interleaved-group").detach();
       for (var i=0; i<this.numStructures; i++) {
         var structureDiv = $('<div></div>');
         $(structureDiv).attr("class", this.structureClassAttributes[i]);
-        $(this.structureGroup).append(structureDiv);
+        $(this.structuresWrapperDiv).append(structureDiv);
         for (var j=0; j<this.numGroupIds; j++) {
           var groupId = this.groupIds[j];
           var itemGroup = this.itemGroupMaps[i][groupId];
