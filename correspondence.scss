@@ -90,7 +90,7 @@ table.blockEquation {
 
 .paragraph {
   font: 1.4em normal Georgia;
-  padding: 1.4em;
+  padding: 1em;
   line-height: 1.3em;
   .word {
       padding: 0 0.1em;
@@ -266,6 +266,12 @@ $output_background: #ffe9e9;
       .structure {
 	  margin-top: 0.5em;
 	  margin-bottom: 0.5em;
+	  &:first-child {
+	      margin-top: 0;
+	  }
+	  &:last-child {
+	      margin-bottom: 1.2em;
+	  }
       }
   }
 }
