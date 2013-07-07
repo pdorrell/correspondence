@@ -30,9 +30,9 @@ $default_structure_background: white;
 
 .structure {
   border: 3px solid $default_structure_border;
-  margin: 25pt;
+  margin: 1em 0.8em;
   background-color: white;
-  padding: 0.7em;
+  padding: 0.5em 0.4em;
   line-height: 1.5em;
   &:first-child {
       margin-top: 1.2em;
@@ -62,11 +62,12 @@ $default_structure_background: white;
 }
 
 .equation {
-  font: 2.2em bold Arial;
-  padding: 0.5em;
-  td.number {
-      font-size: 2em;
-  }
+    span {
+	font: 2.2em bold Arial;
+    }
+    td.number {
+	font-size: 2em;
+    }
 }
 
 .blockOfDots {
@@ -82,8 +83,9 @@ table.blockEquation {
 }
 
 .word-equation, .sentence {
-  font: 1.4em normal Georgia;
-  padding: 0.9em;
+    span {
+	font: 1.4em normal Georgia;
+    }
 }
 
 .paragraph {
@@ -244,9 +246,15 @@ $output_background: #ffe9e9;
 .structures-wrapper {
   margin: 0;
   padding: 0;
-  .structure:first-child {
-      margin-top: 0;
+  .structure {
+      &:first-child {
+	  margin-top: 0;
+      }
+      &:last-child {
+	  margin-bottom: 1.2em;
+      }
   }
+
   .interleaved-group {
       margin: 2.5em 0;
       &:first-child {
@@ -256,16 +264,8 @@ $output_background: #ffe9e9;
 	  margin-bottom: 0;
       }
       .structure {
-	  padding-top: 0.3em;
-	  padding-bottom: 0.3em;
-	  margin-top: 0.6em;
-	  margin-bottom: 0.6em;
-	  &:first-child {
-	      margin-top: 0;
-	  }
-	  &:last-child {
-	      margin-bottom: 1.2em;
-	  }
+	  margin-top: 0.5em;
+	  margin-bottom: 0.5em;
       }
   }
 }

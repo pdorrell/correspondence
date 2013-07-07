@@ -22,9 +22,9 @@ span.output-marker {
 
 .structure {
   border: 3px solid #a0a0a0;
-  margin: 25pt;
+  margin: 1em 0.8em;
   background-color: white;
-  padding: 0.7em;
+  padding: 0.5em 0.4em;
   line-height: 1.5em; }
   .structure:first-child {
     margin-top: 1.2em; }
@@ -45,11 +45,10 @@ span.output-marker {
 .item-groups-example .structure-group {
   width: 30em; }
 
-.equation {
-  font: 2.2em bold Arial;
-  padding: 0.5em; }
-  .equation td.number {
-    font-size: 2em; }
+.equation span {
+  font: 2.2em bold Arial; }
+.equation td.number {
+  font-size: 2em; }
 
 .blockOfDots {
   border: 1pt solid #c0c0c0; }
@@ -60,9 +59,8 @@ td.blockOfDots {
 table.blockEquation {
   border-spacing: 0.8em; }
 
-.word-equation, .sentence {
-  font: 1.4em normal Georgia;
-  padding: 0.9em; }
+.word-equation span, .sentence span {
+  font: 1.4em normal Georgia; }
 
 .paragraph {
   font: 1.4em normal Georgia;
@@ -174,6 +172,8 @@ table.blockEquation {
   padding: 0; }
   .structures-wrapper .structure:first-child {
     margin-top: 0; }
+  .structures-wrapper .structure:last-child {
+    margin-bottom: 1.2em; }
   .structures-wrapper .interleaved-group {
     margin: 2.5em 0; }
     .structures-wrapper .interleaved-group:first-child {
@@ -181,11 +181,5 @@ table.blockEquation {
     .structures-wrapper .interleaved-group:last-child {
       margin-bottom: 0; }
     .structures-wrapper .interleaved-group .structure {
-      padding-top: 0.3em;
-      padding-bottom: 0.3em;
-      margin-top: 0.6em;
-      margin-bottom: 0.6em; }
-      .structures-wrapper .interleaved-group .structure:first-child {
-        margin-top: 0; }
-      .structures-wrapper .interleaved-group .structure:last-child {
-        margin-bottom: 1.2em; }
+      margin-top: 0.5em;
+      margin-bottom: 0.5em; }
