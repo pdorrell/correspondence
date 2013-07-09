@@ -55,11 +55,13 @@ for items in a different structure would give these matches:</p>
 </ul>
 
 
-<p>In practice both partial siblings and partial cousins can be displayed using a common "partial" highlight,
-so that only five different colorations are required.</p>
+<p>Note: currently the colour schemes I have implemented do the same coloration for 
+"sibling" and "cousin", so there are actually only four distinct colorations, i.e.
+"selected", "match", "partial match" and "unrelated".</p>
 
 <p>In the following example, partial matches are shown in the very lightest green colour.</p>
 
+<div>
 <div class="structure-group">
   <div class="structure sentence">
     <span class="word" data-id="1">Item-one-beginning</span>
@@ -85,6 +87,25 @@ so that only five different colorations are required.</p>
     <span class="word" data-id="1,2,3">One-Two-and-Three</span>
   </div>
 </div>
+</div>
+
+<h2>Limitations of Three-Way (or more) Translation Visualization</h2>
+
+<p>The primary use-case for <b>Correspondence</b> is to look at only two
+structures at once, or, to look at more than two structures where all the structures
+can be decomposed into items with the same or very much the same granularity.</p>
+
+<p>Trying to make sense of matches and partial matches adds considerable 
+cognitive load, something that Correspondence is designed to reduce in the first place.</p>
+
+<p>The main use-case for three-way visualization is for translations between natural
+language texts, where there is a high-quality "free" translation from the language being
+taught to the learner's own native language, and one wishes to simultaneously display
+the original text in the language being taught, a word-for-word translation created for display with 
+Correspondence, and the original "free" translation, all at once. In this situation,
+partial matches will occur, but only between the first and third or the second and third
+versions &ndash; not between the first two, given that the second text is one that has
+been carefully constructed so as not to require any partial matches with the original text.</p>
 
 <h2>License</h2>
 
