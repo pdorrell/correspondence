@@ -88,18 +88,28 @@ var CORRESPONDENCE = {};
     }
   }
     
-  /** From the specified data attribute, insert item into a map of items, indexed by the item's ID.
-      Associated items in a structure group have the same ID, so each item is held in an array of items
+  /** From the specified data attribute, insert item into a map of items, indexed by each of
+      the item's IDs.
+      Associated items in a structure group have the same IDs, so each item is held in an array of items
       with the same ID.
   */
-  function indexItemByItemId(itemsMap, item) {
-    var itemId = item.data("id");
-    var itemsForItemId = itemsMap[itemId];
-    if (itemsForItemId === undefined) {
-      itemsForItemId = [];
-      itemsMap[itemId] = itemsForItemId;
+  function indexItemByItemIds(itemsMap, item) {
+    var itemIds = item.data("itemIds");
+    for (var i=0; i<itemIds.length; i++) {
+      var itemId = itemIds[i];
+      var itemsForItemId = itemsMap[itemId];
+      if (itemsForItemId === undefined) {
+        itemsForItemId = [];
+        itemsMap[itemId] = itemsForItemId;
+      }
+      itemsForItemId.push(item[0]);
     }
-    itemsForItemId.push(item[0]);
+  }
+  
+  // parse item IDs from comma-separated list e.g "1,3,2" => ["1","3","2"]
+  function parseItemIds(itemIdAttribute) {
+    var itemIds = itemIdAttribute.toString().split(",");
+    return itemIds;
   }
     
   function ElementSelection() {
@@ -295,13 +305,14 @@ var CORRESPONDENCE = {};
           $(structure).find("[data-id]").each( // for each item in the structure
             function(index, item) {
               var $item = $(item);
+              var itemIdAttribute = $item.data("id");
               $item.data("structureId", structureId); // pointer to parent structure
-              
+              $item.data("itemIds", parseItemIds(itemIdAttribute));
               $item.data("selectedStyleTarget", 
                          createStyleTarget(item, "selected")); // style target for this item to become selected
               $item.data("siblings", []); // list of sibling style targets (yet to be populated)
               $item.data("cousins", []); // list of cousin style targets (yet to be populated)
-              indexItemByItemId(itemsByItemId, $item); // index this item within it's structure group
+              indexItemByItemIds(itemsByItemId, $item); // index this item within it's structure group
             });
         });
     }, 
@@ -312,20 +323,27 @@ var CORRESPONDENCE = {};
       $(this.structureGroup).find("[data-id]").each( // for each item in the structure group
         function(index, item) {
           var $item = $(item);
-          var itemId = $item.data("id");
+          var itemIds = $item.data("itemIds");
           var structureId = $item.data("structureId"); // structure ID of this item
-          var itemsForItemId = itemsByItemId[itemId];
           var siblings = $item.data("siblings");
           var cousins = $item.data("cousins");
-          for (var i=0; i<itemsForItemId.length; i++) { // for all items with the same ID
-            var otherItem = itemsForItemId[i];
-            if (item != otherItem) {
-              var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
-              if (structureId == otherItemStructureId) {
-                siblings.push(createStyleTarget(otherItem, "highlighted"));
-              }
-              else {
-                cousins.push(createStyleTarget(otherItem, "highlighted"));
+          var itemsFound = [];
+          for (var i=0; i<itemIds.length; i++) { // for each ID that the item has
+            var itemId = itemIds[i];
+            var itemsForItemId = itemsByItemId[itemId];
+            for (var j=0; j<itemsForItemId.length; j++) { // for all other items with this ID
+              var otherItem = itemsForItemId[j];
+              if (itemsFound.indexOf(otherItem) == -1) { // don't include items that we've already included
+                itemsFound.push(otherItem);
+                if (item != otherItem) {
+                  var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
+                  if (structureId == otherItemStructureId) {
+                    siblings.push(createStyleTarget(otherItem, "highlighted"));
+                  }
+                  else {
+                    cousins.push(createStyleTarget(otherItem, "highlighted"));
+                  }
+                }
               }
             }
           }
