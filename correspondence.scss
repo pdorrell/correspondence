@@ -136,7 +136,7 @@ table.blockEquation {
 	background-color: #e0e0f0;
     }
     span.punctuation-partial-match {
-	border: 1pt solid #8080ff;
+	border: 1pt solid #8080a0;
 	background-color: #f8f8ff;
     }
 
@@ -156,7 +156,7 @@ table.blockEquation {
     }
 
     span.number-partial-match, .blockOfDots-partial-match {
-	border: 1pt solid #a0a0ff;
+	border: 1pt solid #8080a0;
 	background-color: #f8fff8;
     }
 
@@ -175,7 +175,7 @@ table.blockEquation {
 	background-color: #e0e0f0;
     }
     span.operator-partial-match {
-	border: 1pt solid #8080ff;
+	border: 1pt solid #8080a0;
 	background-color: #f8f8ff;
     }
 }
@@ -222,8 +222,8 @@ $output_background: #ffe9e9;
 		background-color: #ffa0a0;
 	    }
 	    &.partial-match {
-		border: 1pt solid #ff8080;
-		background-color: #fff0f0;
+		border: 1pt solid #a08080;
+		background-color: #fff8f8;
 	    }
 	}
     }

@@ -96,7 +96,7 @@ table.blockEquation {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
 .structure span.punctuation-partial-match {
-  border: 1pt solid #8080ff;
+  border: 1pt solid #8080a0;
   background-color: #f8f8ff; }
 .structure span.number {
   padding: 0.1em;
@@ -108,7 +108,7 @@ table.blockEquation {
   border: 1pt solid green;
   background-color: #e0f0e0; }
 .structure span.number-partial-match, .structure .blockOfDots-partial-match {
-  border: 1pt solid #a0a0ff;
+  border: 1pt solid #8080a0;
   background-color: #f8fff8; }
 .structure span.operator {
   padding: 0.1em;
@@ -120,7 +120,7 @@ table.blockEquation {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
 .structure span.operator-partial-match {
-  border: 1pt solid #8080ff;
+  border: 1pt solid #8080a0;
   background-color: #f8f8ff; }
 
 .ruby-structure {
@@ -149,8 +149,8 @@ table.blockEquation {
     border: 1pt solid red;
     background-color: #ffa0a0; }
   .structure span.output span.partial-match {
-    border: 1pt solid #ff8080;
-    background-color: #fff0f0; }
+    border: 1pt solid #a08080;
+    background-color: #fff8f8; }
 
 .annotation {
   font-style: italic;
