@@ -1,0 +1,99 @@
+<!DOCTYPE html">
+<html lang="en" >
+<head><meta charset="utf-8">
+<title>Correspondence: Three Way Translation</title>
+<link rel="stylesheet" type="text/css" href="correspondence.css" />
+  <script language="javascript" type="text/javascript" src="lib/jquery-1.10.1.js"></script>
+  <script language="javascript" type="text/javascript" src="correspondence.js"></script>
+  <script language="javascript" type="text/javascript" src="correspondence-configuration.js"></script>
+</head>
+
+<body>
+<h1>Three-Way Translation</h1>
+
+<div class="author">Author: <a href="http://thinkinghard.com">Philip Dorrell</a></div>
+
+<p><a href="index.html">Correspondence</a> is a framework for interactively visualizing <i>correspondences</i> between
+items in related structures.</p>
+
+<p>When comparing <i>two</i> structures, granularity of corresponding items can be chosen based
+on the relationships between the two structures.</p>
+
+<p>With <i>three</i> (or more) structures, there is no clear best choice of granularity, because
+for each structure, there are multiple relationships competing to determine the granularity.</p>
+
+<p>A solution to this problem is to choose item numbers based on the finest granularity, and then
+use <b>multiple IDs</b> for items that refer to multiple items in other structures.</p>
+
+<p>The mouse-over interaction is then augmented to include <b>partial highlighting</b>. An item will be partially
+highlighted whenever its IDs overlap with those of the selected item, but the partially hightlighted
+item has at least one ID which is <i>not</i> an ID of the selected item.</p>
+
+<p>Applying this to the concepts of "siblings" and "cousins", for items that have the same ID as a
+selected item in the same structure or different structure respectively, this results in a total 
+of six different types of highlighting:</p>
+
+<ol>
+ <li>The Selected Item</li>
+ <li>A "sibling" in the same structure that shares all its IDs with the selected item</li>
+ <li>A "partial sibling" in the same structure that shares some of its IDs with the selected item</li>
+ <li>A "cousin" in a different structure that shares all its IDs with the selected item</li>
+ <li>A "partial cousin" in a different structure that shares some of its IDs with the selected item</li>
+ <li>An unrelated item that shares no IDs with the selected item.</li>
+</ol>
+
+<p>So, for example, if the selected item had IDs of <b>1,2,3</b>, then the following IDs 
+for items in a different structure would give these matches:</p>
+
+<ul>
+ <li><b>1</b>: "cousin"</li>
+ <li><b>1,2</b>: "cousin"</li>
+ <li><b>1,2,3</b>: "cousin"</li>
+ <li><b>1,2,3,4</b>: "partial cousin"</li>
+ <li><b>1,3,4</b>: "partial cousin"</li>
+ <li><b>4</b>: "unrelated"</li>
+</ul>
+
+
+<p>In practice both partial siblings and partial cousins can be displayed using a common "partial" highlight,
+so that only five different colorations are required.</p>
+
+<p>In the following example, partial matches are shown in the very lightest green colour.</p>
+
+<div class="structure-group">
+  <div class="structure sentence">
+    <span class="word" data-id="1">Item-one-beginning</span>
+    <span class="word" data-id="2">Item-two</span>
+    <span class="word" data-id="1">Item-one-end</span>
+    <span class="word" data-id="3">Item-three</span>
+  </div>
+  <div class="structure sentence">
+    <span class="word" data-id="1">Uno</span>
+    <span class="word" data-id="2">Dos</span>
+    <span class="word" data-id="3">Tres</span>
+  </div>
+  <div class="structure sentence">
+    <span class="word" data-id="1,2">One-and-Two-Beginning</span>
+    <span class="word" data-id="2">Two-end</span>
+    <span class="word" data-id="3">Three</span>
+  </div>
+  <div class="structure sentence">
+    <span class="word" data-id="1">One</span>
+    <span class="word" data-id="2,3">Two-and-Three</span>
+  </div>
+  <div class="structure sentence">
+    <span class="word" data-id="1,2,3">One-Two-and-Three</span>
+  </div>
+</div>
+
+<h2>License</h2>
+
+<p><b>Correspondence</b> is licensed under the <a href="LICENSE.txt">GNU Lesser General Public License version 3</a>.
+</p>
+
+<h2><a href="https://github.com/pdorrell/correspondence">Github Repository</a></h2>
+
+<div class="date">Last updated: 10 July 2013</div>
+
+</body>
+</html>
