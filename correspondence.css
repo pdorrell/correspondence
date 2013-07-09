@@ -41,6 +41,8 @@ span.output-marker {
   padding: 0em; }
   .structure-group:first-child {
     margin-top: 0; }
+  .structure-group:last-child {
+    margin-bottom: 0; }
 
 .item-groups-example .structure-group {
   width: 30em; }
@@ -80,10 +82,10 @@ table.blockEquation {
   background-color: #a0f0a0; }
 .structure span.match, .structure .word-match {
   border: 1pt solid green;
-  background-color: #e0f0e0; }
+  background-color: #d0f0d0; }
 .structure span.partial-match, .structure .word-partial-match {
-  border: 1pt solid green;
-  background-color: #f0fff0; }
+  border: 1pt solid #80a080;
+  background-color: #f8fff8; }
 .structure span.punctuation {
   padding: 0.1em;
   border: 1pt solid white; }
@@ -94,8 +96,8 @@ table.blockEquation {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
 .structure span.punctuation-partial-match {
-  border: 1pt solid blue;
-  background-color: #f0f0ff; }
+  border: 1pt solid #8080ff;
+  background-color: #f8f8ff; }
 .structure span.number {
   padding: 0.1em;
   border: 1pt solid white; }
@@ -106,8 +108,8 @@ table.blockEquation {
   border: 1pt solid green;
   background-color: #e0f0e0; }
 .structure span.number-partial-match, .structure .blockOfDots-partial-match {
-  border: 1pt solid green;
-  background-color: #f0fff0; }
+  border: 1pt solid #a0a0ff;
+  background-color: #f8fff8; }
 .structure span.operator {
   padding: 0.1em;
   border: 1pt solid white; }
@@ -118,8 +120,8 @@ table.blockEquation {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
 .structure span.operator-partial-match {
-  border: 1pt solid blue;
-  background-color: #f0f0ff; }
+  border: 1pt solid #8080ff;
+  background-color: #f8f8ff; }
 
 .ruby-structure {
   border: 3px solid #405090;
@@ -147,8 +149,8 @@ table.blockEquation {
     border: 1pt solid red;
     background-color: #ffa0a0; }
   .structure span.output span.partial-match {
-    border: 1pt solid red;
-    background-color: #ffe0e0; }
+    border: 1pt solid #ff8080;
+    background-color: #fff0f0; }
 
 .annotation {
   font-style: italic;
