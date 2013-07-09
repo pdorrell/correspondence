@@ -97,7 +97,7 @@ table.blockEquation {
   }
 }
 
-.match, .selected {
+.partial-match, .match, .selected {
   color: black;
 }
 
@@ -114,6 +114,10 @@ table.blockEquation {
 	border: 1pt solid green;
 	background-color: #e0f0e0;
     }
+    span.partial-match, .word-partial-match {
+	border: 1pt solid green;
+	background-color: #f0fff0;
+    }
     span.punctuation {
 	padding: 0.1em;
 	border: 1pt solid white;
@@ -127,6 +131,10 @@ table.blockEquation {
     span.punctuation-match {
 	border: 1pt solid blue;
 	background-color: #e0e0f0;
+    }
+    span.punctuation-partial-match {
+	border: 1pt solid blue;
+	background-color: #f0f0ff;
     }
 
     span.number {
@@ -144,6 +152,11 @@ table.blockEquation {
 	background-color: #e0f0e0;
     }
 
+    span.number-partial-match, .blockOfDots-partial-match {
+	border: 1pt solid green;
+	background-color: #f0fff0;
+    }
+
     span.operator {
 	padding: 0.1em;
 	border: 1pt solid white;
@@ -157,6 +170,10 @@ table.blockEquation {
     span.operator-match {
 	border: 1pt solid blue;
 	background-color: #e0e0f0;
+    }
+    span.operator-partial-match {
+	border: 1pt solid blue;
+	background-color: #f0f0ff;
     }
 }
 
@@ -200,6 +217,10 @@ $output_background: #ffe9e9;
 	    &.match {
 		border: 1pt solid red;
 		background-color: #ffa0a0;
+	    }
+	    &.partial-match {
+		border: 1pt solid red;
+		background-color: #ffe0e0;
 	    }
 	}
     }

@@ -111,6 +111,15 @@ var CORRESPONDENCE = {};
     var itemIds = itemIdAttribute.toString().split(",");
     return itemIds;
   }
+  
+  function matchIsPartial(itemIds, otherItemIds) {
+    for (var i=0; i<otherItemIds.length; i++) {
+      if (itemIds.indexOf(otherItemIds[i]) == -1) {
+        return true;
+      }
+    }
+    return false;
+  }
     
   function ElementSelection() {
     this.currentSelectedElement = null;
@@ -337,11 +346,13 @@ var CORRESPONDENCE = {};
                 itemsFound.push(otherItem);
                 if (item != otherItem) {
                   var otherItemStructureId = $(otherItem).data("structureId"); // structure ID of the other item
+                  var otherItemIds = $(otherItem).data("itemIds");
+                  var matchStyleClass = matchIsPartial(itemIds, otherItemIds) ? "partial-match" : "match";
                   if (structureId == otherItemStructureId) {
-                    siblings.push(createStyleTarget(otherItem, "match"));
+                    siblings.push(createStyleTarget(otherItem, matchStyleClass));
                   }
                   else {
-                    cousins.push(createStyleTarget(otherItem, "match"));
+                    cousins.push(createStyleTarget(otherItem, matchStyleClass));
                   }
                 }
               }
