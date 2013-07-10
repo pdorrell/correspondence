@@ -45,32 +45,11 @@ table.blockEquation {
 }
 
 .structure {
-    .word {
-	padding: 0.1em;
-	border: 1pt solid white;
-    }
-    .word-selected {
-	border: 1pt solid green;
-	background-color: #a0f0a0;
-    }
-    .word-match {
-	border: 1pt solid green;
-	background-color: #d0f0d0;
-    }
-    .word-partial-match {
-	border: 1pt solid #80a080;
-	background-color: #f8fff8;
-    }
-    span.punctuation {
-	padding: 0.1em;
-	border: 1pt solid white;
-    }
 
     span.punctuation-selected {
 	border: 1pt solid blue;
 	background-color: #b0b0f0;
     }
-
     span.punctuation-match {
 	border: 1pt solid blue;
 	background-color: #e0e0f0;
@@ -78,31 +57,6 @@ table.blockEquation {
     span.punctuation-partial-match {
 	border: 1pt solid #8080a0;
 	background-color: #f8f8ff;
-    }
-
-    span.number {
-	padding: 0.1em;
-	border: 1pt solid white;
-    }
-
-    span.number-selected, .blockOfDots-selected {
-	border: 1pt solid green;
-	background-color: #a0f0a0;
-    }
-
-    span.number-match, .blockOfDots-match {
-	border: 1pt solid green;
-	background-color: #e0f0e0;
-    }
-
-    span.number-partial-match, .blockOfDots-partial-match {
-	border: 1pt solid #8080a0;
-	background-color: #f8fff8;
-    }
-
-    span.operator {
-	padding: 0.1em;
-	border: 1pt solid white;
     }
 
     span.operator-selected {
