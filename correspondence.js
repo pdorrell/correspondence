@@ -189,6 +189,7 @@ var CORRESPONDENCE = {};
       labelDiv.append(label);
       label.prepend(checkbox);
       $(this.structureGroup).append(labelDiv);
+      $(this.structureGroup).css("padding-top", 0);
       var $this = this;
       var structuresWrapperDiv = $('<div class="structures-wrapper"></div>');
       structuresSelector.each(function(index, structureElement) {
@@ -322,9 +323,22 @@ var CORRESPONDENCE = {};
     initializeStructures: function() {
       // set "structureId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
       var itemsByItemId = {}; // the items map for all items in this structure group
-      
+      this.addStructureItemClassToItems();
       this.indexItemsByTheirId(itemsByItemId);
       this.linkSiblingsAndCousins(itemsByItemId);
+    }, 
+    
+    /** Items are identified by "data-id" attribute, so they don't actually have any 
+        specific CSS class. This method specifically adds in the "structure-item" class. */
+    addStructureItemClassToItems: function () {
+      $(this.structureGroup).find(".structure").each( // for each structure in this structure group
+        function(index, structure) {
+          $(structure).find("[data-id]").each( // for each item in the structure
+            function(index, item) {
+              var $item = $(item);
+              $item.addClass("structure-item");
+            });
+        });
     }, 
       
     indexItemsByTheirId: function (itemsByItemId) {

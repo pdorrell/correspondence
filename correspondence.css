@@ -2,7 +2,7 @@ body {
   color: #404040;
   margin: 0.4em 2em; }
 
-p, ul {
+p, ul, ol {
   color: black;
   font: 1.2em normal Georgia; }
 
@@ -22,15 +22,18 @@ span.output-marker {
 
 .structure {
   border: 3px solid #a0a0a0;
-  margin: 1.0em 1.2em;
-  background-color: white;
+  margin: 1.0em 0;
   padding: 0.5em 0.4em;
   line-height: 1.5em;
-  position: relative; }
+  position: relative;
+  background-color: white;
+  color: #686868; }
+  .structure .structure-item {
+    color: #000060; }
   .structure:first-child {
-    margin-top: 1.2em; }
+    margin-top: 0; }
   .structure:last-child {
-    margin-bottom: 1.2em; }
+    margin-bottom: 0; }
   .structure .language {
     font-size: 0.6em;
     font-style: italic;
@@ -49,7 +52,7 @@ span.output-marker {
   border: 2px solid #505050;
   margin: 4em 0.5em;
   background-color: #e0e0e0;
-  padding: 0em; }
+  padding: 1em; }
   .structure-group:first-child {
     margin-top: 0; }
   .structure-group:last-child {
@@ -72,13 +75,12 @@ td.blockOfDots {
 table.blockEquation {
   border-spacing: 0.8em; }
 
-.word-equation span, .sentence span {
+.word-equation, .sentence {
   font: 1.4em normal Georgia; }
 
 .paragraph {
   font: 1.4em normal Georgia;
-  padding: 1em;
-  line-height: 1.3em; }
+  line-height: 1.5em; }
   .paragraph .word {
     padding: 0 0.1em; }
 
@@ -187,12 +189,13 @@ table.blockEquation {
 
 .interleaving-control-wrapper {
   text-align: right;
-  margin: 0.2em; }
+  margin: 0.4em 0 0.2em 0; }
   .interleaving-control-wrapper .interleaving-control {
     background-color: #f0f0f0;
     padding: 0.1em 0.3em 0 0;
     font-size: 0.8em;
     margin: 0;
+    color: #646464;
     white-space: nowrap; }
 
 .structures-wrapper {
@@ -201,7 +204,7 @@ table.blockEquation {
   .structures-wrapper .structure:first-child {
     margin-top: 0; }
   .structures-wrapper .structure:last-child {
-    margin-bottom: 1.2em; }
+    margin-bottom: 0; }
   .structures-wrapper .interleaved-group {
     margin: 2.5em 0; }
     .structures-wrapper .interleaved-group:first-child {
@@ -214,4 +217,4 @@ table.blockEquation {
       .structures-wrapper .interleaved-group .structure:first-child {
         margin-top: 0; }
       .structures-wrapper .interleaved-group .structure:last-child {
-        margin-bottom: 1.2em; }
+        margin-bottom: 0; }
