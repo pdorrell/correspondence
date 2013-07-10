@@ -1,0 +1,170 @@
+/** Correspondence styling for specific examples */
+
+span.output-marker {
+  padding: 0 0 0 0.5em;
+  color: #f03030;
+}
+
+.item-groups-example {
+    .structure-group {
+	width: 30em;
+    }
+}
+
+.equation {
+    span {
+	font: 2.2em bold Arial;
+    }
+    td.number {
+	font-size: 2em;
+    }
+}
+
+.blockOfDots {
+  border: 1pt solid #c0c0c0;
+}
+
+td.blockOfDots {
+  font-size: 2em;
+}
+
+table.blockEquation {
+  border-spacing: 0.8em;
+}
+
+.word-equation, .sentence {
+    font: 1.4em normal Georgia;
+}
+
+.paragraph {
+  font: 1.4em normal Georgia;
+  line-height: 1.5em;
+  .word {
+      padding: 0 0.1em;
+  }
+}
+
+.structure {
+    .word {
+	padding: 0.1em;
+	border: 1pt solid white;
+    }
+    .word-selected {
+	border: 1pt solid green;
+	background-color: #a0f0a0;
+    }
+    .word-match {
+	border: 1pt solid green;
+	background-color: #d0f0d0;
+    }
+    .word-partial-match {
+	border: 1pt solid #80a080;
+	background-color: #f8fff8;
+    }
+    span.punctuation {
+	padding: 0.1em;
+	border: 1pt solid white;
+    }
+
+    span.punctuation-selected {
+	border: 1pt solid blue;
+	background-color: #b0b0f0;
+    }
+
+    span.punctuation-match {
+	border: 1pt solid blue;
+	background-color: #e0e0f0;
+    }
+    span.punctuation-partial-match {
+	border: 1pt solid #8080a0;
+	background-color: #f8f8ff;
+    }
+
+    span.number {
+	padding: 0.1em;
+	border: 1pt solid white;
+    }
+
+    span.number-selected, .blockOfDots-selected {
+	border: 1pt solid green;
+	background-color: #a0f0a0;
+    }
+
+    span.number-match, .blockOfDots-match {
+	border: 1pt solid green;
+	background-color: #e0f0e0;
+    }
+
+    span.number-partial-match, .blockOfDots-partial-match {
+	border: 1pt solid #8080a0;
+	background-color: #f8fff8;
+    }
+
+    span.operator {
+	padding: 0.1em;
+	border: 1pt solid white;
+    }
+
+    span.operator-selected {
+	border: 1pt solid blue;
+	background-color: #b0b0f0;
+    }
+
+    span.operator-match {
+	border: 1pt solid blue;
+	background-color: #e0e0f0;
+    }
+    span.operator-partial-match {
+	border: 1pt solid #8080a0;
+	background-color: #f8f8ff;
+    }
+}
+
+$ruby_border: #405090;
+$ruby_background: #fbfbff;
+
+.ruby-structure {
+  border: 3px solid $ruby_border;
+  background-color: $ruby_background;
+  span {
+      border: 1pt solid $ruby_background;
+  }
+}
+
+$spanish_border: #4090f0;
+$spanish_background: #fbfcff;
+
+.spanish-structure {
+  border: 3px solid $spanish_border;
+  background-color: $spanish_background;
+  span {
+      border: 1pt solid $spanish_background;
+  }
+}
+
+$output_background: #ffe9e9;
+
+.structure {
+    span.output {
+	span {
+	    border: 1pt solid $output_background;
+	    font-family: Courier New;
+	    font-weight: bold;
+	    font-size: 0.9em;
+	    color: #a00000;
+	    background-color: $output_background;
+	    &.selected {
+		border: 1pt solid red;
+		background-color: #ffd0d0;
+	    }
+	    &.match {
+		border: 1pt solid red;
+		background-color: #ffa0a0;
+	    }
+	    &.partial-match {
+		border: 1pt solid #a08080;
+		background-color: #fff8f8;
+	    }
+	}
+    }
+}

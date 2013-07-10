@@ -1,0 +1,35 @@
+/** Page styling unrelated to correspondence */
+
+p, ul, ol {
+  color: black;
+  font: 1.2em normal Georgia;
+}
+
+h1 {
+  font: 3em bold Arial,Helvetica;
+  color: #000030;
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  color: #000030;
+  font: 2em bold Arial,Helvetica;
+}
+
+body {
+  color: #404040;
+  margin: 0.4em 2em;
+}
+
+.date {
+  font-style: italic;
+  font-size: 1em;
+  text-align: right;
+  margin: 1em;
+}
+
+.author {
+  font-style: italic;
+  text-align: right;
+}

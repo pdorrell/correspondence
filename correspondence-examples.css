@@ -1,0 +1,108 @@
+/** Correspondence styling for specific examples */
+span.output-marker {
+  padding: 0 0 0 0.5em;
+  color: #f03030; }
+
+.item-groups-example .structure-group {
+  width: 30em; }
+
+.equation span {
+  font: 2.2em bold Arial; }
+.equation td.number {
+  font-size: 2em; }
+
+.blockOfDots {
+  border: 1pt solid #c0c0c0; }
+
+td.blockOfDots {
+  font-size: 2em; }
+
+table.blockEquation {
+  border-spacing: 0.8em; }
+
+.word-equation, .sentence {
+  font: 1.4em normal Georgia; }
+
+.paragraph {
+  font: 1.4em normal Georgia;
+  line-height: 1.5em; }
+  .paragraph .word {
+    padding: 0 0.1em; }
+
+.structure .word {
+  padding: 0.1em;
+  border: 1pt solid white; }
+.structure .word-selected {
+  border: 1pt solid green;
+  background-color: #a0f0a0; }
+.structure .word-match {
+  border: 1pt solid green;
+  background-color: #d0f0d0; }
+.structure .word-partial-match {
+  border: 1pt solid #80a080;
+  background-color: #f8fff8; }
+.structure span.punctuation {
+  padding: 0.1em;
+  border: 1pt solid white; }
+.structure span.punctuation-selected {
+  border: 1pt solid blue;
+  background-color: #b0b0f0; }
+.structure span.punctuation-match {
+  border: 1pt solid blue;
+  background-color: #e0e0f0; }
+.structure span.punctuation-partial-match {
+  border: 1pt solid #8080a0;
+  background-color: #f8f8ff; }
+.structure span.number {
+  padding: 0.1em;
+  border: 1pt solid white; }
+.structure span.number-selected, .structure .blockOfDots-selected {
+  border: 1pt solid green;
+  background-color: #a0f0a0; }
+.structure span.number-match, .structure .blockOfDots-match {
+  border: 1pt solid green;
+  background-color: #e0f0e0; }
+.structure span.number-partial-match, .structure .blockOfDots-partial-match {
+  border: 1pt solid #8080a0;
+  background-color: #f8fff8; }
+.structure span.operator {
+  padding: 0.1em;
+  border: 1pt solid white; }
+.structure span.operator-selected {
+  border: 1pt solid blue;
+  background-color: #b0b0f0; }
+.structure span.operator-match {
+  border: 1pt solid blue;
+  background-color: #e0e0f0; }
+.structure span.operator-partial-match {
+  border: 1pt solid #8080a0;
+  background-color: #f8f8ff; }
+
+.ruby-structure {
+  border: 3px solid #405090;
+  background-color: #fbfbff; }
+  .ruby-structure span {
+    border: 1pt solid #fbfbff; }
+
+.spanish-structure {
+  border: 3px solid #4090f0;
+  background-color: #fbfcff; }
+  .spanish-structure span {
+    border: 1pt solid #fbfcff; }
+
+.structure span.output span {
+  border: 1pt solid #ffe9e9;
+  font-family: Courier New;
+  font-weight: bold;
+  font-size: 0.9em;
+  color: #a00000;
+  background-color: #ffe9e9; }
+  .structure span.output span.selected {
+    border: 1pt solid red;
+    background-color: #ffd0d0; }
+  .structure span.output span.match {
+    border: 1pt solid red;
+    background-color: #ffa0a0; }
+  .structure span.output span.partial-match {
+    border: 1pt solid #a08080;
+    background-color: #fff8f8; }
