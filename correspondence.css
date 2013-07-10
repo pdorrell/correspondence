@@ -1,25 +1,4 @@
-body {
-  color: #404040;
-  margin: 0.4em 2em; }
-
-p, ul, ol {
-  color: black;
-  font: 1.2em normal Georgia; }
-
-h1 {
-  font: 3em bold Arial,Helvetica;
-  color: #000030;
-  margin: 0;
-  padding: 0; }
-
-h2 {
-  color: #000030;
-  font: 2em bold Arial,Helvetica; }
-
-span.output-marker {
-  padding: 0 1em;
-  color: #f03030; }
-
+/** Generic or default Correspondence styling */
 .structure {
   border: 3px solid #a0a0a0;
   margin: 1.0em 0;
@@ -58,6 +37,63 @@ span.output-marker {
   .structure-group:last-child {
     margin-bottom: 0; }
 
+.partial-match, .match, .selected {
+  color: black; }
+
+.structure span.structure-item {
+  padding: 0.1em;
+  border: 1pt solid white; }
+.structure span.selected {
+  border: 1pt solid green;
+  background-color: #a0f0a0; }
+.structure span.match {
+  border: 1pt solid green;
+  background-color: #d0f0d0; }
+.structure span.partial-match {
+  border: 1pt solid #80a080;
+  background-color: #f8fff8; }
+
+.control {
+  padding: 0.15em 0.35em;
+  margin: 0 0 0 5em;
+  font: 0.9em Arial,Helvetica;
+  color: #606060;
+  background-color: #f0f0f0;
+  border: solid 1px #d0d0d0; }
+
+.interleaving-control-wrapper {
+  text-align: right;
+  margin: 0.4em 0 0.2em 0; }
+  .interleaving-control-wrapper .interleaving-control {
+    background-color: #f0f0f0;
+    padding: 0.1em 0.3em 0 0;
+    font-size: 0.8em;
+    margin: 0;
+    color: #646464;
+    white-space: nowrap; }
+
+.structures-wrapper {
+  margin: 0;
+  padding: 0; }
+  .structures-wrapper .interleaved-group {
+    margin: 2.5em 0; }
+    .structures-wrapper .interleaved-group:first-child {
+      margin-top: 0; }
+    .structures-wrapper .interleaved-group:last-child {
+      margin-bottom: 0; }
+    .structures-wrapper .interleaved-group .structure {
+      margin-top: 0.5em;
+      margin-bottom: 0.5em; }
+      .structures-wrapper .interleaved-group .structure:first-child {
+        margin-top: 0; }
+      .structures-wrapper .interleaved-group .structure:last-child {
+        margin-bottom: 0; }
+
+/** Correspondence styling for specific examples */
+span.output-marker {
+  padding: 0 0 0 0.5em;
+  color: #f03030; }
+
 .item-groups-example .structure-group {
   width: 30em; }
 
@@ -84,19 +120,16 @@ table.blockEquation {
   .paragraph .word {
     padding: 0 0.1em; }
 
-.partial-match, .match, .selected {
-  color: black; }
-
-.structure span, .structure .word {
+.structure .word {
   padding: 0.1em;
   border: 1pt solid white; }
-.structure span.selected, .structure .word-selected {
+.structure .word-selected {
   border: 1pt solid green;
   background-color: #a0f0a0; }
-.structure span.match, .structure .word-match {
+.structure .word-match {
   border: 1pt solid green;
   background-color: #d0f0d0; }
-.structure span.partial-match, .structure .word-partial-match {
+.structure .word-partial-match {
   border: 1pt solid #80a080;
   background-color: #f8fff8; }
 .structure span.punctuation {
@@ -165,9 +198,24 @@ table.blockEquation {
     border: 1pt solid #a08080;
     background-color: #fff8f8; }
 
-.annotation {
-  font-style: italic;
-  font-size: 0.8em; }
+/** Styling unrelated to correspondence */
+p, ul, ol {
+  color: black;
+  font: 1.2em normal Georgia; }
+
+h1 {
+  font: 3em bold Arial,Helvetica;
+  color: #000030;
+  margin: 0;
+  padding: 0; }
+
+h2 {
+  color: #000030;
+  font: 2em bold Arial,Helvetica; }
+
+body {
+  color: #404040;
+  margin: 0.4em 2em; }
 
 .date {
   font-style: italic;
@@ -178,39 +226,3 @@ table.blockEquation {
 .author {
   font-style: italic;
   text-align: right; }
-
-.control {
-  padding: 0.15em 0.35em;
-  margin: 0 0 0 5em;
-  font: 0.9em Arial,Helvetica;
-  color: #606060;
-  background-color: #f0f0f0;
-  border: solid 1px #d0d0d0; }
-
-.interleaving-control-wrapper {
-  text-align: right;
-  margin: 0.4em 0 0.2em 0; }
-  .interleaving-control-wrapper .interleaving-control {
-    background-color: #f0f0f0;
-    padding: 0.1em 0.3em 0 0;
-    font-size: 0.8em;
-    margin: 0;
-    color: #646464;
-    white-space: nowrap; }
-
-.structures-wrapper {
-  margin: 0;
-  padding: 0; }
-  .structures-wrapper .interleaved-group {
-    margin: 2.5em 0; }
-    .structures-wrapper .interleaved-group:first-child {
-      margin-top: 0; }
-    .structures-wrapper .interleaved-group:last-child {
-      margin-bottom: 0; }
-    .structures-wrapper .interleaved-group .structure {
-      margin-top: 0.5em;
-      margin-bottom: 0.5em; }
-      .structures-wrapper .interleaved-group .structure:first-child {
-        margin-top: 0; }
-      .structures-wrapper .interleaved-group .structure:last-child {
-        margin-bottom: 0; }
