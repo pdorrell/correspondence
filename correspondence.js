@@ -215,8 +215,17 @@ var CORRESPONDENCE = {};
     }, 
     
     setupInterleavingData: function(structuresSelector, firstStructureItemGroupsSelector) {
+      this.saveLanguageAnnotations(structuresSelector);
       this.setupInterleavingGroupIds(firstStructureItemGroupsSelector);
       this.setupInterleavingGroupIdMaps(structuresSelector);
+    }, 
+    
+    saveLanguageAnnotations: function(structuresSelector) {
+      this.languageAnnotations = new Array(structuresSelector.length);
+      for (var i=0; i<structuresSelector.length; i++) {
+        var structure = structuresSelector[i];
+        this.languageAnnotations[i] = $(structure).find(".language");
+      }
     }, 
     
     setupInterleavingGroupIds: function(firstStructureItemGroupsSelector) {
@@ -274,7 +283,14 @@ var CORRESPONDENCE = {};
           var itemGroup = this.itemGroupMaps[j][groupId];
           if (itemGroup != null) {
             var structureDiv = $('<div></div>');
-            $(structureDiv).attr("class", this.structureClassAttributes[j]).append(itemGroup);
+            var $structureDiv = $(structureDiv);
+            $structureDiv.attr("class", this.structureClassAttributes[j]);
+            if(i == 0) {
+              for (var k=0; k<this.languageAnnotations[j].length; k++) {
+                $structureDiv.append(this.languageAnnotations[j][k]);
+              }
+            }
+            $structureDiv.append(itemGroup);
             $(interleavedGroupDiv).append(structureDiv);
           }
         }
@@ -286,13 +302,17 @@ var CORRESPONDENCE = {};
       $(this.structuresWrapperDiv).find(".interleaved-group").detach();
       for (var i=0; i<this.numStructures; i++) {
         var structureDiv = $('<div></div>');
-        $(structureDiv).attr("class", this.structureClassAttributes[i]);
+        var $structureDiv = $(structureDiv);
+        $structureDiv.attr("class", this.structureClassAttributes[i]);
+        for (var k=0; k<this.languageAnnotations[i].length; k++) {
+          $structureDiv.append(this.languageAnnotations[i][k]);
+        }
         $(this.structuresWrapperDiv).append(structureDiv);
         for (var j=0; j<this.numGroupIds; j++) {
           var groupId = this.groupIds[j];
           var itemGroup = this.itemGroupMaps[i][groupId];
           if (itemGroup != null) {
-            $(structureDiv).append(itemGroup);
+            $structureDiv.append(itemGroup);
           }
         }
       }
