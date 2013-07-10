@@ -25,11 +25,22 @@ span.output-marker {
   margin: 1.0em 1.2em;
   background-color: white;
   padding: 0.5em 0.4em;
-  line-height: 1.5em; }
+  line-height: 1.5em;
+  position: relative; }
   .structure:first-child {
     margin-top: 1.2em; }
   .structure:last-child {
     margin-bottom: 1.2em; }
+  .structure .language {
+    font-size: 0.6em;
+    font-style: italic;
+    color: #808080;
+    position: absolute;
+    top: 0.2em;
+    right: 0.3em;
+    line-height: 1em;
+    padding: 0;
+    margin: 0; }
 
 .structure-group {
   position: relative;

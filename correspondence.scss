@@ -34,11 +34,23 @@ $default_structure_background: white;
   background-color: white;
   padding: 0.5em 0.4em;
   line-height: 1.5em;
+  position: relative;
   &:first-child {
       margin-top: 1.2em;
   }
   &:last-child {
       margin-bottom: 1.2em;
+  }
+  .language {
+      font-size: 0.6em;
+      font-style: italic;
+      color: #808080;
+      position: absolute;
+      top: 0.2em;
+      right: 0.3em;
+      line-height: 1em;
+      padding: 0;
+      margin: 0;
   }
 }
 
