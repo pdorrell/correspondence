@@ -1,6 +1,6 @@
 /** Correspondence styling for specific examples */
 
-span.output-marker {
+.output-marker {
   padding: 0 0 0 0.5em;
   color: #f03030;
 }
@@ -46,29 +46,29 @@ table.blockEquation {
 
 .structure {
 
-    span.punctuation-selected {
+    .punctuation-selected {
 	border: 1pt solid blue;
 	background-color: #b0b0f0;
     }
-    span.punctuation-match {
+    .punctuation-match {
 	border: 1pt solid blue;
 	background-color: #e0e0f0;
     }
-    span.punctuation-partial-match {
+    .punctuation-partial-match {
 	border: 1pt solid #8080a0;
 	background-color: #f8f8ff;
     }
 
-    span.operator-selected {
+    .operator-selected {
 	border: 1pt solid blue;
 	background-color: #b0b0f0;
     }
 
-    span.operator-match {
+    .operator-match {
 	border: 1pt solid blue;
 	background-color: #e0e0f0;
     }
-    span.operator-partial-match {
+    .operator-partial-match {
 	border: 1pt solid #8080a0;
 	background-color: #f8f8ff;
     }
@@ -99,7 +99,7 @@ $spanish_background: #fbfcff;
 $output_background: #ffe9e9;
 
 .structure {
-    span.output {
+    .output {
 	span {
 	    border: 1pt solid $output_background;
 	    font-family: Courier New;

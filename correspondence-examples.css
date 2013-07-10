@@ -1,5 +1,5 @@
 /** Correspondence styling for specific examples */
-span.output-marker {
+.output-marker {
   padding: 0 0 0 0.5em;
   color: #f03030; }
 
@@ -29,22 +29,22 @@ table.blockEquation {
   .paragraph .word {
     padding: 0 0.1em; }
 
-.structure span.punctuation-selected {
+.structure .punctuation-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0; }
-.structure span.punctuation-match {
+.structure .punctuation-match {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
-.structure span.punctuation-partial-match {
+.structure .punctuation-partial-match {
   border: 1pt solid #8080a0;
   background-color: #f8f8ff; }
-.structure span.operator-selected {
+.structure .operator-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0; }
-.structure span.operator-match {
+.structure .operator-match {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
-.structure span.operator-partial-match {
+.structure .operator-partial-match {
   border: 1pt solid #8080a0;
   background-color: #f8f8ff; }
 
@@ -60,19 +60,19 @@ table.blockEquation {
   .spanish-structure span {
     border: 1pt solid #fbfcff; }
 
-.structure span.output span {
+.structure .output span {
   border: 1pt solid #ffe9e9;
   font-family: Courier New;
   font-weight: bold;
   font-size: 0.9em;
   color: #a00000;
   background-color: #ffe9e9; }
-  .structure span.output span.selected {
+  .structure .output span.selected {
     border: 1pt solid red;
     background-color: #ffd0d0; }
-  .structure span.output span.match {
+  .structure .output span.match {
     border: 1pt solid red;
     background-color: #ffa0a0; }
-  .structure span.output span.partial-match {
+  .structure .output span.partial-match {
     border: 1pt solid #a08080;
     background-color: #fff8f8; }
