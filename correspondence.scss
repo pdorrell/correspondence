@@ -284,14 +284,6 @@ $output_background: #ffe9e9;
 .structures-wrapper {
   margin: 0;
   padding: 0;
-  .structure {
-      &:first-child {
-	  margin-top: 0;
-      }
-      &:last-child {
-	  margin-bottom: 0;
-      }
-  }
 
   .interleaved-group {
       margin: 2.5em 0;

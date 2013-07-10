@@ -201,10 +201,6 @@ table.blockEquation {
 .structures-wrapper {
   margin: 0;
   padding: 0; }
-  .structures-wrapper .structure:first-child {
-    margin-top: 0; }
-  .structures-wrapper .structure:last-child {
-    margin-bottom: 0; }
   .structures-wrapper .interleaved-group {
     margin: 2.5em 0; }
     .structures-wrapper .interleaved-group:first-child {
