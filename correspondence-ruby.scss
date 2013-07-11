@@ -1,0 +1,12 @@
+/* Ruby background & border */
+
+$ruby_border: #405090;
+$ruby_background: #fbfbff;
+
+.ruby-structure {
+  border: 3px solid $ruby_border;
+  background-color: $ruby_background;
+  .unhighlighted {
+      border: 1pt solid $ruby_background;
+  }
+}

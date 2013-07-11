@@ -1,0 +1,5 @@
+.paragraph {
+  font: 1.4em normal Georgia;
+  line-height: 1.5em; }
+  .paragraph .word {
+    padding: 0 0.1em; }

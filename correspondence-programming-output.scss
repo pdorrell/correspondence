@@ -1,0 +1,35 @@
+/** output & output marker styles for showing printed output of programming language examples */
+
+.output-marker {
+  padding: 0 0 0 0.5em;
+  color: #f03030;
+}
+
+$output_background: #ffe9e9;
+
+.structure {
+    .output {
+	.structure-item {
+	    border: 1pt solid $output_background;
+	    font-family: Courier New;
+	    font-weight: bold;
+	    font-size: 0.9em;
+	}
+	.unhighlighted {
+	    color: #a00000;
+	    background-color: $output_background;
+	}
+	.selected {
+	    border: 1pt solid red;
+	    background-color: #ffd0d0;
+	}
+	.match {
+	    border: 1pt solid red;
+	    background-color: #ffa0a0;
+	}
+	.partial-match {
+	    border: 1pt solid #a08080;
+	    background-color: #fff8f8;
+	}
+    }
+}

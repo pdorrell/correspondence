@@ -1,0 +1,26 @@
+.equation .structure-item {
+  font: 2.2em bold Arial; }
+.equation td.number {
+  font-size: 2em; }
+
+.blockOfDots {
+  border: 1pt solid #c0c0c0; }
+
+td.blockOfDots {
+  font-size: 2em; }
+
+table.blockEquation {
+  border-spacing: 0.8em; }
+
+.word-equation {
+  font: 1.4em normal Georgia; }
+
+.structure .operator-selected {
+  border: 1pt solid blue;
+  background-color: #b0b0f0; }
+.structure .operator-match {
+  border: 1pt solid blue;
+  background-color: #e0e0f0; }
+.structure .operator-partial-match {
+  border: 1pt solid #8080a0;
+  background-color: #f8f8ff; }
