@@ -4,7 +4,7 @@
 <title>Correspondence: Three Way Translation</title>
   <link rel="stylesheet" type="text/css" href="page.css" />
   <link rel="stylesheet" type="text/css" href="correspondence.css" />
-  <link rel="stylesheet" type="text/css" href="correspondence-examples.css" />
+  <link rel="stylesheet" type="text/css" href="correspondence-3-way-example.css" />
   <script language="javascript" type="text/javascript" src="lib/jquery-1.10.1.js"></script>
   <script language="javascript" type="text/javascript" src="correspondence.js"></script>
   <script language="javascript" type="text/javascript" src="correspondence-configuration.js"></script>
@@ -66,28 +66,28 @@ for items in a different structure would give these matches:</p>
 
 <div>
 <div class="structure-group">
-  <div class="structure sentence">
-    <span class="word" data-id="1">Item-one-beginning</span>
-    <span class="word" data-id="2">Item-two</span>
-    <span class="word" data-id="1">Item-one-end</span>
-    <span class="word" data-id="3">Item-three</span>
+  <div class="structure">
+    <span data-id="1">Item-one-beginning</span>
+    <span data-id="2">Item-two</span>
+    <span data-id="1">Item-one-end</span>
+    <span data-id="3">Item-three</span>
   </div>
-  <div class="structure sentence">
-    <span class="word" data-id="1">Uno</span>
-    <span class="word" data-id="2">Dos</span>
-    <span class="word" data-id="3">Tres</span>
+  <div class="structure">
+    <span data-id="1">Uno</span>
+    <span data-id="2">Dos</span>
+    <span data-id="3">Tres</span>
   </div>
-  <div class="structure sentence">
-    <span class="word" data-id="1,2">One-and-Two-Beginning</span>
-    <span class="word" data-id="2">Two-end</span>
-    <span class="word" data-id="3">Three</span>
+  <div class="structure">
+    <span data-id="1,2">One-and-Two-Beginning</span>
+    <span data-id="2">Two-end</span>
+    <span data-id="3">Three</span>
   </div>
-  <div class="structure sentence">
-    <span class="word" data-id="1">One</span>
-    <span class="word" data-id="2,3">Two-and-Three</span>
+  <div class="structure">
+    <span data-id="1">One</span>
+    <span data-id="2,3">Two-and-Three</span>
   </div>
-  <div class="structure sentence">
-    <span class="word" data-id="1,2,3">One-Two-and-Three</span>
+  <div class="structure">
+    <span data-id="1,2,3">One-Two-and-Three</span>
   </div>
 </div>
 </div>
