@@ -336,7 +336,7 @@ var CORRESPONDENCE = {};
           $(structure).find("[data-id]").each( // for each item in the structure
             function(index, item) {
               var $item = $(item);
-              $item.addClass("structure-item");
+              $item.addClass("structure-item unhighlighted");
             });
         });
     }, 
@@ -352,7 +352,8 @@ var CORRESPONDENCE = {};
               $item.data("structureId", structureId); // pointer to parent structure
               $item.data("itemIds", parseItemIds(itemIdAttribute));
               $item.data("selectedStyleTarget", 
-                         createStyleTarget(item, "selected")); // style target for this item to become selected
+                         createStyleTarget(item, "selected", 
+                                           "unhighlighted")); // style target for this item to become selected
               $item.data("siblings", []); // list of sibling style targets (yet to be populated)
               $item.data("cousins", []); // list of cousin style targets (yet to be populated)
               indexItemByItemIds(itemsByItemId, $item); // index this item within it's structure group
@@ -383,10 +384,10 @@ var CORRESPONDENCE = {};
                   var otherItemIds = $(otherItem).data("itemIds");
                   var matchStyleClass = matchIsPartial(itemIds, otherItemIds) ? "partial-match" : "match";
                   if (structureId == otherItemStructureId) {
-                    siblings.push(createStyleTarget(otherItem, matchStyleClass));
+                    siblings.push(createStyleTarget(otherItem, matchStyleClass, "unhighlighted"));
                   }
                   else {
-                    cousins.push(createStyleTarget(otherItem, matchStyleClass));
+                    cousins.push(createStyleTarget(otherItem, matchStyleClass, "unhighlighted"));
                   }
                 }
               }
@@ -463,18 +464,24 @@ var CORRESPONDENCE = {};
   };
 
   /** A "style target" is an intention to add or remove a class or classes to a DOM element
-      (as specified by a JQuery selector) */
-  function StyleTarget($element, styleClass) {
+      (as specified by a JQuery selector).
+      There is also a "default" style class, which explicitly represents the element
+      being in an "unstyled" state. (This is to deal with issues about CSS priority rules.)
+      */
+  function StyleTarget($element, styleClass, defaultStyleClass) {
     this.$element = $element;
     this.styleClass = styleClass;
+    this.defaultStyleClass = defaultStyleClass;
   }
 
   StyleTarget.prototype = {
     addStyle: function() {
       this.$element.addClass(this.styleClass);
+      this.$element.removeClass(this.defaultStyleClass);
     }, 
     removeStyle: function() {
       this.$element.removeClass(this.styleClass);
+      this.$element.addClass(this.defaultStyleClass);
     }
   }
 
@@ -483,13 +490,13 @@ var CORRESPONDENCE = {};
       the style target will have classes "selected" and "word-selected" (in that order).
       If there is no existing CSS class, then the classes to add would just be the one class "selected".
   */
-  function createStyleTarget(element, classSuffix) {
+  function createStyleTarget(element, classSuffix, defaultStyleClass) {
     var classNameString = $(element).attr("class");
     var classNames = classNameString == undefined ? [] : classNameString.split(" ");
     var targetStyleClass = classNames.length > 0 
       ? classSuffix + " " + classNames[0] + "-" + classSuffix 
       : classSuffix;
-    return new StyleTarget($(element), targetStyleClass);
+    return new StyleTarget($(element), targetStyleClass, defaultStyleClass);
   }
 
   // export public classes

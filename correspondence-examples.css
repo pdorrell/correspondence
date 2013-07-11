@@ -1,12 +1,5 @@
 /** Correspondence styling for specific examples */
-.output-marker {
-  padding: 0 0 0 0.5em;
-  color: #f03030; }
-
-.item-groups-example .structure-group {
-  width: 30em; }
-
-.equation span {
+.equation .structure-item {
   font: 2.2em bold Arial; }
 .equation td.number {
   font-size: 2em; }
@@ -29,50 +22,49 @@ table.blockEquation {
   .paragraph .word {
     padding: 0 0.1em; }
 
-.structure .punctuation-selected {
+.structure .punctuation-selected, .structure .operator-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0; }
-.structure .punctuation-match {
+.structure .punctuation-match, .structure .operator-match {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
-.structure .punctuation-partial-match {
-  border: 1pt solid #8080a0;
-  background-color: #f8f8ff; }
-.structure .operator-selected {
-  border: 1pt solid blue;
-  background-color: #b0b0f0; }
-.structure .operator-match {
-  border: 1pt solid blue;
-  background-color: #e0e0f0; }
-.structure .operator-partial-match {
+.structure .punctuation-partial-match, .structure .operator-partial-match {
   border: 1pt solid #8080a0;
   background-color: #f8f8ff; }
 
+/* Ruby background & border */
 .ruby-structure {
   border: 3px solid #405090;
   background-color: #fbfbff; }
-  .ruby-structure span {
+  .ruby-structure .unhighlighted {
     border: 1pt solid #fbfbff; }
 
+/* Spanish background & border */
 .spanish-structure {
   border: 3px solid #4090f0;
   background-color: #fbfcff; }
-  .spanish-structure span {
+  .spanish-structure .unhighlighted {
     border: 1pt solid #fbfcff; }
 
-.structure .output span {
+/** output & output marker styles for showing printed output of programming language examples */
+.output-marker {
+  padding: 0 0 0 0.5em;
+  color: #f03030; }
+
+.structure .output .structure-item {
   border: 1pt solid #ffe9e9;
   font-family: Courier New;
   font-weight: bold;
-  font-size: 0.9em;
+  font-size: 0.9em; }
+.structure .output .unhighlighted {
   color: #a00000;
   background-color: #ffe9e9; }
-  .structure .output span.selected {
-    border: 1pt solid red;
-    background-color: #ffd0d0; }
-  .structure .output span.match {
-    border: 1pt solid red;
-    background-color: #ffa0a0; }
-  .structure .output span.partial-match {
-    border: 1pt solid #a08080;
-    background-color: #fff8f8; }
+.structure .output .selected {
+  border: 1pt solid red;
+  background-color: #ffd0d0; }
+.structure .output .match {
+  border: 1pt solid red;
+  background-color: #ffa0a0; }
+.structure .output .partial-match {
+  border: 1pt solid #a08080;
+  background-color: #fff8f8; }

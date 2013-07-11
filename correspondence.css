@@ -41,7 +41,8 @@
   color: black; }
 
 .structure .structure-item {
-  padding: 0.1em;
+  padding: 0.1em; }
+.structure .unhighlighted {
   border: 1pt solid white; }
 .structure .selected {
   border: 1pt solid green;

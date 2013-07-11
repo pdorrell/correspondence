@@ -56,6 +56,8 @@ $default_structure_background: white;
 .structure {
     .structure-item {
 	padding: 0.1em;
+    }
+    .unhighlighted {
 	border: 1pt solid white;
     }
     .selected {
