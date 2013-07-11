@@ -1,5 +1,7 @@
-.equation .structure-item {
-  font: 2.2em bold Arial; }
+.equation span {
+  font: 2em bold Arial;
+  line-height: 1.2em;
+  padding: 0.2em 0.2em; }
 .equation td.number {
   font-size: 2em; }
 

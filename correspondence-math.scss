@@ -1,6 +1,8 @@
 .equation {
-    .structure-item {
-	font: 2.2em bold Arial;
+    span {
+	font: 2em bold Arial;
+	line-height: 1.2em;
+	padding: 0.2em 0.2em;
     }
     td.number {
 	font-size: 2em;
