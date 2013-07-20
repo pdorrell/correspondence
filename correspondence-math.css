@@ -1,5 +1,5 @@
 .equation span {
-  font: 2em bold Arial;
+  font: 2em bold Arial, Helvetic, sans-serif;
   line-height: 1.2em;
   padding: 0.2em 0.2em; }
 .equation td.number {
@@ -15,7 +15,7 @@ table.blockEquation {
   border-spacing: 0.8em; }
 
 .word-equation {
-  font: 1.4em normal Georgia; }
+  font: 1.4em normal Georgia, serif; }
 
 .structure .operator-selected {
   border: 1pt solid blue;

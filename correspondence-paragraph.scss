@@ -1,5 +1,7 @@
+@import "_correspondence-fonts";
+
 .paragraph {
-  font: 1.4em normal Georgia;
+  font: 1.4em normal $serif_font_family;
   line-height: 1.5em;
   .word {
       padding: 0 0.1em;

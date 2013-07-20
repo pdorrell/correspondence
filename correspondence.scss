@@ -1,3 +1,5 @@
+@import "_correspondence-fonts";
+
 /** Generic or default Correspondence styling */
 
 $default_structure_border: #a0a0a0;
@@ -36,7 +38,7 @@ $default_structure_background: white;
 .structure-group {
   position: relative;
   width: 40em;
-  font: 1.2em normal Georgia;
+  font: 1.2em normal $serif_font_family;
   border: 2px solid #505050;
   margin: 3em 0.5em;
   background-color: #e0e0e0;
@@ -86,7 +88,7 @@ $default_structure_background: white;
 .control {
   padding: 0.15em 0.35em;
   margin: 0 0 0 5em;
-  font: 0.9em Arial,Helvetica;
+  font: 0.9em $sans_serif_font_family;
   color: #606060;
   background-color: #f0f0f0;
   border: solid 1px #d0d0d0;
@@ -98,9 +100,10 @@ $default_structure_background: white;
     .interleaving-control {
 	background-color: #f0f0f0;
 	padding: 0.1em 0.3em 0 0;
-	font-size: 0.8em;
+	font-family: $sans_serif_font_family;
+	font-size: 0.6em;
 	margin: 0;
-	color: #646464;
+	color: #808080;
 	white-space: nowrap;
     }
 }

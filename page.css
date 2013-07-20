@@ -1,14 +1,14 @@
 /** Page styling unrelated to correspondence */
 p, ul, ol {
   color: black;
-  font: 1.2em normal Georgia; }
+  font: 1.2em normal Georgia, serif; }
 
 p {
   margin-top: 0.5em;
   margin-bottom: 0.5em; }
 
 h1 {
-  font: 3em bold Arial,Helvetica;
+  font: 3em bold Arial, Helvetic, sans-serif;
   font-weight: bold;
   color: #000090;
   margin: 0;
@@ -16,7 +16,7 @@ h1 {
 
 h2 {
   color: #000070;
-  font: 2em Arial,Helvetica;
+  font: 2em Arial, Helvetic, sans-serif;
   margin: 1em 0 0.4em 0; }
 
 body {

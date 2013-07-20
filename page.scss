@@ -1,8 +1,10 @@
+@import "_correspondence-fonts";
+
 /** Page styling unrelated to correspondence */
 
 p, ul, ol {
   color: black;
-  font: 1.2em normal Georgia;
+  font: 1.2em normal $serif_font_family;
 }
 
 p {
@@ -11,7 +13,7 @@ p {
 }
 
 h1 {
-  font: 3em bold Arial,Helvetica;
+  font: 3em bold $heading_font_family;
   font-weight: bold;
   color: #000090;
   margin: 0;
@@ -20,7 +22,7 @@ h1 {
 
 h2 {
   color: #000070;
-  font: 2em Arial,Helvetica;
+  font: 2em $heading_font_family;
   margin: 1em 0 0.4em 0;
 }
 

@@ -1,6 +1,8 @@
+@import "_correspondence-fonts";
+
 .equation {
     span {
-	font: 2em bold Arial;
+	font: 2em bold $sans_serif_font_family;
 	line-height: 1.2em;
 	padding: 0.2em 0.2em;
     }
@@ -22,7 +24,7 @@ table.blockEquation {
 }
 
 .word-equation {
-    font: 1.4em normal Georgia;
+    font: 1.4em normal $serif_font_family;
 }
 
 .structure {

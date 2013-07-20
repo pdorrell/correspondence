@@ -1,5 +1,7 @@
+@import "_correspondence-fonts";
+
 .sentence {
-    font: 1.4em normal Georgia;
+    font: 1.4em normal $serif_font_family;
 }
 
 .structure {
