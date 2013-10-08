@@ -27,7 +27,7 @@
     Basic concepts
     --------------
     
-    Structure Group. A group of related structures, defined by a DOM element (e.g. <div>) with CSS class "structure-group".
+    Structure Group. A group of related structures, defined by a DOM element (e.g. <div>) with CSS class "translations".
     
     Structure. Defined by a DOM element (e.g. <div>) inside a structure group with CSS class "structure"
     
@@ -171,7 +171,7 @@ var CORRESPONDENCE = {};
       var structuresSelector = $(this.structureGroup).find(".structure");
       if(structuresSelector.length >= 1) {
         var firstStructure = structuresSelector[0];
-        var firstStructureItemGroupsSelector = $(firstStructure).find(".item-group");
+        var firstStructureItemGroupsSelector = $(firstStructure).find(".line");
         if (firstStructureItemGroupsSelector.length > 1) {
           this.setupInterleaving(structuresSelector, firstStructureItemGroupsSelector)
         }
@@ -256,7 +256,7 @@ var CORRESPONDENCE = {};
         for (var j=0; j<this.numGroupIds; j++) {
           itemGroupMaps[i][this.groupIds[j]] = null;
         }
-        $(structure).find(".item-group").each(function(index, itemGroup) {
+        $(structure).find(".line").each(function(index, itemGroup) {
           var groupId = $(itemGroup).data("group-id");
           if(groupId == undefined) {
             $this.error((index+1) + "th item group in " + (i+1) + "th structure has no group ID");

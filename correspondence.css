@@ -24,7 +24,7 @@
     padding: 0;
     margin: 0; }
 
-.structure-group {
+.translations {
   position: relative;
   width: 40em;
   font: 1.2em normal Georgia, serif;
@@ -32,11 +32,11 @@
   margin: 3em 0.5em;
   background-color: #e0e0e0;
   padding: 1em; }
-  .structure-group:first-child {
+  .translations:first-child {
     margin-top: 0; }
-  .structure-group:last-child {
+  .translations:last-child {
     margin-bottom: 0; }
-  .structure-group .description {
+  .translations .description {
     color: #808080;
     padding: 0.6em 0 0.7em 0;
     margin: 0 0 0 -0.5em;
