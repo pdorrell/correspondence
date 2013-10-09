@@ -243,7 +243,7 @@ var CORRESPONDENCE = {};
       for (var i=0; i<this.numLineIds; i++) {
         var lineId = $(firstBlockLinesSelector[i]).data("line-id");
         if(lineId == undefined) {
-            $this.error((index+1) + "th item group in 1st block has no group ID");
+            $this.error((index+1) + "th line in 1st block has no group ID");
         }
         this.lineIds[i] = lineId;
       }
@@ -267,15 +267,15 @@ var CORRESPONDENCE = {};
         $(block).find(".line").each(function(index, line) {
           var lineId = $(line).data("line-id");
           if(lineId == undefined) {
-            $this.error((index+1) + "th item group in " + (i+1) + "th block has no group ID");
+            $this.error((index+1) + "th line in " + (i+1) + "th block has no group ID");
           }
           if (!$.inArray(lineId, this.lineIds)) {
-            $this.error((index+1) + "th item group in " + (i+1) + "th block has group ID " + lineId + 
+            $this.error((index+1) + "th line in " + (i+1) + "th block has group ID " + lineId + 
                         " which does not exist in first block");
           }
           if (lineMaps[i][lineId]) {
-            $this.error((index+1) + "th item group in " + (i+1) + 
-                        "th block has two item groups with group ID " + lineId);
+            $this.error((index+1) + "th line in " + (i+1) + 
+                        "th block has two lines with group ID " + lineId);
           }
           lineMaps[i][lineId] = line;
         });
