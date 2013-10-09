@@ -27,7 +27,7 @@
     Basic concepts
     --------------
     
-    Structure Group. A group of related structures, defined by a DOM element (e.g. <div>) with CSS class "translations".
+    Structure Group. A group of related structures, defined by a DOM element (e.g. <div>) with CSS class "translation".
     
     Structure. Defined by a DOM element (e.g. <div>) inside a structure group with CSS class "structure"
     

@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var structureGroups = new CORRESPONDENCE.StructureGroups($(".translations"));
+  var structureGroups = new CORRESPONDENCE.StructureGroups($(".translation"));
   
   structureGroups.setupInterleaving();
 
