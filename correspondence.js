@@ -27,46 +27,54 @@
     Basic concepts
     --------------
     
-    Block Group. A group of related blocks, defined by a DOM element (e.g. <div>) with CSS class "translation".
+    Translation. A group of blocks, each of which expresses the same content in a different language. 
+       Defined by a DOM element (e.g. <div>) with CSS class "translation".
     
-    Block. Defined by a DOM element (e.g. <div>) inside a block group with CSS class "block"
+    Block. Defined by a DOM element (e.g. <div>) inside a Translation with CSS class "block".
+       A block might be a paragraph, or a verse of a song, or a function definition in a programming language.
+       
+    Line. A sequence of items and other text which constitute part of a block.
+       A line could be a sentence, or an actual line within a paragraph, or a line of a song, or a line of code in a program.
+       Sometimes a line might be displayed as two or more actual lines on the page. A line is defined by a DOM element
+       inside a Block with an ID attribute "data-line-id". (Division of Blocks into Lines is optional.)
     
-    Item. Defined by a DOM element inside a block with an ID attribute "data-id".
+    Item. Defined by a DOM element inside a Block (and maybe inside a Line inside a Block) with an ID attribute "data-id".
     
-    Within a block, items with the same ID are considered "siblings".
+    Within a Block, Items with the same ID are considered "siblings".
+       A single Item, or a group of Items with the same ID constitute a "unit of meaning" that can be translated.
     
-    Within a block group, items with the same ID but not in the same block are considered "cousins".
+    Within a translation, Items with the same ID but not in the same block are considered "cousins".
     
-    There is no relationship between items in different block groups - i.e. any block group should be regarded
-    as independent of any other block group.
+    There is no relationship between Items in different translations - i.e. any translation should be regarded
+    as independent of any other translation.
     
     The default user interaction is as follows:
     
-    * At any one time, there is at most one "selected" item.
-    * When the user mouses over an item, that item becomes "selected", and any current selected item gets de-selected.
-    * When an item is selected, the state of it's siblings and cousins changes:
+    * At any one time, there is at most one "selected" Item.
+    * When the user mouses over an Item, that Item becomes "selected", and any current selected Item gets de-selected.
+    * When an Item is selected, the state of it's siblings and cousins changes:
     * Siblings enter a "match" state.
     * Cousins enter a "match" state. (The default interaction does not treat siblings different from cousins, 
     but alternative interactions could treat them differently.)
-    * In the default interaction, an item remains selected until another item is selected (i.e. it is not deselected when 
-    the user mouses out of the item).
-    * The current selected item can also be de-selected by clicking anywhere outside an item.
-    * Associated siblings and cousins are un-match when the selected item becomes de-selected.
+    * In the default interaction, an Item remains selected until another Item is selected (i.e. it is not deselected when 
+    the user mouses out of the Item).
+    * The current selected Item can also be de-selected by clicking anywhere outside an Item.
+    * Associated siblings and cousins are un-match when the selected Item becomes de-selected.
     
-    The "match" and "selected" states are managed by changing an item's CSS classes. This happens as follows:
-    * An item has a "primary" CSS class, which is the first CSS class in it's "class" attribute (if any).
+    The "match" and "selected" states are managed by changing an Item's CSS classes. This happens as follows:
+    * An Item has a "primary" CSS class, which is the first CSS class in it's "class" attribute (if any).
     * In a given state, a CSS class for the state is added, and, if there is a primary CSS class, a CSS class is 
     added consisting of the primary class joined to the state class by a hyphen.
     * When exiting a state, the added CSS classes are removed.
     
-    For example, an item with no primary CSS class entering the "selected" state would have the 
+    For example, an Item with no primary CSS class entering the "selected" state would have the 
     CSS class "selected" added.
 
-    And an item with primary CSS class "word" entereing the "match" state would add 
+    And an Item with primary CSS class "word" entereing the "match" state would add 
     two CSS classes: "match" and "word-match". (Note that dues to CSS application 
     rules, any properties in "word-match" will over-ride any identical properties in "match", 
     and both those classes will override any properties in the primary class, or
-    in any other CSS classes that the item has in its initial state.)
+    in any other CSS classes that the Item has in its initial state.)
     
 */
 
@@ -90,7 +98,7 @@ var CORRESPONDENCE = {};
     
   /** From the specified data attribute, insert item into a map of items, indexed by each of
       the item's IDs.
-      Associated items in a block group have the same IDs, so each item is held in an array of items
+      Associated items in a translation have the same IDs, so each item is held in an array of items
       with the same ID.
   */
   function indexItemByItemIds(itemsMap, item) {
@@ -319,10 +327,10 @@ var CORRESPONDENCE = {};
       }
     }, 
     
-    /** Initialise the blocks and items in a given block group. */
+    /** Initialise the blocks and items in a given translation. */
     initializeBlocks: function() {
       // set "blockId" data value, and add each item to indexItemByItemId, initialize "siblings" & "cousins" data values
-      var itemsByItemId = {}; // the items map for all items in this block group
+      var itemsByItemId = {}; // the items map for all items in this translation
       this.addBlockItemClassToItems();
       this.indexItemsByTheirId(itemsByItemId);
       this.linkSiblingsAndCousins(itemsByItemId);
@@ -331,7 +339,7 @@ var CORRESPONDENCE = {};
     /** Items are identified by "data-id" attribute, so they don't actually have any 
         specific CSS class. This method specifically adds in the "block-item" class. */
     addBlockItemClassToItems: function () {
-      $(this.translation).find(".block").each( // for each block in this block group
+      $(this.translation).find(".block").each( // for each block in this translation
         function(index, block) {
           $(block).find("[data-id]").each( // for each item in the block
             function(index, item) {
@@ -342,7 +350,7 @@ var CORRESPONDENCE = {};
     }, 
       
     indexItemsByTheirId: function (itemsByItemId) {
-      $(this.translation).find(".block").each( // for each block in this block group
+      $(this.translation).find(".block").each( // for each block in this translation
         function(index, block) {
           var blockId = index;
           $(block).find("[data-id]").each( // for each item in the block
@@ -356,15 +364,15 @@ var CORRESPONDENCE = {};
                                            "unhighlighted")); // style target for this item to become selected
               $item.data("siblings", []); // list of sibling style targets (yet to be populated)
               $item.data("cousins", []); // list of cousin style targets (yet to be populated)
-              indexItemByItemIds(itemsByItemId, $item); // index this item within it's block group
+              indexItemByItemIds(itemsByItemId, $item); // index this item within it's translation
             });
         });
     }, 
     
     linkSiblingsAndCousins: function (itemsByItemId) {
-      /* For each item in block group, determine which other items are siblings (in the same block) 
+      /* For each item in translation, determine which other items are siblings (in the same block) 
          or cousins (in a different block) with the same id, and create the relevant style targets. */
-      $(this.translation).find("[data-id]").each( // for each item in the block group
+      $(this.translation).find("[data-id]").each( // for each item in the translation
         function(index, item) {
           var $item = $(item);
           var itemIds = $item.data("itemIds");
@@ -397,9 +405,9 @@ var CORRESPONDENCE = {};
     }
   }
 
-  /* Object representing all Block Groups on a web page.
-     Block Groups are mostly independent of each other, except
-     there is only one currently selected item in any block group.
+  /* Object representing all Translations on a web page.
+     Translations are mostly independent of each other, except
+     there is only one currently selected item in any translation.
    */
   function Translations(selector) {
     this.elementSelection = new ElementSelection();
@@ -409,7 +417,7 @@ var CORRESPONDENCE = {};
     this.translations = []
     var $translations = this.translations;
 
-    // For each block group DOM element, initialize the corresponding block group
+    // For each translation DOM element, initialize the corresponding translation
     selector.each(
       function(index, translation) {
         $translations.push(new Translation(translation));
