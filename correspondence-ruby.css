@@ -1,6 +1,6 @@
 /* Ruby background & border */
-.ruby-structure {
+.ruby-block {
   border: 3px solid #405090;
   background-color: #fbfbff; }
-  .ruby-structure .unhighlighted {
+  .ruby-block .unhighlighted {
     border: 1pt solid #fbfbff; }

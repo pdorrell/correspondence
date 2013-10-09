@@ -17,12 +17,12 @@ table.blockEquation {
 .word-equation {
   font: 1.4em normal Georgia, serif; }
 
-.structure .operator-selected {
+.block .operator-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0; }
-.structure .operator-match {
+.block .operator-match {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
-.structure .operator-partial-match {
+.block .operator-partial-match {
   border: 1pt solid #8080a0;
   background-color: #f8f8ff; }

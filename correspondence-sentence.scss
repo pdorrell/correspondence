@@ -4,17 +4,17 @@
     font: 1.4em normal $serif_font_family;
 }
 
-.structure {
+.block {
     .punctuation-selected {
-	border: 1pt solid blue;
-	background-color: #b0b0f0;
+		border: 1pt solid blue;
+		background-color: #b0b0f0;
     }
     .punctuation-match {
-	border: 1pt solid blue;
-	background-color: #e0e0f0;
+		border: 1pt solid blue;
+		background-color: #e0e0f0;
     }
     .punctuation-partial-match {
-	border: 1pt solid #8080a0;
-	background-color: #f8f8ff;
+		border: 1pt solid #8080a0;
+		background-color: #f8f8ff;
     }
 }

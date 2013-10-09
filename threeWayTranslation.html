@@ -16,36 +16,36 @@
 <div class="author">Author: <a href="http://thinkinghard.com">Philip Dorrell</a></div>
 
 <p><a href="index.html">Correspondence</a> is a framework for interactively visualizing <i>correspondences</i> between
-items in related structures.</p>
+items in related blocks.</p>
 
-<p>When comparing <i>two</i> structures, granularity of corresponding items can be chosen based
-on the relationships between the two structures.</p>
+<p>When comparing <i>two</i> blocks, granularity of corresponding items can be chosen based
+on the relationships between the two blocks.</p>
 
-<p>With <i>three</i> (or more) structures, there is no clear best choice of granularity, because
-for each structure, there are multiple relationships competing to determine the granularity.</p>
+<p>With <i>three</i> (or more) blocks, there is no clear best choice of granularity, because
+for each block, there are multiple relationships competing to determine the granularity.</p>
 
 <p>A solution to this problem is to choose item numbers based on the finest granularity, and then
-use <b>multiple IDs</b> for items that refer to multiple items in other structures.</p>
+use <b>multiple IDs</b> for items that refer to multiple items in other blocks.</p>
 
 <p>The mouse-over interaction is then augmented to include <b>partial highlighting</b>. An item will be partially
 highlighted whenever its IDs overlap with those of the selected item, but the partially hightlighted
 item has at least one ID which is <i>not</i> an ID of the selected item.</p>
 
 <p>Applying this to the concepts of "siblings" and "cousins", for items that have the same ID as a
-selected item in the same structure or different structure respectively, this results in a total 
+selected item in the same block or different block respectively, this results in a total 
 of six different types of highlighting:</p>
 
 <ol>
  <li>The Selected Item</li>
- <li>A "sibling" in the same structure that shares all its IDs with the selected item</li>
- <li>A "partial sibling" in the same structure that shares some of its IDs with the selected item</li>
- <li>A "cousin" in a different structure that shares all its IDs with the selected item</li>
- <li>A "partial cousin" in a different structure that shares some of its IDs with the selected item</li>
+ <li>A "sibling" in the same block that shares all its IDs with the selected item</li>
+ <li>A "partial sibling" in the same block that shares some of its IDs with the selected item</li>
+ <li>A "cousin" in a different block that shares all its IDs with the selected item</li>
+ <li>A "partial cousin" in a different block that shares some of its IDs with the selected item</li>
  <li>An unrelated item that shares no IDs with the selected item.</li>
 </ol>
 
 <p>So, for example, if the selected item had IDs of <b>1,2,3</b>, then the following IDs 
-for items in a different structure would give these matches:</p>
+for items in a different block would give these matches:</p>
 
 <ul>
  <li><b>1</b>: "cousin"</li>
@@ -66,27 +66,27 @@ for items in a different structure would give these matches:</p>
 
 <div>
 <div class="translation">
-  <div class="structure">
+  <div class="block">
     <span data-id="1">Item-one-beginning</span>
     <span data-id="2">Item-two</span>
     <span data-id="1">Item-one-end</span>
     <span data-id="3">Item-three</span>
   </div>
-  <div class="structure">
+  <div class="block">
     <span data-id="1">Uno</span>
     <span data-id="2">Dos</span>
     <span data-id="3">Tres</span>
   </div>
-  <div class="structure">
+  <div class="block">
     <span data-id="1,2">One-and-Two-Beginning</span>
     <span data-id="2">Two-end</span>
     <span data-id="3">Three</span>
   </div>
-  <div class="structure">
+  <div class="block">
     <span data-id="1">One</span>
     <span data-id="2,3">Two-and-Three</span>
   </div>
-  <div class="structure">
+  <div class="block">
     <span data-id="1,2,3">One-Two-and-Three</span>
   </div>
 </div>
@@ -95,7 +95,7 @@ for items in a different structure would give these matches:</p>
 <h2>Limitations of Three-Way (or more) Translation Visualization</h2>
 
 <p>The primary use-case for <b>Correspondence</b> is to look at only two
-structures at once, or, to look at more than two structures where all the structures
+blocks at once, or, to look at more than two blocks where all the blocks
 can be decomposed into items with the same or very much the same granularity.</p>
 
 <p>Trying to make sense of matches and partial matches adds considerable 

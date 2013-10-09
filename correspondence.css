@@ -1,5 +1,5 @@
 /** Generic or default Correspondence styling */
-.structure {
+.block {
   border: 3px solid #a0a0a0;
   margin: 1.0em 0;
   padding: 0.5em 0.4em;
@@ -7,13 +7,13 @@
   position: relative;
   background-color: white;
   color: #686868; }
-  .structure .structure-item {
+  .block .block-item {
     color: #000060; }
-  .structure:first-child {
+  .block:first-child {
     margin-top: 0; }
-  .structure:last-child {
+  .block:last-child {
     margin-bottom: 0; }
-  .structure .language {
+  .block .language {
     font-size: 0.6em;
     font-style: italic;
     color: #808080;
@@ -47,19 +47,19 @@
 .partial-match, .match, .selected {
   color: black; }
 
-.structure {
+.block {
   clear: both; }
-  .structure .structure-item {
+  .block .block-item {
     padding: 0.1em; }
-  .structure .unhighlighted {
+  .block .unhighlighted {
     border: 1pt solid white; }
-  .structure .selected {
+  .block .selected {
     border: 1pt solid green;
     background-color: #a0f0a0; }
-  .structure .match {
+  .block .match {
     border: 1pt solid green;
     background-color: #d0f0d0; }
-  .structure .partial-match {
+  .block .partial-match {
     border: 1pt solid #80a080;
     background-color: #f8fff8; }
 
@@ -83,19 +83,19 @@
     color: #808080;
     white-space: nowrap; }
 
-.structures-wrapper {
+.blocks-wrapper {
   margin: 0;
   padding: 0; }
-  .structures-wrapper .interleaved-group {
+  .blocks-wrapper .interleaved-block {
     margin: 2.5em 0; }
-    .structures-wrapper .interleaved-group:first-child {
+    .blocks-wrapper .interleaved-block:first-child {
       margin-top: 0; }
-    .structures-wrapper .interleaved-group:last-child {
+    .blocks-wrapper .interleaved-block:last-child {
       margin-bottom: 0; }
-    .structures-wrapper .interleaved-group .structure {
+    .blocks-wrapper .interleaved-block .block {
       margin-top: 0.5em;
       margin-bottom: 0.5em; }
-      .structures-wrapper .interleaved-group .structure:first-child {
+      .blocks-wrapper .interleaved-block .block:first-child {
         margin-top: 0; }
-      .structures-wrapper .interleaved-group .structure:last-child {
+      .blocks-wrapper .interleaved-block .block:last-child {
         margin-bottom: 0; }

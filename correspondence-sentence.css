@@ -1,12 +1,12 @@
 .sentence {
   font: 1.4em normal Georgia, serif; }
 
-.structure .punctuation-selected {
+.block .punctuation-selected {
   border: 1pt solid blue;
   background-color: #b0b0f0; }
-.structure .punctuation-match {
+.block .punctuation-match {
   border: 1pt solid blue;
   background-color: #e0e0f0; }
-.structure .punctuation-partial-match {
+.block .punctuation-partial-match {
   border: 1pt solid #8080a0;
   background-color: #f8f8ff; }

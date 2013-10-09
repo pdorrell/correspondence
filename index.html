@@ -18,13 +18,13 @@
 <div class="author">Author: <a href="http://thinkinghard.com">Philip Dorrell</a></div>
 
 <p><b>Correspondence</b> is a framework for interactively visualizing <i>correspondences</i> between
-items in related structures.</p>
+items in related blocks.</p>
 
-<p>Move your mouse over the structures below, and see what happens.</p>
+<p>Move your mouse over the blocks below, and see what happens.</p>
 
 <div>
 <div class="translation">
-  <div class="structure sentence">
+  <div class="block sentence">
     <div class="language">Spanish</div>
     <span class="punctuation" data-id="1">¿</span>
     <span class="word" data-id="2">Cuál</span>
@@ -36,7 +36,7 @@ items in related structures.</p>
     <span class="word" data-id="7">verde</span>
     <span class="punctuation" data-id="8">.</span>
   </div>
-  <div class="structure sentence">
+  <div class="block sentence">
     <div class="language">English</div>
     <span class="word" data-id="2">Which one</span>
     <span class="word" data-id="3">do you prefer</span>
@@ -47,7 +47,7 @@ items in related structures.</p>
     <span class="word" data-id="7">green one</span>
     <span class="punctuation" data-id="8">.</span>
   </div>
-  <div class="structure sentence">
+  <div class="block sentence">
     <div class="language">Literal English</div>
     <span class="word" data-id="2">Which</span>
     <span class="word" data-id="3">you prefer</span>
@@ -67,7 +67,7 @@ items in related structures.</p>
 
 <h2>Explanation</h2>
 
-<p>Typically two structures might be related by <i>translation</i>. For example,</p>
+<p>Typically two blocks might be related by <i>translation</i>. For example,</p>
 
 <ul>
  <li>Translation between English and another natural language</li>
@@ -85,28 +85,28 @@ in the examples above.)</p>
 
 <div>
 <div class="translation">
-  <div class="structure equation">
+  <div class="block equation">
     <span class="number" data-id="3">3</span>
     <span class="operator" data-id="+">+</span>
     <span class="number" data-id="4">4</span>
     <span class="operator" data-id="=">=</span>
     <span class="number" data-id="7">7</span>
   </div>
-  <div class="structure word-equation">
+  <div class="block word-equation">
     <span class="number" data-id="3">Three</span>
     <span class="operator" data-id="+">plus</span>
     <span class="number" data-id="4">four</span>
     <span class="operator" data-id="=">equals</span>
     <span class="number" data-id="7">seven</span>.
   </div>
-  <div class="structure word-equation">
+  <div class="block word-equation">
     <span class="number" data-id="3">Three</span>
     <span class="operator" data-id="+">and</span>
     <span class="number" data-id="4">four</span>
     <span class="operator" data-id="=">makes</span>
     <span class="number" data-id="7">seven</span>.
   </div>
-  <div class="structure equation">
+  <div class="block equation">
     <span class="blockOfDots" data-id="3">●●●</span>
     <span class="operator" data-id="+">+</span>
     <span class="blockOfDots" data-id="4">●●●●</span>
@@ -116,21 +116,21 @@ in the examples above.)</p>
 </div>
 
 <div class="translation">
-  <div class="structure equation">
+  <div class="block equation">
     <span class="number" data-id="3">3</span>
     <span class="operator" data-id="*">&times;</span>
     <span class="number" data-id="5">5</span>
     <span class="operator" data-id="=">=</span>
     <span class="number" data-id="15">15</span>
   </div>
-  <div class="structure word-equation">
+  <div class="block word-equation">
     <span class="number" data-id="3">Three</span>
     <span class="operator" data-id="*">times</span>
     <span class="number" data-id="5">five</span>
     <span class="operator" data-id="=">equals</span>
     <span class="number" data-id="15">fifteen</span>.
   </div>
-  <div class="structure equation">
+  <div class="block equation">
     <table class="blockEquation">
       <tr>
 	<td></td>
@@ -147,23 +147,23 @@ in the examples above.)</p>
 
 <h2>An Abstract Example</h2>
 
-<p>The basic concepts of <b>Correspondence</b> are <b>structure groups</b>, <b>structures</b>
+<p>The basic concepts of <b>Correspondence</b> are <b>translations</b>, <b>blocks</b>
 and <b>items</b>.</p>
 
-<p>The following example shows a structure group consisting of two structures, structure A and 
-structure B, each containing three items. In structure B, the first item is split into two parts.</p>
+<p>The following example shows a translation consisting of two blocks, block A and 
+block B, each containing three items. In block B, the first item is split into two parts.</p>
 
 <div>
 <div class="translation">
-  <div class="structure paragraph">
-    <b>Structure A:</b>
+  <div class="block paragraph">
+    <b>Block A:</b>
     <span class="word" data-id="1">Item 1</span>,
     <span class="word" data-id="2">item 2</span> and
     <span class="word" data-id="3">item 3</span>.
   </div>
-  <div class="structure paragraph">
-    <b>Structure B:</b>
-    This second structure contains its own representations of the three items:
+  <div class="block paragraph">
+    <b>Block B:</b>
+    This second block contains its own representations of the three items:
     <span class="word" data-id="1">the first part of item 1</span>,
     <span class="word" data-id="2">item 2</span>, 
     <span class="word" data-id="1">the second part of item 1</span> and

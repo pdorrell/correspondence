@@ -3,20 +3,20 @@
   padding: 0 0 0 0.5em;
   color: #f03030; }
 
-.structure .output .structure-item {
+.block .output .block-item {
   border: 1pt solid #ffe9e9;
   font-family: Courier New;
   font-weight: bold;
   font-size: 0.9em; }
-.structure .output .unhighlighted {
+.block .output .unhighlighted {
   color: #a00000;
   background-color: #ffe9e9; }
-.structure .output .selected {
+.block .output .selected {
   border: 1pt solid red;
   background-color: #ffd0d0; }
-.structure .output .match {
+.block .output .match {
   border: 1pt solid red;
   background-color: #ffa0a0; }
-.structure .output .partial-match {
+.block .output .partial-match {
   border: 1pt solid #a08080;
   background-color: #fff8f8; }
