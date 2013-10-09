@@ -41,7 +41,7 @@
     Item. Defined by a DOM element inside a Block (and maybe inside a Line inside a Block) with an ID attribute "data-id".
     
     Within a Block, Items with the same ID are considered "siblings".
-       A single Item, or a group of Items with the same ID constitute a "unit of meaning" that can be translated.
+       A single Item with a unique ID, or a group of Items with the same ID, constitute a "unit of meaning" that can be translated.
     
     Within a translation, Items with the same ID but not in the same block are considered "cousins".
     
