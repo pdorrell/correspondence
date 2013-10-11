@@ -197,7 +197,7 @@ var CORRESPONDENCE = {};
       labelDiv.append(label);
       label.prepend(checkbox);
       $(this.translation).append(labelDiv);
-      $(this.translation).css("padding-top", 0);
+      // $(this.translation).css("padding-top", 0);
       var $this = this;
       var blocksWrapperDiv = $('<div class="blocks-wrapper"></div>');
       blocksSelector.each(function(index, blockElement) {
