@@ -51,10 +51,10 @@ $default_block_background: white;
   }
   .title {
       color: #505050;
-      padding: 0 0 0.4em 0;
-      margin: -0.4em 0 0 -0.5em;
+      padding: 0 0 0 0;
+      margin: -0.5em 0 0.3em -0.4em;
       float: left;
-      font-size: 1.0em;
+      font-size: 1.2em;
       font-style: italic;
   }
 }
@@ -96,7 +96,8 @@ $default_block_background: white;
 
 .interleaving-control-wrapper {
     text-align: right;
-    margin: 0.4em 0 0.2em 0;
+    float: right;
+    margin: -0.5em -0.4em 0.5em 0;
     .interleaving-control {
 	background-color: #f0f0f0;
 	padding: 0.1em 0.3em 0 0;
