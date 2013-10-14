@@ -100,3 +100,52 @@
         margin-top: 0; }
       .blocks-wrapper .interleaved-block .block:last-child {
         margin-bottom: 0; }
+
+.bracketup-error {
+  border: solid 1pt red;
+  margin: 0.3em;
+  padding: 1em; }
+  .bracketup-error .message {
+    font-family: Arial, Helvetic, sans-serif;
+    font-size: 1.3em;
+    margin: 0 0 0.4em 0; }
+    .bracketup-error .message .message-text {
+      font-weight: bold;
+      color: red; }
+  .bracketup-error .line, .bracketup-error .error-line, .bracketup-error .error-pointer {
+    font-family: Courier New;
+    white-space: pre; }
+  .bracketup-error .line {
+    color: #000060; }
+  .bracketup-error .error-pointer, .bracketup-error .error-line {
+    color: red;
+    background-color: #fff0f0; }
+  .bracketup-error .error-line {
+    line-height: 2em; }
+  .bracketup-error .error-message {
+    color: red; }
+
+.example {
+  font-size: 0.8em;
+  display: inline-block;
+  font-family: Courier New;
+  white-space: pre; }
+
+.parsed-tokens .line .depth-indent {
+  display: inline-block;
+  width: 2em;
+  background-color: #b0b0ff;
+  color: #808080;
+  margin: 0.2em 0.2em; }
+.parsed-tokens .line .unbalanced {
+  color: #005000;
+  background-color: #f0f030; }
+  .parsed-tokens .line .unbalanced:hover {
+    color: green;
+    background-color: yellow; }
+.parsed-tokens .line .unexpected {
+  color: #d00000;
+  background-color: #ffc0c0; }
+  .parsed-tokens .line .unexpected:hover {
+    color: red;
+    background-color: ffa0a0; }
