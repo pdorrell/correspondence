@@ -133,3 +133,70 @@ $default_block_background: white;
       }
   }
 }
+
+.bracketup-error {
+    border: solid 1pt red;
+    margin: 0.3em;
+    padding: 1em;
+    .message {
+	font-family: $sans_serif_font_family;
+	font-size: 1.3em;
+	margin: 0 0 0.4em 0;
+	.message-text {
+	    font-weight: bold;
+	    color: red;
+	}
+    }
+    .line, .error-line, .error-pointer {
+	font-family: $code_font_family;
+	white-space: pre;
+    }
+    .line {
+	color: #000060;
+    }
+    .error-pointer, .error-line {
+	color: red;
+	background-color: #fff0f0;
+    }
+    .error-line {
+	line-height: 2em;
+    }
+    .error-message {
+	color: red;
+    }
+}
+
+.example {
+    font-size: 0.8em;
+    display: inline-block;
+    font-family: $code_font_family;
+    white-space: pre;
+}	    
+
+.parsed-tokens {
+    .line {
+	.depth-indent {
+	    display: inline-block;
+	    width: 2em;
+	    background-color: #b0b0ff;
+	    color: #808080;
+	    margin: 0.2em 0.2em;
+	}
+	.unbalanced {
+	    color: #005000;
+	    background-color: #f0f030;
+	    &:hover {
+		color: green;
+		background-color: yellow;
+	    }
+	}
+	.unexpected {
+	    color: #d00000;
+	    background-color: #ffc0c0;
+	    &:hover {
+		color: red;
+		background-color: ffa0a0;
+	    }
+	}
+    }
+}
